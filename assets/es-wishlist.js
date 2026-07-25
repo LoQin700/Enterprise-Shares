@@ -5,7 +5,8 @@
   const state = {
     items: new Set(),
     initialized: false,
-    syncing: false
+    syncing: false,
+    syncPending: false
   };
 
   const normalizeHandles = (items) => {
@@ -62,10 +63,18 @@
   };
 
   const saveRemote = async () => {
-    if (!config.customerId || !config.syncEnabled || state.syncing) return;
+    if (!config.customerId || !config.syncEnabled) return;
+
+    state.syncPending = true;
+    if (state.syncing) return;
+
     state.syncing = true;
     try {
-      await proxyRequest('POST', { items: [...state.items] });
+      while (state.syncPending) {
+        state.syncPending = false;
+        const snapshot = [...state.items];
+        await proxyRequest('POST', { items: snapshot });
+      }
     } catch (error) {
       console.warn('[Enterprise Shares] Wishlist sync failed.', error);
     } finally {
