@@ -13,11 +13,10 @@
   assign location_field = product.metafields[namespace][location_key]
 
   assign card_variant = variant | default: 'compact'
-  assign card_ratio = image_ratio | default: '16/9'
+  assign card_ratio = image_ratio | default: settings.es_card_ratio | default: '16/9'
   assign card_description = description_field.value | default: product.description | strip_html | strip
   assign ended_text = settings.es_ended_text | default: 'Ended'
 -%}
-
 
 <article class="es-card es-card--{{ card_variant }}" data-es-product-card data-product-handle="{{ product.handle | escape }}" {{ shopify_attributes }}>
   {% render 'es-product-media', product: product, image_ratio: card_ratio %}
@@ -63,8 +62,15 @@
         {%- if tags_field != blank or location_field != blank -%}
           <div class="es-card__chips">
             {%- if tags_field.value -%}
-              {%- for tag in tags_field.value limit: 3 -%}
-                <span class="es-card__chip">{{ tag }}</span>
+              {%- for raw_tag in tags_field.value -%}
+                {%- assign normalized_tag = raw_tag | replace: ',', ';' -%}
+                {%- assign split_tags = normalized_tag | split: ';' -%}
+                {%- for tag in split_tags -%}
+                  {%- assign clean_tag = tag | strip -%}
+                  {%- if clean_tag != blank -%}
+                    <span class="es-card__chip">{{ clean_tag }}</span>
+                  {%- endif -%}
+                {%- endfor -%}
               {%- endfor -%}
             {%- endif -%}
             {%- if location_field.value != blank -%}
