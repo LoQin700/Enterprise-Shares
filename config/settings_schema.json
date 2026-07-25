@@ -2326,7 +2326,33 @@
             "label": "3:4 竖图"
           }
         ],
-        "info": "用于集合页、搜索页、相关商品等全局产品卡；重点商品 Section 可单独设置比例。"
+        "info": "统一用于集合页、搜索页、相关商品、重点商品与推荐轮播中的产品卡图片。"
+      },
+      {
+        "type": "header",
+        "content": "产品卡字体"
+      },
+      {
+        "type": "range",
+        "id": "es_card_title_size",
+        "label": "产品标题字号",
+        "min": 12,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "default": 16,
+        "info": "产品标题自动使用主题全局的标题字体。"
+      },
+      {
+        "type": "range",
+        "id": "es_card_description_size",
+        "label": "产品简介字号",
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "default": 14,
+        "info": "产品简介及其它信息使用主题全局的正文字体。"
       },
       {
         "type": "header",
