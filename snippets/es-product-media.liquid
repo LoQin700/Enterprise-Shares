@@ -1,11 +1,16 @@
 {%- liquid
-  assign ratio = image_ratio | default: '16/9'
+  assign ratio = image_ratio | default: settings.es_card_ratio | default: '16/9'
   assign first_media = product.media.first
   assign first_image = product.featured_image
   assign second_image = product.images[1]
+  assign show_second_image = false
+
+  if settings.es_hover_second_image and first_media.media_type == 'image' and second_image and second_image.id != first_image.id
+    assign show_second_image = true
+  endif
 -%}
 
-<div class="es-card__media" style="--es-media-ratio: {{ ratio }};">
+<div class="es-card__media{% if show_second_image %} es-card__media--has-secondary{% endif %}" style="--es-media-ratio: {{ ratio }};">
   <a href="{{ product.url }}" class="es-card__media-link" aria-label="{{ product.title | escape }}">
     {%- if first_media.media_type == 'video' -%}
       <div class="es-card__video-wrap" data-es-video-wrap>
@@ -23,7 +28,7 @@
         sizes: '(min-width: 990px) 42vw, 100vw',
         alt: first_image.alt | default: product.title
       }}
-      {%- if second_image and second_image.id != first_image.id -%}
+      {%- if show_second_image -%}
         {{ second_image | image_url: width: 1400 | image_tag:
           class: 'es-card__image es-card__image--secondary',
           loading: 'lazy',
