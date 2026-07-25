@@ -3,7 +3,7 @@ name: Validate Enterprise Shares product cards
 on:
   push:
     branches:
-      - feature/global-project-cards-wishlist
+      - main
     paths:
       - assets/es-*.js
       - assets/es-*.css
@@ -50,7 +50,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install theme feature files
+      - name: Apply global product card settings
         if: github.event_name == 'push'
         run: python scripts/install_es_feature.py
       - name: Validate JSON and JavaScript
@@ -63,7 +63,7 @@ jobs:
           node --check assets/es-featured-recommended.js
           node --check assets/es-wishlist.js
           node --check docs/wishlist-sync-app/server.js
-      - name: Commit generated implementation
+      - name: Commit generated settings
         if: github.event_name == 'push'
         run: |
           if git diff --quiet; then
@@ -72,5 +72,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "feat: implement global project cards and synced wishlist [skip ci]"
+          git commit -m "chore: sync global product card settings [skip ci]"
           git push
