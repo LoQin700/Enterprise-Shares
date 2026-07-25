@@ -1,0 +1,24 @@
+{%- liquid
+  assign es_wishlist_enabled = true
+  if settings.es_wishlist_enable == false
+    assign es_wishlist_enabled = false
+  endif
+
+  assign es_sync_enabled = true
+  if settings.es_wishlist_sync == false
+    assign es_sync_enabled = false
+  endif
+-%}
+<script>
+  window.EnterpriseSharesWishlist = Object.assign(window.EnterpriseSharesWishlist || {}, {
+    enabled: {{ es_wishlist_enabled | json }},
+    syncEnabled: {{ es_sync_enabled | json }},
+    proxyPath: {{ settings.es_wishlist_proxy | default: '/apps/enterprise-wishlist' | json }},
+    customerId: {% if customer %}{{ customer.id | json }}{% else %}null{% endif %},
+    routesRoot: {{ routes.root_url | json }},
+    storageKey: 'enterprise_shares_wishlist'
+  });
+</script>
+{{ 'es-project-card.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'es-project-card.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'es-wishlist.js' | asset_url }}" defer="defer"></script>
