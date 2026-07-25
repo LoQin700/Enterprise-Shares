@@ -43,7 +43,10 @@ def patch_settings() -> None:
                 {'value': '16/9', 'label': '16:9 宽屏'},
                 {'value': '4/5', 'label': '4:5 竖图'},
                 {'value': '3/4', 'label': '3:4 竖图'}
-            ], 'info': '用于集合页、搜索页、相关商品等全局产品卡；重点商品 Section 可单独设置比例。'},
+            ], 'info': '统一用于集合页、搜索页、相关商品、重点商品与推荐轮播中的产品卡图片。'},
+            {'type': 'header', 'content': '产品卡字体'},
+            {'type': 'range', 'id': 'es_card_title_size', 'label': '产品标题字号', 'min': 12, 'max': 40, 'step': 1, 'unit': 'px', 'default': 16, 'info': '产品标题自动使用主题全局的标题字体。'},
+            {'type': 'range', 'id': 'es_card_description_size', 'label': '产品简介字号', 'min': 10, 'max': 24, 'step': 1, 'unit': 'px', 'default': 14, 'info': '产品简介及其它信息使用主题全局的正文字体。'},
             {'type': 'header', 'content': '产品元字段命名'},
             {'type': 'text', 'id': 'es_mf_namespace', 'label': '元字段命名空间', 'default': 'custom', 'info': '填写 Shopify 产品元字段的命名空间，建议保持 custom。'},
             {'type': 'text', 'id': 'es_deadline_key', 'label': '截至时间字段 Key', 'default': 'project_deadline', 'info': '类型必须为“日期和时间”；前台根据当前时间自动计算剩余天数、小时或分钟。'},
