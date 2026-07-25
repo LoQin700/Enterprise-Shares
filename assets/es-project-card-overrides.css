@@ -28,6 +28,12 @@
   box-shadow: 0 8px 24px rgb(var(--color-shadow-rgb) / 0.08);
 }
 
+.es-card:hover .es-card__media:not(.es-card__media--has-secondary) .es-card__image--primary,
+.es-card:focus-within .es-card__media:not(.es-card__media--has-secondary) .es-card__image--primary {
+  opacity: 1;
+  transform: scale(1.015);
+}
+
 .es-card__content {
   padding: 16px 12px 12px;
 }
@@ -35,27 +41,33 @@
 .es-card__title,
 .es-featured-section__eyebrow,
 .es-wishlist-page__header h1,
-.es-author-page__header h1,
-.es-author__name {
+.es-author-page__header h1 {
   font-family: var(--font-heading--family);
   font-style: var(--font-heading--style);
   font-weight: var(--font-heading--weight);
   color: var(--color-foreground-heading);
 }
 
-.es-card__title {
-  font-size: var(--es-card-title-size, 16px);
-}
-
+.es-card__title,
 .es-card--featured .es-card__title {
   font-size: var(--es-card-title-size, 16px);
 }
 
-.es-card__description {
+.es-card__description,
+.es-card__creator,
+.es-card__countdown,
+.es-card__price,
+.es-card__chip,
+.es-author__bio,
+.es-author__joined,
+.es-author__count span {
   font-family: var(--font-body--family);
   font-style: var(--font-body--style);
   font-weight: var(--font-body--weight);
   font-size: var(--es-card-description-size, 14px);
+}
+
+.es-card__description {
   color: var(--color-foreground);
 }
 
@@ -90,8 +102,43 @@
   background: var(--color-background);
 }
 
-.section--full-width.es-featured-section .es-featured-section__inner {
-  padding-inline: var(--page-margin);
+.es-featured-section__heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.es-featured-section__heading-row .es-featured-section__eyebrow {
+  margin-bottom: 0;
+}
+
+.es-featured-section__view-all {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-primary);
+  font-family: var(--font-body--family);
+  font-size: var(--es-card-description-size, 14px);
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.es-featured-section__view-all:hover,
+.es-featured-section__view-all:focus-visible {
+  color: var(--color-primary-hover);
+}
+
+.es-featured-section__view-all svg {
+  width: 18px;
+  height: 18px;
+}
+
+.es-recommended-mobile {
+  display: none;
 }
 
 .es-slider-page,
@@ -104,6 +151,16 @@
     background-color 160ms ease,
     border-color 160ms ease,
     opacity 160ms ease;
+}
+
+.es-slider-pages {
+  max-width: min(60vw, 340px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.es-slider-pages::-webkit-scrollbar {
+  display: none;
 }
 
 .es-slider-page {
@@ -138,9 +195,78 @@
 }
 
 @media (max-width: 749px) {
-  .es-featured-section__inner,
-  .section--full-width.es-featured-section .es-featured-section__inner {
+  .es-featured-section__inner {
     padding-block: 32px;
-    padding-inline: 0;
+  }
+
+  .es-featured-section__heading-row {
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .es-featured-section__view-all {
+    font-size: 13px;
+  }
+
+  .es-recommended-desktop {
+    display: none;
+  }
+
+  .es-recommended-mobile {
+    display: block;
+  }
+
+  .es-recommended-mobile__grid,
+  .es-recommended-slider--mobile .es-recommended-slider__page {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
+
+  .es-recommended-slider--mobile .es-recommended-slider__page[hidden] {
+    display: none;
+  }
+
+  .es-recommended-slider--mobile .es-recommended-slider__controls {
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .es-recommended-slider--mobile .es-slider-pages {
+    gap: 12px;
+  }
+
+  .es-recommended-mobile .es-card__content {
+    padding: 12px 8px 8px;
+  }
+
+  .es-recommended-mobile .es-card__headline {
+    gap: 4px;
+  }
+
+  .es-recommended-mobile .es-wishlist-button {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+
+  .es-recommended-mobile .es-wishlist-button__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .es-recommended-mobile .es-card__footer {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .es-recommended-mobile .es-card__chips {
+    gap: 5px;
+  }
+
+  .es-recommended-mobile .es-card__chip {
+    min-height: 26px;
+    padding: 3px 8px;
   }
 }
