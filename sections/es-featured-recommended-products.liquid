@@ -12,24 +12,38 @@
   assign source = 'collection'
   assign recommended_heading = 'Recommended for you'
   assign recommended_products = blank
+  assign recommended_collection = blank
   if recommended_block != blank
     assign source = recommended_block.settings.source | default: source
     assign recommended_heading = recommended_block.settings.heading | default: recommended_heading
     assign recommended_products = recommended_block.settings.products
+    assign recommended_collection = recommended_block.settings.collection
 
-    if source == 'collection' and recommended_block.settings.collection != blank
-      assign recommended_products = recommended_block.settings.collection.products
+    if source == 'collection' and recommended_collection != blank
+      assign recommended_products = recommended_collection.products
     endif
   endif
 
+  assign product_limit = section.settings.recommended_limit | default: 12
   assign product_count = recommended_products.size | default: 0
-  assign page_count = product_count | plus: 3 | divided_by: 4
+  assign effective_count = product_count
+  if effective_count > product_limit
+    assign effective_count = product_limit
+  endif
+
+  assign desktop_page_count = effective_count | plus: 3 | divided_by: 4
+  assign mobile_page_count = effective_count | plus: 1 | divided_by: 2
   assign ratio = settings.es_card_ratio | default: '16/9'
+
+  assign view_all_url = section.settings.view_all_link
+  if view_all_url == blank and source == 'collection' and recommended_collection != blank
+    assign view_all_url = recommended_collection.url
+  endif
 -%}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <section
-  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} es-featured-section"
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} es-featured-section es-featured-section--mobile-{{ section.settings.mobile_layout }}"
   id="ESFeaturedRecommended-{{ section.id }}"
   data-es-featured-recommended
   style="--es-section-gap: {{ section.settings.column_gap }}px;"
@@ -47,46 +61,121 @@
     </div>
 
     <div class="es-featured-section__right">
-      <h2 class="es-featured-section__eyebrow">{{ recommended_heading }}</h2>
+      <div class="es-featured-section__heading-row">
+        <h2 class="es-featured-section__eyebrow">{{ recommended_heading }}</h2>
+        {%- if section.settings.show_view_all and view_all_url != blank -%}
+          <a class="es-featured-section__view-all" href="{{ view_all_url }}">
+            <span>{{ section.settings.view_all_label | default: 'Discover more' }}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        {%- endif -%}
+      </div>
 
-      {%- if product_count > 0 -%}
-        <div class="es-recommended-slider" data-es-slider data-page-count="{{ page_count }}">
-          <div class="es-recommended-slider__viewport">
-            {%- for page_number in (1..page_count) -%}
-              {%- assign page_offset = page_number | minus: 1 | times: 4 -%}
-              <div
-                class="es-recommended-slider__page{% if forloop.first %} is-active{% endif %}"
-                data-es-slide="{{ forloop.index0 }}"
-                {% unless forloop.first %}hidden{% endunless %}
-              >
-                {%- for product in recommended_products offset: page_offset limit: 4 -%}
-                  {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: ratio %}
-                {%- endfor -%}
+      {%- if effective_count > 0 -%}
+        <div class="es-recommended-desktop">
+          <div class="es-recommended-slider" data-es-slider data-page-count="{{ desktop_page_count }}">
+            <div class="es-recommended-slider__viewport">
+              {%- for page_number in (1..desktop_page_count) -%}
+                {%- liquid
+                  assign page_offset = page_number | minus: 1 | times: 4
+                  assign page_remaining = effective_count | minus: page_offset
+                  assign page_limit = 4
+                  if page_remaining < page_limit
+                    assign page_limit = page_remaining
+                  endif
+                -%}
+                <div
+                  class="es-recommended-slider__page{% if forloop.first %} is-active{% endif %}"
+                  data-es-slide="{{ forloop.index0 }}"
+                  {% unless forloop.first %}hidden{% endunless %}
+                >
+                  {%- for product in recommended_products offset: page_offset limit: page_limit -%}
+                    {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: ratio %}
+                  {%- endfor -%}
+                </div>
+              {%- endfor -%}
+            </div>
+
+            {%- if desktop_page_count > 1 -%}
+              <div class="es-recommended-slider__controls" aria-label="Product pages">
+                <button type="button" class="es-slider-arrow" data-es-prev aria-label="Previous page" disabled>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+
+                <div class="es-slider-pages">
+                  {%- for page_number in (1..desktop_page_count) -%}
+                    <button
+                      type="button"
+                      class="es-slider-page{% if forloop.first %} is-active{% endif %}"
+                      data-es-page="{{ forloop.index0 }}"
+                      aria-label="Go to page {{ page_number }}"
+                      aria-current="{% if forloop.first %}page{% else %}false{% endif %}"
+                    >{{ page_number }}</button>
+                  {%- endfor -%}
+                </div>
+
+                <button type="button" class="es-slider-arrow" data-es-next aria-label="Next page">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
               </div>
-            {%- endfor -%}
+            {%- endif -%}
           </div>
+        </div>
 
-          {%- if page_count > 1 -%}
-            <div class="es-recommended-slider__controls" aria-label="Product pages">
-              <button type="button" class="es-slider-arrow" data-es-prev aria-label="Previous page" disabled>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-
-              <div class="es-slider-pages">
-                {%- for page_number in (1..page_count) -%}
-                  <button
-                    type="button"
-                    class="es-slider-page{% if forloop.first %} is-active{% endif %}"
-                    data-es-page="{{ forloop.index0 }}"
-                    aria-label="Go to page {{ page_number }}"
-                    aria-current="{% if forloop.first %}page{% else %}false{% endif %}"
-                  >{{ page_number }}</button>
+        <div class="es-recommended-mobile">
+          {%- if section.settings.mobile_layout == 'grid' -%}
+            <div class="es-recommended-mobile__grid">
+              {%- for product in recommended_products limit: effective_count -%}
+                {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: ratio %}
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <div class="es-recommended-slider es-recommended-slider--mobile" data-es-slider data-page-count="{{ mobile_page_count }}">
+              <div class="es-recommended-slider__viewport">
+                {%- for page_number in (1..mobile_page_count) -%}
+                  {%- liquid
+                    assign page_offset = page_number | minus: 1 | times: 2
+                    assign page_remaining = effective_count | minus: page_offset
+                    assign page_limit = 2
+                    if page_remaining < page_limit
+                      assign page_limit = page_remaining
+                    endif
+                  -%}
+                  <div
+                    class="es-recommended-slider__page{% if forloop.first %} is-active{% endif %}"
+                    data-es-slide="{{ forloop.index0 }}"
+                    {% unless forloop.first %}hidden{% endunless %}
+                  >
+                    {%- for product in recommended_products offset: page_offset limit: page_limit -%}
+                      {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: ratio %}
+                    {%- endfor -%}
+                  </div>
                 {%- endfor -%}
               </div>
 
-              <button type="button" class="es-slider-arrow" data-es-next aria-label="Next page">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
+              {%- if mobile_page_count > 1 -%}
+                <div class="es-recommended-slider__controls" aria-label="Product pages">
+                  <button type="button" class="es-slider-arrow" data-es-prev aria-label="Previous page" disabled>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+
+                  <div class="es-slider-pages">
+                    {%- for page_number in (1..mobile_page_count) -%}
+                      <button
+                        type="button"
+                        class="es-slider-page{% if forloop.first %} is-active{% endif %}"
+                        data-es-page="{{ forloop.index0 }}"
+                        aria-label="Go to page {{ page_number }}"
+                        aria-current="{% if forloop.first %}page{% else %}false{% endif %}"
+                      >{{ page_number }}</button>
+                    {%- endfor -%}
+                  </div>
+
+                  <button type="button" class="es-slider-arrow" data-es-next aria-label="Next page">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              {%- endif -%}
             </div>
           {%- endif -%}
         </div>
@@ -120,7 +209,46 @@
       "id": "color_scheme",
       "label": "颜色方案",
       "default": "scheme-1",
-      "info": "标题、正文、背景、边框以及轮播按钮都会读取此全局颜色方案。"
+      "info": "标题、正文、背景、边框、链接以及轮播按钮都会读取此全局颜色方案。"
+    },
+    {
+      "type": "range",
+      "id": "recommended_limit",
+      "label": "推荐商品总数量",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 12,
+      "info": "限制右侧推荐区域最多读取多少个商品。"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "显示 View all 链接",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all 文案",
+      "default": "Discover more"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all 链接",
+      "info": "留空时，如果右侧使用商品系列，则自动链接到该商品系列。"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "手机端推荐布局",
+      "default": "carousel",
+      "options": [
+        { "value": "carousel", "label": "轮播" },
+        { "value": "grid", "label": "网格" }
+      ],
+      "info": "两种模式均为一行 2 个商品；重点商品在上，推荐商品在下。"
     },
     {
       "type": "range",
@@ -183,7 +311,7 @@
           "type": "product_list",
           "id": "products",
           "label": "手动选择商品",
-          "limit": 24,
+          "limit": 20,
           "info": "商品来源选择“手动选择商品”时使用，顺序以这里为准。"
         }
       ]
