@@ -1,0 +1,39 @@
+{%- liquid
+  assign ratio = image_ratio | default: '16/9'
+  assign first_media = product.media.first
+  assign first_image = product.featured_image
+  assign second_image = product.images[1]
+-%}
+
+<div class="es-card__media" style="--es-media-ratio: {{ ratio }};">
+  <a href="{{ product.url }}" class="es-card__media-link" aria-label="{{ product.title | escape }}">
+    {%- if first_media.media_type == 'video' -%}
+      <div class="es-card__video-wrap" data-es-video-wrap>
+        {{ first_media | video_tag: autoplay: false, loop: true, muted: true, controls: false, playsinline: true, class: 'es-card__video', preload: 'metadata' }}
+      </div>
+    {%- elsif first_media.media_type == 'external_video' -%}
+      <div class="es-card__external-video">
+        {{ first_media | external_video_tag: class: 'es-card__video', loading: 'lazy' }}
+      </div>
+    {%- elsif first_image -%}
+      {{ first_image | image_url: width: 1400 | image_tag:
+        class: 'es-card__image es-card__image--primary',
+        loading: 'lazy',
+        widths: '360, 540, 720, 900, 1200, 1400',
+        sizes: '(min-width: 990px) 42vw, 100vw',
+        alt: first_image.alt | default: product.title
+      }}
+      {%- if second_image and second_image.id != first_image.id -%}
+        {{ second_image | image_url: width: 1400 | image_tag:
+          class: 'es-card__image es-card__image--secondary',
+          loading: 'lazy',
+          widths: '360, 540, 720, 900, 1200, 1400',
+          sizes: '(min-width: 990px) 42vw, 100vw',
+          alt: second_image.alt | default: product.title
+        }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'es-card__placeholder' }}
+    {%- endif -%}
+  </a>
+</div>

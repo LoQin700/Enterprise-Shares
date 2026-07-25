@@ -1,0 +1,76 @@
+name: Validate Enterprise Shares product cards
+
+on:
+  push:
+    branches:
+      - feature/global-project-cards-wishlist
+    paths:
+      - assets/es-*.js
+      - assets/es-*.css
+      - blocks/_product-card.liquid
+      - config/settings_schema.json
+      - layout/theme.liquid
+      - sections/es-*.liquid
+      - snippets/es-*.liquid
+      - templates/metaobject/project_author.json
+      - templates/page.enterprise-wishlist.json
+      - templates/product.es-card.liquid
+      - docs/wishlist-sync-app/**
+      - scripts/install_es_feature.py
+      - .github/workflows/install-es-product-cards.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - assets/es-*.js
+      - assets/es-*.css
+      - blocks/_product-card.liquid
+      - config/settings_schema.json
+      - layout/theme.liquid
+      - sections/es-*.liquid
+      - snippets/es-*.liquid
+      - templates/metaobject/project_author.json
+      - templates/page.enterprise-wishlist.json
+      - templates/product.es-card.liquid
+      - docs/wishlist-sync-app/**
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install theme feature files
+        if: github.event_name == 'push'
+        run: python scripts/install_es_feature.py
+      - name: Validate JSON and JavaScript
+        run: |
+          python -m json.tool config/settings_schema.json >/dev/null
+          python -m json.tool templates/page.enterprise-wishlist.json >/dev/null
+          python -m json.tool templates/metaobject/project_author.json >/dev/null
+          python -m json.tool docs/wishlist-sync-app/package.json >/dev/null
+          node --check assets/es-project-card.js
+          node --check assets/es-featured-recommended.js
+          node --check assets/es-wishlist.js
+          node --check docs/wishlist-sync-app/server.js
+      - name: Commit generated implementation
+        if: github.event_name == 'push'
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: implement global project cards and synced wishlist [skip ci]"
+          git push

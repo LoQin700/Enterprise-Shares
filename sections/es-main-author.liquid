@@ -1,0 +1,48 @@
+{%- liquid
+  assign author = metaobject
+  assign name_key = settings.es_author_name_key | default: 'display_name'
+  assign avatar_key = settings.es_author_avatar_key | default: 'avatar'
+  assign bio_key = settings.es_author_bio_key | default: 'bio'
+  assign collection_key = settings.es_author_collection_key | default: 'projects_collection'
+  assign joined_key = settings.es_author_joined_key | default: 'joined_date'
+
+  assign author_name = author[name_key].value | default: author.system.handle
+  assign author_avatar = author[avatar_key].value
+  assign author_bio = author[bio_key].value
+  assign author_collection = author[collection_key].value
+  assign author_joined = author[joined_key].value
+-%}
+
+<section class="es-author-page">
+  <div class="es-author-page__inner">
+    <header class="es-author-page__header">
+      {%- if author_avatar -%}
+        {{ author_avatar | image_url: width: 240 | image_tag: class: 'es-author-page__avatar', loading: 'eager', alt: author_name }}
+      {%- endif -%}
+      <div>
+        <h1>{{ author_name }}</h1>
+        {%- if author_joined -%}<p class="es-author-page__joined">Joined {{ author_joined | date: '%B %Y' }}</p>{%- endif -%}
+        {%- if author_bio -%}<div class="es-author-page__bio">{{ author[bio_key] | metafield_tag }}</div>{%- endif -%}
+        {%- if author_collection -%}<div class="es-author-page__count">{{ author_collection.products_count }} Projects</div>{%- endif -%}
+      </div>
+    </header>
+
+    {%- if author_collection and author_collection.products_count > 0 -%}
+      {%- paginate author_collection.products by 24 -%}
+        <div class="es-author-page__grid">
+          {%- for product in author_collection.products -%}
+            {% render 'es-product-card-router', product: product, variant: 'compact', image_ratio: settings.es_card_ratio | default: '16/9', force_custom: true %}
+          {%- endfor -%}
+        </div>
+        <div class="es-author-page__pagination">{{ paginate | default_pagination }}</div>
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "作者项目页面",
+  "settings": []
+}
+{% endschema %}

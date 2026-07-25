@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "es-main-author",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

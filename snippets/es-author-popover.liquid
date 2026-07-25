@@ -1,0 +1,56 @@
+{%- liquid
+  assign name_key = settings.es_author_name_key | default: 'display_name'
+  assign avatar_key = settings.es_author_avatar_key | default: 'avatar'
+  assign bio_key = settings.es_author_bio_key | default: 'bio'
+  assign collection_key = settings.es_author_collection_key | default: 'projects_collection'
+  assign joined_key = settings.es_author_joined_key | default: 'joined_date'
+
+  assign author_name_field = author[name_key]
+  assign author_avatar_field = author[avatar_key]
+  assign author_bio_field = author[bio_key]
+  assign author_collection_field = author[collection_key]
+  assign author_joined_field = author[joined_key]
+
+  assign author_name = author_name_field.value | default: author.system.handle
+  assign author_avatar = author_avatar_field.value
+  assign author_bio = author_bio_field.value
+  assign author_collection = author_collection_field.value
+  assign author_url = author.system.url
+-%}
+
+<div class="es-author" data-es-author>
+  {%- if author_url != blank -%}<a href="{{ author_url }}" class="es-author__trigger">{%- else -%}<div class="es-author__trigger">{%- endif -%}
+    {%- if author_avatar -%}
+      {{ author_avatar | image_url: width: 96 | image_tag: class: 'es-author__avatar', loading: 'lazy', alt: author_name }}
+    {%- else -%}
+      <span class="es-author__avatar es-author__avatar--fallback" aria-hidden="true">{{ author_name | slice: 0 | upcase }}</span>
+    {%- endif -%}
+  {%- if author_url != blank -%}</a>{%- else -%}</div>{%- endif -%}
+
+  <div class="es-author__popover" role="tooltip">
+    <div class="es-author__popover-head">
+      {%- if author_avatar -%}
+        {{ author_avatar | image_url: width: 128 | image_tag: class: 'es-author__popover-avatar', loading: 'lazy', alt: author_name }}
+      {%- endif -%}
+      <div>
+        {%- if author_url != blank -%}
+          <a href="{{ author_url }}" class="es-author__name">{{ author_name }}</a>
+        {%- else -%}
+          <span class="es-author__name">{{ author_name }}</span>
+        {%- endif -%}
+        {%- if author_joined_field != blank -%}
+          <div class="es-author__joined">Joined {{ author_joined_field.value | date: '%B %Y' }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+    {%- if author_bio != blank -%}
+      <div class="es-author__bio">{{ author_bio_field | metafield_tag }}</div>
+    {%- endif -%}
+    {%- if author_collection -%}
+      <div class="es-author__count">
+        <strong>{{ author_collection.products_count }}</strong>
+        <span>Projects</span>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

@@ -2,13 +2,21 @@
 
 {% liquid
   assign product = closest.product
+  assign es_cards_enabled = true
+  if settings.es_cards_enable == false
+    assign es_cards_enabled = false
+  endif
 -%}
 
-{% capture children %}
-  {% content_for 'blocks', closest.product: product %}
-{% endcapture %}
+{% if es_cards_enabled and product != blank %}
+  {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: settings.es_card_ratio | default: '16/9', shopify_attributes: block.shopify_attributes %}
+{% else %}
+  {% capture children %}
+    {% content_for 'blocks', closest.product: product %}
+  {% endcapture %}
 
-{% render 'product-card', children: children, product: product %}
+  {% render 'product-card', children: children, product: product %}
+{% endif %}
 {% render 'buy-buttons-styles' %}
 {% render 'gift-card-recipient-form-styles' %}
 {% render 'quick-add-styles' %}

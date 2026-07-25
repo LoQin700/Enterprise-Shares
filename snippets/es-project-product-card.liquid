@@ -1,0 +1,78 @@
+{%- liquid
+  assign namespace = settings.es_mf_namespace | default: 'custom'
+  assign deadline_key = settings.es_deadline_key | default: 'project_deadline'
+  assign description_key = settings.es_desc_key | default: 'card_description'
+  assign author_key = settings.es_author_key | default: 'author'
+  assign tags_key = settings.es_tags_key | default: 'card_tags'
+  assign location_key = settings.es_location_key | default: 'card_location'
+
+  assign deadline_field = product.metafields[namespace][deadline_key]
+  assign description_field = product.metafields[namespace][description_key]
+  assign author = product.metafields[namespace][author_key].value
+  assign tags_field = product.metafields[namespace][tags_key]
+  assign location_field = product.metafields[namespace][location_key]
+
+  assign card_variant = variant | default: 'compact'
+  assign card_ratio = image_ratio | default: '16/9'
+  assign card_description = description_field.value | default: product.description | strip_html | strip
+  assign ended_text = settings.es_ended_text | default: 'Ended'
+-%}
+
+
+<article class="es-card es-card--{{ card_variant }}" data-es-product-card data-product-handle="{{ product.handle | escape }}" {{ shopify_attributes }}>
+  {% render 'es-product-media', product: product, image_ratio: card_ratio %}
+
+  <div class="es-card__content">
+    <div class="es-card__headline">
+      <div class="es-card__headline-copy">
+        <a href="{{ product.url }}" class="es-card__title">{{ product.title }}</a>
+        {%- if author -%}
+          {%- assign author_name_key = settings.es_author_name_key | default: 'display_name' -%}
+          {%- assign author_name = author[author_name_key].value | default: author.system.handle -%}
+          <div class="es-card__creator">{{ author_name }}</div>
+        {%- elsif product.vendor != blank -%}
+          <div class="es-card__creator">{{ product.vendor }}</div>
+        {%- endif -%}
+        {%- if deadline_field != blank -%}
+          <div
+            class="es-card__countdown"
+            data-es-countdown
+            data-deadline="{{ deadline_field.value | date: '%Y-%m-%dT%H:%M:%S%z' }}"
+            data-ended-text="{{ ended_text | escape }}"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-es-countdown-text></span>
+          </div>
+        {%- endif -%}
+        {%- if settings.es_show_price -%}
+          <div class="es-card__price">{{ product.price | money }}</div>
+        {%- endif -%}
+      </div>
+      {% render 'es-wishlist-button', product: product %}
+    </div>
+
+    <div class="es-card__footer{% unless author %} es-card__footer--no-author{% endunless %}">
+      {%- if author -%}
+        {% render 'es-author-popover', author: author %}
+      {%- endif -%}
+
+      <div class="es-card__extra">
+        {%- if card_description != blank -%}
+          <p class="es-card__description">{{ card_description | truncate: 220 }}</p>
+        {%- endif -%}
+        {%- if tags_field != blank or location_field != blank -%}
+          <div class="es-card__chips">
+            {%- if tags_field.value -%}
+              {%- for tag in tags_field.value limit: 3 -%}
+                <span class="es-card__chip">{{ tag }}</span>
+              {%- endfor -%}
+            {%- endif -%}
+            {%- if location_field.value != blank -%}
+              <span class="es-card__chip">{{ location_field.value }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</article>
