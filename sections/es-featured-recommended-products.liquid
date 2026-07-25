@@ -24,14 +24,15 @@
 
   assign product_count = recommended_products.size | default: 0
   assign page_count = product_count | plus: 3 | divided_by: 4
-  assign ratio = section.settings.image_ratio | replace: ':', '/'
+  assign ratio = settings.es_card_ratio | default: '16/9'
 -%}
 
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <section
-  class="es-featured-section"
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} es-featured-section"
   id="ESFeaturedRecommended-{{ section.id }}"
   data-es-featured-recommended
-  style="--es-section-max-width: {{ section.settings.max_width }}px; --es-section-gap: {{ section.settings.column_gap }}px;"
+  style="--es-section-gap: {{ section.settings.column_gap }}px;"
 >
   {{ 'es-project-card.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'es-featured-recommended.js' | asset_url }}" defer="defer"></script>
@@ -106,28 +107,21 @@
   "settings": [
     {
       "type": "select",
-      "id": "image_ratio",
-      "label": "产品图片比例",
-      "default": "16:9",
+      "id": "section_width",
+      "label": "内容宽度",
+      "default": "page-width",
       "options": [
-        { "value": "1:1", "label": "1:1 正方形" },
-        { "value": "4:3", "label": "4:3 横图" },
-        { "value": "3:2", "label": "3:2 横图" },
-        { "value": "16:9", "label": "16:9 宽屏" },
-        { "value": "4:5", "label": "4:5 竖图" },
-        { "value": "3:4", "label": "3:4 竖图" }
+        { "value": "page-width", "label": "页面宽度" },
+        { "value": "full-width", "label": "全宽" }
       ],
-      "info": "整个 Section 内左侧重点商品和右侧推荐商品统一使用此比例。"
+      "info": "页面宽度会直接引用主题全局的 Page width 设置；全宽则铺满页面。"
     },
     {
-      "type": "range",
-      "id": "max_width",
-      "label": "内容最大宽度",
-      "min": 1000,
-      "max": 1800,
-      "step": 20,
-      "unit": "px",
-      "default": 1440
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "颜色方案",
+      "default": "scheme-1",
+      "info": "标题、正文、背景、边框以及轮播按钮都会读取此全局颜色方案。"
     },
     {
       "type": "range",
