@@ -311,6 +311,8 @@
       ],
       "name": "重点商品与推荐轮播",
       "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
         "column_gap": 40
       }
     }
