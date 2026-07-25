@@ -1,15 +1,28 @@
 {%- liquid
   assign featured_block = section.blocks | where: 'type', 'featured_product' | first
   assign recommended_block = section.blocks | where: 'type', 'recommended_products' | first
-  assign featured_product = featured_block.settings.product
-  assign source = recommended_block.settings.source | default: 'collection'
-  assign recommended_products = recommended_block.settings.products
 
-  if source == 'collection' and recommended_block.settings.collection != blank
-    assign recommended_products = recommended_block.settings.collection.products
+  assign featured_product = blank
+  assign featured_heading = 'Featured product'
+  if featured_block != blank
+    assign featured_product = featured_block.settings.product
+    assign featured_heading = featured_block.settings.heading | default: featured_heading
   endif
 
-  assign product_count = recommended_products.size
+  assign source = 'collection'
+  assign recommended_heading = 'Recommended for you'
+  assign recommended_products = blank
+  if recommended_block != blank
+    assign source = recommended_block.settings.source | default: source
+    assign recommended_heading = recommended_block.settings.heading | default: recommended_heading
+    assign recommended_products = recommended_block.settings.products
+
+    if source == 'collection' and recommended_block.settings.collection != blank
+      assign recommended_products = recommended_block.settings.collection.products
+    endif
+  endif
+
+  assign product_count = recommended_products.size | default: 0
   assign page_count = product_count | plus: 3 | divided_by: 4
   assign ratio = section.settings.image_ratio | replace: ':', '/'
 -%}
@@ -25,7 +38,7 @@
 
   <div class="es-featured-section__inner">
     <div class="es-featured-section__left">
-      <h2 class="es-featured-section__eyebrow">{{ featured_block.settings.heading | default: 'Featured product' }}</h2>
+      <h2 class="es-featured-section__eyebrow">{{ featured_heading }}</h2>
       {%- if featured_product -%}
         {% render 'es-project-product-card', product: featured_product, variant: 'featured', image_ratio: ratio %}
       {%- else -%}
@@ -34,7 +47,7 @@
     </div>
 
     <div class="es-featured-section__right">
-      <h2 class="es-featured-section__eyebrow">{{ recommended_block.settings.heading | default: 'Recommended for you' }}</h2>
+      <h2 class="es-featured-section__eyebrow">{{ recommended_heading }}</h2>
 
       {%- if product_count > 0 -%}
         <div class="es-recommended-slider" data-es-slider data-page-count="{{ page_count }}">
