@@ -1,0 +1,12 @@
+client_id = "replace_with_app_client_id"
+name = "Enterprise Shares Wishlist Sync"
+application_url = "https://replace-with-your-app-domain.example"
+embedded = false
+
+[access_scopes]
+scopes = "read_customers,write_customers,write_app_proxy"
+
+[app_proxy]
+url = "/proxy/wishlist"
+prefix = "apps"
+subpath = "enterprise-wishlist"

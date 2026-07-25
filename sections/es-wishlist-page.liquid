@@ -1,0 +1,66 @@
+<section class="es-wishlist-page" data-es-wishlist-page>
+  <div class="es-wishlist-page__inner">
+    <header class="es-wishlist-page__header">
+      <h1>{{ section.settings.heading }}</h1>
+      {%- if section.settings.intro != blank -%}<div>{{ section.settings.intro }}</div>{%- endif -%}
+    </header>
+
+    <div class="es-wishlist-page__status" data-es-wishlist-status aria-live="polite"></div>
+    <div class="es-wishlist-page__grid" data-es-wishlist-grid data-card-view="es-card"></div>
+
+    <div class="es-wishlist-page__empty" data-es-wishlist-empty hidden>
+      <h2>{{ section.settings.empty_heading }}</h2>
+      <p>{{ section.settings.empty_text }}</p>
+      {%- if section.settings.empty_link != blank -%}
+        <a href="{{ section.settings.empty_link }}" class="es-wishlist-page__button">{{ section.settings.empty_button }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "收藏页面",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "页面标题",
+      "default": "Saved products"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "说明"
+    },
+    {
+      "type": "text",
+      "id": "empty_heading",
+      "label": "空收藏标题",
+      "default": "No saved products yet"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_text",
+      "label": "空收藏说明",
+      "default": "Use the bookmark icon on any product card to save it here."
+    },
+    {
+      "type": "text",
+      "id": "empty_button",
+      "label": "空收藏按钮",
+      "default": "Explore products"
+    },
+    {
+      "type": "url",
+      "id": "empty_link",
+      "label": "空收藏按钮链接"
+    }
+  ],
+  "presets": [
+    {
+      "name": "收藏页面"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+{%- liquid
+  assign es_wishlist_enabled = true
+  if settings.es_wishlist_enable == false
+    assign es_wishlist_enabled = false
+  endif
+-%}
+{%- if es_wishlist_enabled -%}
+  <button
+    type="button"
+    class="es-wishlist-button"
+    data-es-wishlist-button
+    data-product-handle="{{ product.handle | escape }}"
+    aria-label="Save {{ product.title | escape }}"
+    aria-pressed="false"
+  >
+    <svg class="es-wishlist-button__icon es-wishlist-button__icon--outline" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.5 3.75h11a1 1 0 0 1 1 1V21l-6.5-4.15L5.5 21V4.75a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    </svg>
+    <svg class="es-wishlist-button__icon es-wishlist-button__icon--filled" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.5 3.75h11a1 1 0 0 1 1 1V21l-6.5-4.15L5.5 21V4.75a1 1 0 0 1 1-1Z" fill="currentColor"/>
+    </svg>
+  </button>
+{%- endif -%}

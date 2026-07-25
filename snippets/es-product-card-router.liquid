@@ -1,0 +1,23 @@
+{%- liquid
+  assign use_custom = true
+  if settings.es_cards_enable == false
+    assign use_custom = false
+  endif
+  if force_custom
+    assign use_custom = true
+  endif
+-%}
+
+{%- if use_custom -%}
+  {% render 'es-project-product-card', product: product, variant: variant, image_ratio: image_ratio %}
+{%- else -%}
+  <article class="es-basic-card">
+    <a href="{{ product.url }}">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: product.title }}
+      {%- endif -%}
+      <h3>{{ product.title }}</h3>
+      <span>{{ product.price | money }}</span>
+    </a>
+  </article>
+{%- endif -%}

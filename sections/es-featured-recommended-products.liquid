@@ -1,0 +1,196 @@
+{%- liquid
+  assign featured_block = section.blocks | where: 'type', 'featured_product' | first
+  assign recommended_block = section.blocks | where: 'type', 'recommended_products' | first
+  assign featured_product = featured_block.settings.product
+  assign source = recommended_block.settings.source | default: 'collection'
+  assign recommended_products = recommended_block.settings.products
+
+  if source == 'collection' and recommended_block.settings.collection != blank
+    assign recommended_products = recommended_block.settings.collection.products
+  endif
+
+  assign product_count = recommended_products.size
+  assign page_count = product_count | plus: 3 | divided_by: 4
+  assign ratio = section.settings.image_ratio | replace: ':', '/'
+-%}
+
+<section
+  class="es-featured-section"
+  id="ESFeaturedRecommended-{{ section.id }}"
+  data-es-featured-recommended
+  style="--es-section-max-width: {{ section.settings.max_width }}px; --es-section-gap: {{ section.settings.column_gap }}px;"
+>
+  {{ 'es-project-card.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'es-featured-recommended.js' | asset_url }}" defer="defer"></script>
+
+  <div class="es-featured-section__inner">
+    <div class="es-featured-section__left">
+      <h2 class="es-featured-section__eyebrow">{{ featured_block.settings.heading | default: 'Featured product' }}</h2>
+      {%- if featured_product -%}
+        {% render 'es-project-product-card', product: featured_product, variant: 'featured', image_ratio: ratio %}
+      {%- else -%}
+        <div class="es-section-placeholder">Select a featured product.</div>
+      {%- endif -%}
+    </div>
+
+    <div class="es-featured-section__right">
+      <h2 class="es-featured-section__eyebrow">{{ recommended_block.settings.heading | default: 'Recommended for you' }}</h2>
+
+      {%- if product_count > 0 -%}
+        <div class="es-recommended-slider" data-es-slider data-page-count="{{ page_count }}">
+          <div class="es-recommended-slider__viewport">
+            {%- for page_number in (1..page_count) -%}
+              {%- assign page_offset = page_number | minus: 1 | times: 4 -%}
+              <div
+                class="es-recommended-slider__page{% if forloop.first %} is-active{% endif %}"
+                data-es-slide="{{ forloop.index0 }}"
+                {% unless forloop.first %}hidden{% endunless %}
+              >
+                {%- for product in recommended_products offset: page_offset limit: 4 -%}
+                  {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: ratio %}
+                {%- endfor -%}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- if page_count > 1 -%}
+            <div class="es-recommended-slider__controls" aria-label="Product pages">
+              <button type="button" class="es-slider-arrow" data-es-prev aria-label="Previous page" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+
+              <div class="es-slider-pages">
+                {%- for page_number in (1..page_count) -%}
+                  <button
+                    type="button"
+                    class="es-slider-page{% if forloop.first %} is-active{% endif %}"
+                    data-es-page="{{ forloop.index0 }}"
+                    aria-label="Go to page {{ page_number }}"
+                    aria-current="{% if forloop.first %}page{% else %}false{% endif %}"
+                  >{{ page_number }}</button>
+                {%- endfor -%}
+              </div>
+
+              <button type="button" class="es-slider-arrow" data-es-next aria-label="Next page">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="es-section-placeholder">Select a collection or recommended products.</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "重点商品与推荐轮播",
+  "tag": "section",
+  "class": "section-es-featured-products",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "产品图片比例",
+      "default": "16:9",
+      "options": [
+        { "value": "1:1", "label": "1:1 正方形" },
+        { "value": "4:3", "label": "4:3 横图" },
+        { "value": "3:2", "label": "3:2 横图" },
+        { "value": "16:9", "label": "16:9 宽屏" },
+        { "value": "4:5", "label": "4:5 竖图" },
+        { "value": "3:4", "label": "3:4 竖图" }
+      ],
+      "info": "整个 Section 内左侧重点商品和右侧推荐商品统一使用此比例。"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "内容最大宽度",
+      "min": 1000,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1440
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "左右栏间距",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_product",
+      "name": "左侧重点商品",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "标题",
+          "default": "Featured product"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "重点商品"
+        }
+      ]
+    },
+    {
+      "type": "recommended_products",
+      "name": "右侧推荐商品",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "标题",
+          "default": "Recommended for you"
+        },
+        {
+          "type": "select",
+          "id": "source",
+          "label": "商品来源",
+          "default": "collection",
+          "options": [
+            { "value": "collection", "label": "关联商品系列" },
+            { "value": "manual", "label": "手动选择商品" }
+          ]
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "推荐商品系列",
+          "info": "商品来源选择“关联商品系列”时使用。"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "手动选择商品",
+          "limit": 24,
+          "info": "商品来源选择“手动选择商品”时使用，顺序以这里为准。"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "重点商品与推荐轮播",
+      "blocks": [
+        { "type": "featured_product" },
+        { "type": "recommended_products" }
+      ]
+    }
+  ]
+}
+{% endschema %}
