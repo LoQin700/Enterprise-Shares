@@ -175,11 +175,18 @@
     if (config.customerId && config.syncEnabled) {
       try {
         const remote = await proxyRequest('GET');
-        const merged = normalizeHandles([...(remote?.items || []), ...accountItems, ...guestItems]);
+        const remoteItems = normalizeHandles(remote?.items || []);
+        const merged = guestItems.length
+          ? normalizeHandles([...remoteItems, ...guestItems])
+          : remoteItems;
+
         state.items = new Set(merged);
         writeLocal();
         clearGuestStorage();
-        await proxyRequest('POST', { items: merged });
+
+        if (guestItems.length) {
+          await proxyRequest('POST', { items: merged });
+        }
       } catch (error) {
         console.warn('[Enterprise Shares] Wishlist account sync unavailable; using browser storage.', error);
       }
