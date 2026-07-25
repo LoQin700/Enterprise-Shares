@@ -9,6 +9,12 @@
     assign es_sync_enabled = false
   endif
 -%}
+<style>
+  :root {
+    --es-card-title-size: {{ settings.es_card_title_size | default: 16 }}px;
+    --es-card-description-size: {{ settings.es_card_description_size | default: 14 }}px;
+  }
+</style>
 <script>
   window.EnterpriseSharesWishlist = Object.assign(window.EnterpriseSharesWishlist || {}, {
     enabled: {{ es_wishlist_enabled | json }},
@@ -20,5 +26,6 @@
   });
 </script>
 {{ 'es-project-card.css' | asset_url | stylesheet_tag }}
+{{ 'es-project-card-overrides.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'es-project-card.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'es-wishlist.js' | asset_url }}" defer="defer"></script>
