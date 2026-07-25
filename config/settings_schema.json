@@ -2326,7 +2326,40 @@
             "label": "3:4 竖图"
           }
         ],
-        "info": "用于集合页、搜索页、相关商品等全局产品卡；重点商品 Section 可单独设置比例。"
+        "info": "统一用于集合页、搜索页、相关商品、重点商品与推荐轮播中的产品卡图片。"
+      },
+      {
+        "type": "checkbox",
+        "id": "es_hover_second_image",
+        "label": "Hover 显示第二张图片",
+        "default": false,
+        "info": "默认关闭。开启后，存在第二张商品图片的产品卡会在鼠标悬停时切换；视频 Hover 播放不受此开关影响。"
+      },
+      {
+        "type": "header",
+        "content": "产品卡字体"
+      },
+      {
+        "type": "range",
+        "id": "es_card_title_size",
+        "label": "产品标题字号",
+        "min": 12,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "default": 16,
+        "info": "产品标题自动使用主题全局的标题字体，并同步到所有启用的自定义产品卡。"
+      },
+      {
+        "type": "range",
+        "id": "es_card_description_size",
+        "label": "产品正文与信息字号",
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "default": 14,
+        "info": "产品简介、倒计时、作者、价格和标签统一使用主题全局的正文字体及此字号。"
       },
       {
         "type": "header",
@@ -2365,7 +2398,7 @@
         "id": "es_tags_key",
         "label": "卡片标签字段 Key",
         "default": "card_tags",
-        "info": "建议使用单行文本列表，产品卡最多显示 3 个标签。"
+        "info": "建议使用单行文本列表；如果导入值包含分号或逗号，前台会自动拆分为独立标签。"
       },
       {
         "type": "text",
