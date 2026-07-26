@@ -173,7 +173,7 @@
         "desktop_columns": 2,
         "mobile_columns": "1",
         "image_ratio": "16 / 9",
-        "image_radius": 0,
+        "image_radius": 5,
         "gap": 36,
         "mobile_gap": 14,
         "padding_top": 40,
