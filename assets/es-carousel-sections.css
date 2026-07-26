@@ -1,0 +1,280 @@
+.es-section-carousel,
+.es-section-carousel * {
+  box-sizing: border-box;
+}
+
+.es-section-carousel {
+  position: relative;
+  color: var(--color-foreground);
+  background: var(--color-background);
+}
+
+.es-section-carousel__inner {
+  position: relative;
+  width: 100%;
+  padding-block: var(--es-section-padding-top, 40px) var(--es-section-padding-bottom, 40px);
+}
+
+.es-section-carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.es-section-carousel__title-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+}
+
+.es-section-carousel__title {
+  margin: 0;
+  color: var(--color-foreground-heading);
+  font-family: var(--font-heading--family);
+  font-style: var(--font-heading--style);
+  font-weight: var(--font-heading--weight);
+  font-size: clamp(1.4rem, 1.7vw, 2rem);
+  line-height: 1.2;
+}
+
+.es-section-carousel__view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-primary);
+  font-family: var(--font-body--family);
+  font-size: var(--es-card-description-size, 14px);
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.es-section-carousel__view-all:hover,
+.es-section-carousel__view-all:focus-visible {
+  color: var(--color-primary-hover);
+}
+
+.es-section-carousel__view-all svg,
+.es-section-carousel__arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.es-section-carousel__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.es-section-carousel__arrow {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  color: var(--color-primary);
+  background: transparent;
+  cursor: pointer;
+  transition: color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.es-section-carousel__arrow:hover:not(:disabled),
+.es-section-carousel__arrow:focus-visible:not(:disabled) {
+  color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.es-section-carousel__arrow:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.es-r-carousel__viewport {
+  overflow: hidden;
+}
+
+.es-r-carousel__track {
+  --es-cols: var(--es-desktop-columns, 3);
+  --es-gap: var(--es-card-gap, 24px);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (var(--es-cols) - 1) * var(--es-gap)) / var(--es-cols));
+  gap: var(--es-gap);
+  min-width: 0;
+  transition: transform 320ms var(--ease-out-cubic, ease);
+  will-change: transform;
+}
+
+.es-r-carousel__item {
+  min-width: 0;
+}
+
+.es-editorial-card {
+  height: 100%;
+  color: var(--color-foreground);
+  background: var(--color-background);
+}
+
+.es-editorial-card__image-wrap {
+  position: relative;
+  aspect-ratio: var(--es-editorial-ratio, 16 / 9);
+  overflow: hidden;
+  border-radius: var(--es-editorial-radius, 0px);
+  background: rgb(var(--color-foreground-rgb) / 0.04);
+}
+
+.es-editorial-card__image,
+.es-editorial-card__placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.es-editorial-card__body {
+  position: relative;
+  margin-top: 20px;
+  padding-left: 26px;
+}
+
+.es-editorial-card__body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  border-radius: 99px;
+  background: var(--es-editorial-line-color, var(--color-primary));
+}
+
+.es-editorial-card--no-line .es-editorial-card__body {
+  padding-left: 0;
+}
+
+.es-editorial-card--no-line .es-editorial-card__body::before {
+  display: none;
+}
+
+.es-editorial-card__heading {
+  margin: 0;
+  color: var(--color-foreground-heading);
+  font-family: var(--font-heading--family);
+  font-style: var(--font-heading--style);
+  font-weight: var(--font-heading--weight);
+  font-size: clamp(1.7rem, 2.2vw, 2.8rem);
+  line-height: 1.25;
+}
+
+.es-editorial-card__text {
+  margin-top: 20px;
+  color: var(--color-foreground);
+  font-family: var(--font-body--family);
+  font-size: var(--es-card-description-size, 14px);
+  line-height: 1.5;
+}
+
+.es-editorial-card__text > *:first-child {
+  margin-top: 0;
+}
+
+.es-editorial-card__text > *:last-child {
+  margin-bottom: 0;
+}
+
+.es-editorial-card__link {
+  display: inline-flex;
+  margin-top: 24px;
+  color: var(--color-primary);
+  font-family: var(--font-body--family);
+  font-size: var(--es-card-description-size, 14px);
+  text-decoration: none;
+}
+
+.es-editorial-card__link:hover,
+.es-editorial-card__link:focus-visible {
+  color: var(--color-primary-hover);
+}
+
+.es-editorial-carousel .es-section-carousel__arrow--side {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  transform: translateY(-50%);
+}
+
+.es-editorial-carousel .es-section-carousel__arrow--side:hover:not(:disabled),
+.es-editorial-carousel .es-section-carousel__arrow--side:focus-visible:not(:disabled) {
+  transform: translateY(calc(-50% - 1px));
+}
+
+.es-editorial-carousel .es-section-carousel__arrow--prev {
+  left: 0;
+}
+
+.es-editorial-carousel .es-section-carousel__arrow--next {
+  right: 0;
+}
+
+.es-editorial-carousel__viewport-wrap {
+  position: relative;
+  padding-inline: 48px;
+}
+
+.es-product-carousel .es-card {
+  height: 100%;
+}
+
+@media (max-width: 749px) {
+  .es-section-carousel__inner {
+    padding-block: var(--es-section-padding-top-mobile, 28px) var(--es-section-padding-bottom-mobile, 28px);
+  }
+
+  .es-section-carousel__header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .es-section-carousel__controls {
+    gap: 4px;
+  }
+
+  .es-section-carousel__arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .es-r-carousel__track {
+    --es-cols: var(--es-mobile-columns, 2);
+    --es-gap: var(--es-card-gap-mobile, 12px);
+  }
+
+  .es-r-carousel.is-mobile-grid .es-r-carousel__viewport {
+    overflow: visible;
+  }
+
+  .es-r-carousel.is-mobile-grid .es-r-carousel__track {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    transform: none !important;
+  }
+
+  .es-editorial-carousel__viewport-wrap {
+    padding-inline: 36px;
+  }
+
+  .es-editorial-card__body {
+    margin-top: 14px;
+    padding-left: 18px;
+  }
+
+  .es-editorial-card__heading {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+}
