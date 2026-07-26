@@ -9,55 +9,40 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "Title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
+    "project_application": {
+      "type": "es-project-application",
+      "blocks": {},
+      "block_order": [],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "color_scheme": "scheme-1",
+        "eyebrow": "Project application",
+        "heading": "Launch Your Dream Project",
+        "intro": "<p>Tell us about your idea, your team, and the impact you want to create. Complete the application below so our team can review your project and contact you about the next steps.</p>",
+        "process_heading": "How the application works",
+        "process_intro": "<p>Your submission is an application for review. It does not automatically publish a crowdfunding project or guarantee approval.</p>",
+        "step_1_heading": "Submit your application",
+        "step_1_text": "<p>Complete the form and provide the clearest available information about your project.</p>",
+        "step_2_heading": "Project review",
+        "step_2_text": "<p>Our team reviews the project information, materials, feasibility, and suitability for the platform.</p>",
+        "step_3_heading": "Follow-up and launch",
+        "step_3_text": "<p>If the project is suitable, we will contact you to confirm details, request additional materials, and discuss publication.</p>",
+        "prepare_heading": "Prepare before you begin",
+        "prepare_intro": "<p>Having the following materials ready will make the application faster and help us understand your project.</p>",
+        "project_info_heading": "Project information",
+        "project_info_text": "<ul><li>Project name, category, industry, and location</li><li>Clear project description and fundraising goal</li><li>Team or founder introduction</li><li>Project origin, current progress, and implementation plan</li><li>Reward, delivery, risk, and sustainability information</li></ul>",
+        "files_heading": "Files and media",
+        "files_text": "<ul><li>Up to three representative project images</li><li>Business license or supporting PDF when applicable</li><li>Project video link when available</li><li>A public cloud-storage link for ZIP files, source files, videos, or additional materials</li></ul>",
+        "file_eyebrow": "Before uploading",
+        "file_heading": "File submission guidance",
+        "file_text": "<p>Use the upload fields for supported images or PDF documents up to 20 MB each. For ZIP files, large videos, source files, or additional documents, upload them to Google Drive, Dropbox, OneDrive, or another cloud service and paste a public sharing link into the form.</p><p><strong>Important:</strong> Set the link permission to anyone with the link can view or download.</p>",
+        "form_heading": "Project Application Form",
+        "form_intro": "<p>Complete all required fields. Optional questions can be left blank when they do not apply to your project.</p>",
+        "after_heading": "What happens after submission?",
+        "after_text": "<p>You will see a confirmation message after the form is submitted successfully. Our team will review the information provided and contact you by email when we need clarification, additional materials, or wish to discuss the next stage.</p><p>Please ensure your email address and cloud-file permissions remain valid. Submitting an application does not guarantee approval, funding, investment, publication, or financial returns.</p>"
       }
     }
   },
   "order": [
-    "main"
+    "project_application"
   ]
 }
