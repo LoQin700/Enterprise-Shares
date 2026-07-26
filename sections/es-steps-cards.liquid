@@ -55,7 +55,7 @@
 
 {% stylesheet %}
   .es-steps-cards {
-    color: rgb(var(--color-foreground));
+    color: var(--color-foreground);
   }
 
   .es-steps-cards__inner {
@@ -112,16 +112,14 @@
 
   .es-steps-cards__card {
     position: relative;
-    display: flex;
     min-width: 0;
-    min-height: 280px;
-    flex-direction: column;
+    min-height: 240px;
     padding: 30px;
     overflow: hidden;
-    border: 1px solid rgba(var(--color-foreground), 0.14);
+    border: 1px solid var(--color-border);
     border-radius: var(--es-steps-radius);
-    color: rgb(var(--color-foreground));
-    background: rgb(var(--color-background));
+    color: var(--color-foreground);
+    background: var(--color-background);
     box-shadow: 0 14px 34px rgb(var(--color-shadow-rgb) / 0.06);
   }
 
@@ -133,7 +131,7 @@
     width: 160px;
     height: 160px;
     border-radius: 999px;
-    background: rgba(var(--color-foreground), 0.045);
+    background: rgb(var(--color-foreground-rgb) / 0.045);
     pointer-events: none;
   }
 
@@ -141,8 +139,7 @@
     position: relative;
     z-index: 1;
     display: block;
-    margin-bottom: auto;
-    padding-bottom: 48px;
+    margin-bottom: 24px;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -204,14 +201,14 @@
     }
 
     .es-steps-cards__number {
-      padding-bottom: 36px;
+      margin-bottom: 18px;
     }
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "通用｜步骤卡片",
+  "name": "步骤卡片",
   "class": "section-wrapper",
   "settings": [
     { "type": "color_scheme", "id": "color_scheme", "label": "Section 配色方案", "default": "scheme-2" },
@@ -246,7 +243,7 @@
   "max_blocks": 6,
   "presets": [
     {
-      "name": "通用｜步骤卡片",
+      "name": "步骤卡片",
       "blocks": [
         { "type": "step" },
         { "type": "step" },
