@@ -50,9 +50,7 @@
           "settings": {
             "hide_logo_on_home_page": false,
             "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-block-end": 0
           },
           "blocks": {}
         },
@@ -66,7 +64,7 @@
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",
             "type_case_primary_link": "none",
-            "menu_style": "featured_products",
+            "menu_style": "collection_images",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
@@ -79,12 +77,14 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "settings": {
         "logo_position": "left",
-        "menu_position": "left",
-        "menu_row": "top",
+        "menu_position": "center",
+        "menu_row": "bottom",
+        "customer_account_menu": "customer-account-main-menu",
         "show_search": true,
-        "search_position": "right",
+        "search_position": "center",
         "search_row": "top",
         "show_country": true,
         "country_selector_style": false,
@@ -99,6 +99,10 @@
         "divider_width": 0,
         "divider_size": "page-width",
         "border_width": 0,
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
         "color_scheme_top": "scheme-1",
         "color_scheme_bottom": "",
         "color_scheme_transparent": "scheme-6",
@@ -110,49 +114,29 @@
         "collection_color_scheme": "default"
       }
     },
-    "enterprise_shares_header": {
+    "enterprise_shares_header_dLhfgb": {
       "type": "enterprise-shares-header",
       "blocks": {
-        "enterprise_mega_1": {
+        "mega_menu_xHcqYt": {
           "type": "mega_menu",
           "settings": {
-            "menu_title": "",
+            "menu_title": "2",
             "show_featured": true,
             "label": "Featured project",
-            "product": ""
-          }
-        },
-        "enterprise_mega_2": {
-          "type": "mega_menu",
-          "settings": {
-            "menu_title": "",
-            "show_featured": true,
-            "label": "Featured project",
-            "product": ""
-          }
-        },
-        "enterprise_mega_3": {
-          "type": "mega_menu",
-          "settings": {
-            "menu_title": "",
-            "show_featured": true,
-            "label": "Featured project",
-            "product": ""
+            "product": "es-demo-20260726-elven-princess-diorama"
           }
         }
       },
       "block_order": [
-        "enterprise_mega_1",
-        "enterprise_mega_2",
-        "enterprise_mega_3"
+        "mega_menu_xHcqYt"
       ],
       "name": "Enterprise Shares Header",
       "settings": {
         "logo_width": 180,
         "logo_width_mobile": 120,
         "menu": "main-menu",
-        "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-1",
+        "color_scheme": "",
+        "menu_color_scheme": "",
         "section_width": "page-width",
         "show_search": true,
         "search_placeholder": "Search projects, creators, and categories",
@@ -165,6 +149,7 @@
   },
   "order": [
     "header_announcements_9jGBFp",
-    "enterprise_shares_header"
+    "header_section",
+    "enterprise_shares_header_dLhfgb"
   ]
 }
