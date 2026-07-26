@@ -1,0 +1,57 @@
+{%- liquid
+  assign featured_product = block.settings.product
+  assign menu_title = block.settings.menu_title | strip
+-%}
+
+<div
+  class="es-mega-config"
+  data-es-mega-title="{{ menu_title | escape }}"
+  hidden
+  {{ block.shopify_attributes }}
+>
+  <template data-es-mega-template>
+    {%- if block.settings.show_featured and featured_product != blank -%}
+      <aside class="es-mega-featured">
+        <div class="es-mega-featured__label">{{ block.settings.label | default: 'Featured project' }}</div>
+        {% render 'es-project-product-card', product: featured_product, variant: 'mega', image_ratio: settings.es_card_ratio | default: '16/9' %}
+      </aside>
+    {%- endif -%}
+  </template>
+</div>
+
+{% schema %}
+{
+  "name": "一级菜单推荐项目",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "menu_title",
+      "label": "对应一级菜单名称",
+      "info": "填写与主菜单完全一致的名称，例如 Design。留空时按 Block 顺序匹配。"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured",
+      "label": "显示推荐项目",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "推荐项目标题",
+      "default": "Featured project"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "推荐产品"
+    }
+  ],
+  "presets": [
+    {
+      "name": "一级菜单推荐项目"
+    }
+  ]
+}
+{% endschema %}
