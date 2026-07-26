@@ -1,0 +1,1 @@
+Repairs the FAQ setting value type mismatch in templates/product.json and adds compact, adjustable creator typography.
