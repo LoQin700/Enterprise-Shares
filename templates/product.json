@@ -381,16 +381,46 @@
     "es_project_tabs": {
       "type": "es-product-project-tabs",
       "blocks": {
+        "campaign_default": {
+          "type": "campaign",
+          "settings": {
+            "tab_label": "Campaign",
+            "use_product_description": true
+          }
+        },
+        "creator_default": {
+          "type": "creator",
+          "settings": {
+            "tab_label": "Creator"
+          }
+        },
+        "faq_default": {
+          "type": "faq",
+          "settings": {
+            "tab_label": "FAQ",
+            "heading": "Frequently Asked Questions",
+            "open_first_faq": false
+          }
+        },
         "comments_liquid_default": {
           "type": "comments_liquid",
-          "settings": {}
+          "settings": {
+            "tab_label": "Comments",
+            "show_when_empty": false
+          }
         },
         "comments_text_default": {
           "type": "comments_text",
-          "settings": {}
+          "settings": {
+            "tab_label": "Comments",
+            "show_when_empty": false
+          }
         }
       },
       "block_order": [
+        "campaign_default",
+        "creator_default",
+        "faq_default",
         "comments_liquid_default",
         "comments_text_default"
       ],
@@ -401,18 +431,7 @@
         "tab_font_size": 16,
         "content_width": 1100,
         "padding_top": 48,
-        "padding_bottom": 64,
-        "show_campaign": true,
-        "campaign_label": "Campaign",
-        "show_creator": true,
-        "creator_label": "Creator",
-        "show_faq": true,
-        "faq_label": "FAQ",
-        "faq_heading": "Frequently Asked Questions",
-        "open_first_faq": false,
-        "show_comments": true,
-        "comments_label": "Comments",
-        "show_comments_when_empty": false
+        "padding_bottom": 64
       }
     }
   },
