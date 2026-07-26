@@ -273,15 +273,17 @@
 
 /* ES 20260726 card frame and media accent */
 .es-card {
-  border: 1px solid var(--color-border);
+  border: 1px solid transparent;
   border-radius: 10px;
   overflow: visible;
   background: var(--color-background);
+  box-shadow: none;
 }
 
 .es-card:hover,
 .es-card:focus-within {
-  border-color: var(--color-primary, var(--color-primary-button-background));
+  border-color: var(--color-border);
+  box-shadow: none;
 }
 
 .es-card__media {
@@ -306,8 +308,13 @@
   display: block;
   height: var(--es-media-accent-height, 6px);
   border-radius: 0 0 8px 8px;
-  background-color: var(--color-primary, var(--color-primary-button-background, currentColor));
+  background-color: var(--es-media-accent-color, #00c875);
   pointer-events: none;
+}
+
+.es-card__content {
+  padding-top: var(--es-card-content-padding-y, 20px);
+  padding-bottom: var(--es-card-content-padding-y, 20px);
 }
 
 .es-featured-section .es-slider-arrow,
@@ -323,7 +330,7 @@
   padding: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
-  color: var(--color-primary, var(--color-primary-button-background)) !important;
+  color: var(--color-primary) !important;
   background: transparent !important;
   box-shadow: none !important;
 }
@@ -332,5 +339,13 @@
 .es-featured-section .es-slider-arrow:focus-visible:not(:disabled),
 .es-product-carousel .es-slider-arrow:hover:not(:disabled),
 .es-product-carousel .es-slider-arrow:focus-visible:not(:disabled) {
-  color: var(--color-primary-hover, var(--color-primary-button-hover-background)) !important;
+  color: var(--color-primary-hover) !important;
+}
+
+@media screen and (max-width: 749px) {
+  .es-card__content,
+  .es-recommended-mobile .es-card__content {
+    padding-top: var(--es-card-content-padding-y-mobile, 14px);
+    padding-bottom: var(--es-card-content-padding-y-mobile, 14px);
+  }
 }

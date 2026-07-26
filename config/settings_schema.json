@@ -2429,6 +2429,26 @@
         "default": 14
       },
       {
+        "type": "range",
+        "id": "es_card_content_padding_y",
+        "label": "产品卡内容上下内间距",
+        "min": 12,
+        "max": 32,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "es_card_content_padding_y_mobile",
+        "label": "手机端产品卡内容上下内间距",
+        "min": 8,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "default": 14
+      },
+      {
         "type": "checkbox",
         "id": "es_hover_second_image",
         "label": "Hover 显示第二张图片",
@@ -2449,6 +2469,12 @@
         "step": 1,
         "unit": "px",
         "default": 6
+      },
+      {
+        "type": "color",
+        "id": "es_media_accent_color",
+        "label": "图片底部主题色条颜色",
+        "default": "#00c875"
       },
       {
         "type": "checkbox",

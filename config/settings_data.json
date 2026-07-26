@@ -360,7 +360,10 @@
     "es_hover_second_image": false,
     "es_media_accent_enable": true,
     "es_media_accent_height": 6,
-    "es_wishlist_enable": true
+    "es_wishlist_enable": true,
+    "es_media_accent_color": "#00c875",
+    "es_card_content_padding_y": 20,
+    "es_card_content_padding_y_mobile": 14
   },
   "presets": {
     "Horizon": {
