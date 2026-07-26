@@ -282,6 +282,7 @@
           "type": "image",
           "name": "Image 3 — Background Story",
           "settings": {
+            "image": "shopify://shop_images/3.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "custom",
@@ -304,13 +305,39 @@
           "type": "text",
           "name": "Background Story Content",
           "settings": {
-            "text": "<h2>Background Story</h2><p>In a village, there were two fruit farmers with different mindsets, resulting in vastly different harvests.</p><p>One farmer was narrow-minded, full of small-farmer mentality, like a miser guarding every inch of land, only concerned with immediate petty gains. As soon as the fruit trees bore fruit, the green, hard, and sour fruits were picked hastily, before the wind could ripen them or the sun could sweeten them. His orchard was neglected and barren; his fruit was small and unripe; his harvest was meager, barely enough to make ends meet, year after year, with no progress.</p><p>The other farmer was broad-minded, with the vision of a wealthy farmer, like a wise cultivator of hope, with a long-term harvest in mind. He doesn't seek quick profits; he cultivates diligently in spring with deep irrigation, carefully fertilizes in summer, prunes and protects buds, and controls pests and diseases, nurturing his orchard day after day. His orchard is a lush and vibrant place; his fruit is plump and golden; his harvest is abundant wealth, sweet and tempting, of considerable value, bringing prosperity year after year.</p><p><strong>Those who are impatient for quick gains reap only small profits from unripe fruit; those who cultivate patiently await maturity and ultimately achieve great success.</strong></p>",
+            "text": "<h3>Background Story</h3>",
             "width": "100%",
             "max_width": "none",
-            "alignment": "left",
+            "alignment": "center",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_bHmUnt": {
+          "type": "text",
+          "name": "Background Story Content",
+          "settings": {
+            "text": "<p>In a village, there were two fruit farmers with different mindsets, resulting in vastly different harvests.</p><p>One farmer was narrow-minded, full of small-farmer mentality, like a miser guarding every inch of land, only concerned with immediate petty gains. As soon as the fruit trees bore fruit, the green, hard, and sour fruits were picked hastily, before the wind could ripen them or the sun could sweeten them. His orchard was neglected and barren; his fruit was small and unripe; his harvest was meager, barely enough to make ends meet, year after year, with no progress.</p><p>The other farmer was broad-minded, with the vision of a wealthy farmer, like a wise cultivator of hope, with a long-term harvest in mind. He doesn't seek quick profits; he cultivates diligently in spring with deep irrigation, carefully fertilizes in summer, prunes and protects buds, and controls pests and diseases, nurturing his orchard day after day. His orchard is a lush and vibrant place; his fruit is plump and golden; his harvest is abundant wealth, sweet and tempting, of considerable value, bringing prosperity year after year.</p><p><strong>Those who are impatient for quick gains reap only small profits from unripe fruit; those who cultivate patiently await maturity and ultimately achieve great success.</strong></p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.125rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -329,7 +356,8 @@
       },
       "block_order": [
         "image_3",
-        "text_story"
+        "text_story",
+        "text_bHmUnt"
       ],
       "name": "About — Background Story · Image 3",
       "settings": {
@@ -438,6 +466,7 @@
           "type": "image",
           "name": "Image 4 — Our Team",
           "settings": {
+            "image": "shopify://shop_images/4.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "custom",
