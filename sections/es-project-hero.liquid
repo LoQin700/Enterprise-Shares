@@ -1,5 +1,6 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <section
-  class="es-project-hero es-project-hero--{{ section.settings.alignment }} color-{{ section.settings.color_scheme }}"
+  class="es-project-hero es-project-hero--{{ section.settings.alignment }} section page-width-normal color-{{ section.settings.color_scheme }}{% if section.settings.layout_width == 'full' %} section--full-width{% else %} section--page-width{% endif %}"
   style="
     --es-hero-max: {{ section.settings.content_width }}px;
     --es-hero-heading: {{ section.settings.heading_size }}px;
@@ -8,8 +9,6 @@
     --es-hero-text-mobile: {{ section.settings.text_size_mobile }}px;
     --es-hero-pt: {{ section.settings.padding_top }}px;
     --es-hero-pb: {{ section.settings.padding_bottom }}px;
-    --es-hero-pt-mobile: {{ section.settings.padding_top_mobile }}px;
-    --es-hero-pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
   "
 >
   <div class="es-project-hero__inner">
@@ -40,7 +39,6 @@
   .es-project-hero {
     position: relative;
     overflow: hidden;
-    background: rgb(var(--color-background));
     color: rgb(var(--color-foreground));
   }
 
@@ -135,8 +133,6 @@
   @media screen and (max-width: 749px) {
     .es-project-hero__inner {
       width: min(var(--es-hero-max), calc(100% - 28px));
-      padding-top: var(--es-hero-pt-mobile);
-      padding-bottom: var(--es-hero-pb-mobile);
     }
 
     .es-project-hero h1 {
@@ -167,6 +163,16 @@
       "id": "color_scheme",
       "label": "配色方案",
       "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "layout_width",
+      "label": "Section 宽度",
+      "options": [
+        { "value": "page", "label": "页面宽度" },
+        { "value": "full", "label": "全宽" }
+      ],
+      "default": "full"
     },
     {
       "type": "select",
@@ -215,12 +221,12 @@
     },
     {
       "type": "header",
-      "content": "桌面端尺寸"
+      "content": "布局与尺寸"
     },
     {
       "type": "range",
       "id": "content_width",
-      "label": "内容最大宽度",
+      "label": "文字内容最大宽度",
       "min": 600,
       "max": 1200,
       "step": 20,
@@ -269,7 +275,7 @@
     },
     {
       "type": "header",
-      "content": "移动端尺寸"
+      "content": "移动端字号"
     },
     {
       "type": "range",
@@ -290,26 +296,6 @@
       "step": 1,
       "unit": "px",
       "default": 16
-    },
-    {
-      "type": "range",
-      "id": "padding_top_mobile",
-      "label": "移动端上间距",
-      "min": 20,
-      "max": 120,
-      "step": 4,
-      "unit": "px",
-      "default": 72
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_mobile",
-      "label": "移动端下间距",
-      "min": 20,
-      "max": 120,
-      "step": 4,
-      "unit": "px",
-      "default": 68
     }
   ],
   "presets": [
