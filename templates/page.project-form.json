@@ -121,7 +121,6 @@
       "type": "es-project-process",
       "settings": {
         "color_scheme": "scheme-3",
-        "card_color_scheme": "scheme-1",
         "eyebrow": "How it works",
         "heading": "A clear path from idea to review",
         "text": "<p>Submitting the form starts a review. Approved projects move forward through direct communication with our team.</p>",
@@ -131,7 +130,7 @@
         "step_2_text": "<p>We review feasibility, materials, positioning, and platform suitability.</p>",
         "step_3_heading": "Discuss",
         "step_3_text": "<p>Suitable applicants are contacted to confirm details and next steps.</p>",
-        "layout_width": "page",
+        "section_width": 1180,
         "heading_size": 46,
         "heading_size_mobile": 34,
         "card_heading_size": 24,
@@ -139,14 +138,15 @@
         "card_radius": 20,
         "card_gap": 20,
         "padding_top": 88,
-        "padding_bottom": 96
+        "padding_bottom": 96,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 64
       }
     },
     "project_prep": {
       "type": "es-project-prep",
       "settings": {
         "color_scheme": "scheme-1",
-        "card_color_scheme": "scheme-2",
         "eyebrow": "Before you begin",
         "heading": "Prepare the essentials",
         "text": "<p>Preparing these materials in advance will make the application faster.</p>",
@@ -156,14 +156,16 @@
         "files_text": "<ul><li>Representative project images</li><li>Business registration or supporting PDF when applicable</li><li>Video or cloud-storage link for larger files</li></ul>",
         "note_heading": "Large files",
         "note_text": "<p>ZIP files, videos, source files, and extra documents should be shared through a public Google Drive, Dropbox, or OneDrive link.</p>",
-        "layout_width": "page",
+        "section_width": 1120,
         "heading_size": 46,
         "heading_size_mobile": 34,
         "card_heading_size": 24,
         "text_size": 16,
         "card_radius": 22,
         "padding_top": 92,
-        "padding_bottom": 92
+        "padding_bottom": 92,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60
       }
     },
     "project_form": {
@@ -192,7 +194,6 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "layout_width": "page",
         "eyebrow": "Application form",
         "heading": "Tell us about your project",
         "text": "<p>Complete the required fields and submit your clearest available project information.</p>",
@@ -200,12 +201,15 @@
         "side_text": "<p>Check your email address and confirm that every cloud link can be opened without requesting access.</p>",
         "after_heading": "After submission",
         "after_text": "<p>Our team will review your application and contact you by email when clarification or additional materials are needed. Submission does not guarantee approval or publication.</p>",
+        "section_width": 1220,
         "heading_size": 44,
         "heading_size_mobile": 34,
         "text_size": 16,
         "card_radius": 22,
         "padding_top": 96,
-        "padding_bottom": 112
+        "padding_bottom": 112,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 72
       }
     }
   },
