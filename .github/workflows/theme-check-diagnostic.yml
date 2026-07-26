@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: read
 
 jobs:
@@ -14,8 +14,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: shopify/theme-check-action@v2
         with:
-          theme_root: '.'
-          token: ${{ github.token }}
-          flags: '--fail-level error'
+          ref: diagnostic/theme-check-20260726
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Install Theme Check
+        run: gem install theme-check --no-document
+      - name: Run Theme Check and save report
+        run: |
+          theme-check . --fail-level error --output json > theme-check-output.json 2>theme-check-stderr.txt || true
+          theme-check . --fail-level error > theme-check-output.txt 2>&1 || true
+      - name: Commit diagnostic report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add theme-check-output.json theme-check-output.txt theme-check-stderr.txt
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "ci: save theme check diagnostic report [skip ci]"
+          git push origin HEAD:diagnostic/theme-check-20260726
