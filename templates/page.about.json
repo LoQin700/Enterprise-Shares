@@ -1326,21 +1326,7 @@
         "autoplay": false,
         "autoplay_speed": 4,
         "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "divider_8X8Pa3": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "scheme-6",
-        "section_width": "full-width",
-        "thickness": 0.5,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 16,
-        "padding-block-end": 16
+        "padding-block-end": 67
       }
     }
   },
@@ -1353,7 +1339,6 @@
     "about_rewards",
     "about_chase",
     "about_back",
-    "slideshow_JpgCwM",
-    "divider_8X8Pa3"
+    "slideshow_JpgCwM"
   ]
 }
