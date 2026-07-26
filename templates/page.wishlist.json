@@ -48,6 +48,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -55,9 +56,22 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "es_wishlist_page_DAx88t": {
+      "type": "es-wishlist-page",
+      "name": "收藏页面",
+      "settings": {
+        "heading": "Saved products",
+        "intro": "",
+        "empty_heading": "No saved products yet",
+        "empty_text": "Use the bookmark icon on any product card to save it here.",
+        "empty_button": "Explore products",
+        "empty_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "es_wishlist_page_DAx88t"
   ]
 }
