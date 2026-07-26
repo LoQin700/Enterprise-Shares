@@ -137,11 +137,11 @@
         "card_iCkxgB": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/d4f52bf5a897be3584010a54f4b3c1bc_original.jpg",
-            "heading": "Card title",
-            "text": "<p>Add a short introduction for this card.</p>",
-            "link_label": "Discover more",
-            "link": "shopify://products/es-demo-20260726-state-of-flux-visual-novel",
+            "image": "shopify://shop_images/3.jpg",
+            "heading": "About Us",
+            "text": "<p>To help you findyour life's interests and goals.</p>",
+            "link_label": "Learn More",
+            "link": "shopify://pages/about-us",
             "color_scheme": "scheme-2",
             "show_line": true,
             "line_color": "#008060"
@@ -150,11 +150,11 @@
         "card_chUgzM": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/fb1df4db341a4707164148f7a2c3f8fe_original.png",
-            "heading": "Card title",
-            "text": "<p>Add a short introduction for this card.</p>",
+            "image": "shopify://shop_images/7.jpg",
+            "heading": "Launch Your Dream Project",
+            "text": "<p>Share your idea, your team, and the change you want to create. We review every application before discussing the next stage.</p>",
             "link_label": "Discover more",
-            "link": "shopify://products/es-demo-20260726-state-of-flux-visual-novel",
+            "link": "shopify://pages/crowdfunding-project-application",
             "color_scheme": "scheme-2",
             "show_line": true,
             "line_color": "#008060"
