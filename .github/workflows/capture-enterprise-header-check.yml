@@ -1,0 +1,33 @@
+name: Capture Enterprise Header Theme Check
+
+on:
+  push:
+    branches:
+      - diagnostic/enterprise-header-final-check
+    paths:
+      - .github/workflows/capture-enterprise-header-check.yml
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: diagnostic/enterprise-header-final-check
+      - name: Run Theme Check and save output
+        run: |
+          set +e
+          npx -y @shopify/cli@latest theme check --fail-level error > enterprise-header-theme-check.txt 2>&1
+          echo "EXIT_CODE=$?" >> enterprise-header-theme-check.txt
+          exit 0
+      - name: Commit report
+        run: |
+          rm .github/workflows/capture-enterprise-header-check.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: capture enterprise header theme check output [skip ci]"
+          git push
