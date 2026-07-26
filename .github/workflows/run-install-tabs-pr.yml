@@ -25,7 +25,6 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-
           path = Path('.github/workflows/install-es-product-project-tabs.yml')
           lines = path.read_text(encoding='utf-8').splitlines()
           marker = '      - name: Create project tabs section and connect product template'
@@ -52,22 +51,7 @@ jobs:
               script = script.replace(old, new)
           Path('/tmp/product-tabs-installer.sh').write_text(script, encoding='utf-8')
           PY
-
-          set +e
-          bash -x /tmp/product-tabs-installer.sh > /tmp/product-tabs-installer.log 2>&1
-          status=$?
-          set -e
-          cat /tmp/product-tabs-installer.log
-          if [ "$status" -ne 0 ]; then
-            mkdir -p diagnostics
-            cp /tmp/product-tabs-installer.log diagnostics/product-tabs-installer.log
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add diagnostics/product-tabs-installer.log
-            git commit -m "diagnostic: capture product tabs installer failure [skip ci]"
-            git push origin HEAD:${{ github.head_ref }}
-            exit "$status"
-          fi
+          bash /tmp/product-tabs-installer.sh
 
       - name: Validate product template JSON
         run: |
@@ -79,7 +63,22 @@ jobs:
           PY
 
       - name: Shopify CLI Theme Check
-        run: npx --yes @shopify/cli@latest theme check --path . --fail-level error
+        run: |
+          set +e
+          npx --yes @shopify/cli@latest theme check --path . --fail-level error > /tmp/product-tabs-theme-check.log 2>&1
+          status=$?
+          set -e
+          cat /tmp/product-tabs-theme-check.log
+          if [ "$status" -ne 0 ]; then
+            mkdir -p diagnostics
+            cp /tmp/product-tabs-theme-check.log diagnostics/product-tabs-theme-check.log
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add diagnostics/product-tabs-theme-check.log
+            git commit -m "diagnostic: capture product tabs theme check [skip ci]"
+            git push origin HEAD:${{ github.head_ref }}
+            exit "$status"
+          fi
 
       - name: Remove temporary workflows
         run: |
