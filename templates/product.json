@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -24,6 +25,7 @@
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -70,7 +72,6 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -98,6 +99,9 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -188,6 +192,7 @@
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
+                "gift_card_form": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -232,9 +237,62 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "es_project_tabs": {
+      "type": "es-product-project-tabs",
+      "blocks": {
+        "campaign_default": {
+          "type": "campaign",
+          "settings": {
+            "tab_label": "Campaign",
+            "use_product_description": true,
+            "content": ""
+          }
+        },
+        "creator_default": {
+          "type": "creator",
+          "settings": {
+            "tab_label": "Creator",
+            "creator_source": "{{ product.metafields.custom.author.value }}"
+          }
+        },
+        "faq_default": {
+          "type": "faq",
+          "settings": {
+            "tab_label": "FAQ",
+            "heading": "Frequently Asked Questions",
+            "faq_source": [],
+            "open_first_faq": false
+          }
+        },
+        "comments_liquid_default": {
+          "type": "comments_liquid",
+          "settings": {
+            "tab_label": "Comments",
+            "liquid": "",
+            "show_when_empty": false
+          }
+        }
+      },
+      "block_order": [
+        "campaign_default",
+        "creator_default",
+        "faq_default",
+        "comments_liquid_default"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "sticky_navigation": true,
+        "tab_font_size": 16,
+        "content_width": 1100,
+        "padding_top": 48,
+        "padding_bottom": 64
       }
     },
     "product_recommendations_qggXJq": {
@@ -376,62 +434,6 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "es_project_tabs": {
-      "type": "es-product-project-tabs",
-      "blocks": {
-        "campaign_default": {
-          "type": "campaign",
-          "settings": {
-            "tab_label": "Campaign",
-            "use_product_description": true
-          }
-        },
-        "creator_default": {
-          "type": "creator",
-          "settings": {
-            "tab_label": "Creator"
-          }
-        },
-        "faq_default": {
-          "type": "faq",
-          "settings": {
-            "tab_label": "FAQ",
-            "heading": "Frequently Asked Questions",
-            "open_first_faq": false
-          }
-        },
-        "comments_liquid_default": {
-          "type": "comments_liquid",
-          "settings": {
-            "tab_label": "Comments",
-            "show_when_empty": false
-          }
-        },
-        "comments_text_default": {
-          "type": "comments_text",
-          "settings": {
-            "tab_label": "Comments",
-            "show_when_empty": false
-          }
-        }
-      },
-      "block_order": [
-        "campaign_default",
-        "creator_default",
-        "faq_default",
-        "comments_liquid_default",
-        "comments_text_default"
-      ],
-      "settings": {
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "sticky_navigation": true,
-        "tab_font_size": 16,
-        "content_width": 1100,
-        "padding_top": 48,
-        "padding_bottom": 64
       }
     }
   },
