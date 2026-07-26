@@ -242,7 +242,7 @@
           "static": true,
           "settings": {
             "alignment": "left",
-            "gap": 8,
+            "gap": 14,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "border": "none",
@@ -339,7 +339,7 @@
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 8,
+        "columns_gap": 30,
         "rows_gap": 16,
         "icons_style": "arrow",
         "icons_shape": "circle",
