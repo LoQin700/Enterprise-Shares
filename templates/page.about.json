@@ -1007,7 +1007,7 @@
               "type": "text",
               "name": "标题",
               "settings": {
-                "text": "<h2>Are you ready to chase your dreams?</h2>",
+                "text": "<h3>Are you ready to chase your dreams?</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1131,7 +1131,7 @@
               "type": "text",
               "name": "标题",
               "settings": {
-                "text": "<h2>Ready to back your dreams?</h2>",
+                "text": "<h3>Ready to back your dreams?</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
