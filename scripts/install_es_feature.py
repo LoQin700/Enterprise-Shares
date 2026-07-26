@@ -44,10 +44,6 @@ def patch_settings() -> None:
                 {'value': '4/5', 'label': '4:5 竖图'},
                 {'value': '3/4', 'label': '3:4 竖图'}
             ], 'info': '统一用于集合页、搜索页、相关商品、重点商品与推荐轮播中的产品卡图片。'},
-            {'type': 'checkbox', 'id': 'es_hover_second_image', 'label': 'Hover 显示第二张图片', 'default': False, 'info': '默认关闭。开启后，存在第二张商品图片的产品卡会在鼠标悬停时切换；视频 Hover 播放不受此开关影响。'},
-            {'type': 'header', 'content': '产品卡字体'},
-            {'type': 'range', 'id': 'es_card_title_size', 'label': '产品标题字号', 'min': 12, 'max': 40, 'step': 1, 'unit': 'px', 'default': 16, 'info': '产品标题自动使用主题全局的标题字体，并同步到所有启用的自定义产品卡。'},
-            {'type': 'range', 'id': 'es_card_description_size', 'label': '产品正文与信息字号', 'min': 10, 'max': 24, 'step': 1, 'unit': 'px', 'default': 14, 'info': '产品简介、倒计时、作者、价格和标签统一使用主题全局的正文字体及此字号。'},
             {'type': 'header', 'content': '产品元字段命名'},
             {'type': 'text', 'id': 'es_mf_namespace', 'label': '元字段命名空间', 'default': 'custom', 'info': '填写 Shopify 产品元字段的命名空间，建议保持 custom。'},
             {'type': 'text', 'id': 'es_deadline_key', 'label': '截至时间字段 Key', 'default': 'project_deadline', 'info': '类型必须为“日期和时间”；前台根据当前时间自动计算剩余天数、小时或分钟。'},
@@ -57,16 +53,17 @@ def patch_settings() -> None:
             {'type': 'text', 'id': 'es_location_key', 'label': '地区字段 Key', 'default': 'card_location', 'info': '可选；使用单行文本，作为卡片补充标签显示。'},
             {'type': 'header', 'content': '作者 Metaobject 字段命名'},
             {'type': 'text', 'id': 'es_author_name_key', 'label': '作者名称字段 Key', 'default': 'display_name', 'info': '作者元对象中的名称字段。'},
-            {'type': 'text', 'id': 'es_author_avatar_key', 'label': '作者头像字段 Key', 'default': 'avatar', 'info': '作者元对象中的文件/图片字段。'},
-            {'type': 'text', 'id': 'es_author_bio_key', 'label': '作者简介字段 Key', 'default': 'bio', 'info': '作者头像 Hover 时显示的简短介绍。'},
+            {'type': 'text', 'id': 'es_author_avatar_key', 'label': '作者头像字段 Key', 'default': 'avatar'},
+            {'type': 'text', 'id': 'es_author_bio_key', 'label': '作者简介字段 Key', 'default': 'bio'},
             {'type': 'text', 'id': 'es_author_collection_key', 'label': '作者商品集合字段 Key', 'default': 'projects_collection', 'info': '类型为商品系列引用；关联按作者自动归类的智能商品系列，用于项目数量和作者页面。'},
-            {'type': 'text', 'id': 'es_author_joined_key', 'label': '作者加入日期字段 Key', 'default': 'joined_date', 'info': '可选，类型为日期。'},
+            {'type': 'text', 'id': 'es_author_joined_key', 'label': '作者加入日期字段 Key', 'default': 'joined_date'},
             {'type': 'header', 'content': '显示与收藏'},
+            {'type': 'range', 'id': 'es_card_title_size', 'label': '产品标题字号', 'min': 12, 'max': 40, 'step': 1, 'unit': 'px', 'default': 16},
+            {'type': 'range', 'id': 'es_card_description_size', 'label': '产品正文与信息字号', 'min': 10, 'max': 24, 'step': 1, 'unit': 'px', 'default': 14},
+            {'type': 'checkbox', 'id': 'es_hover_second_image', 'label': 'Hover 显示第二张图片', 'default': False},
             {'type': 'checkbox', 'id': 'es_show_price', 'label': '产品卡显示价格', 'default': False},
             {'type': 'text', 'id': 'es_ended_text', 'label': '截至后的文案', 'default': 'Ended'},
-            {'type': 'checkbox', 'id': 'es_wishlist_enable', 'label': '启用书签收藏', 'default': True, 'info': '书签显示在产品信息区域右上角；访客收藏保存在当前浏览器。'},
-            {'type': 'checkbox', 'id': 'es_wishlist_sync', 'label': '登录账户同步收藏', 'default': True, 'info': '需要部署 docs/wishlist-sync-app 并配置 App Proxy；登录后收藏同步到客户元字段。'},
-            {'type': 'text', 'id': 'es_wishlist_proxy', 'label': '收藏同步 App Proxy 路径', 'default': '/apps/enterprise-wishlist', 'info': '默认与同步应用的 shopify.app.toml 配置一致。'}
+            {'type': 'checkbox', 'id': 'es_wishlist_enable', 'label': '启用书签收藏', 'default': True}
         ]
     }
     existing = next((item for item in data if item.get('name') == group['name']), None)
