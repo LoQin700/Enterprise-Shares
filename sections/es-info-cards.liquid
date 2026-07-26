@@ -51,10 +51,10 @@
 
     {% for block in section.blocks %}
       {% if block.type == 'notice' %}
-        <aside class="es-info-cards__notice color-{{ card_scheme }}" {{ block.shopify_attributes }}>
+        <aside class="es-info-cards__notice" {{ block.shopify_attributes }}>
           <div>
             {% if block.settings.badge != blank %}
-              <span class="es-info-cards__badge">{{ block.settings.badge | escape }}</span>
+              <span class="es-info-cards__notice-label">{{ block.settings.badge | escape }}</span>
             {% endif %}
             {% if block.settings.heading != blank %}
               <strong>{{ block.settings.heading | escape }}</strong>
@@ -71,7 +71,7 @@
 
 {% stylesheet %}
   .es-info-cards {
-    color: rgb(var(--color-foreground));
+    color: var(--color-foreground);
   }
 
   .es-info-cards__inner {
@@ -126,18 +126,14 @@
     gap: var(--es-info-gap);
   }
 
-  .es-info-cards__card,
-  .es-info-cards__notice {
-    border: 1px solid rgba(var(--color-foreground), 0.14);
-    border-radius: var(--es-info-radius);
-    color: rgb(var(--color-foreground));
-    background: rgb(var(--color-background));
-    box-shadow: 0 14px 34px rgb(var(--color-shadow-rgb) / 0.06);
-  }
-
   .es-info-cards__card {
     min-width: 0;
     padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--es-info-radius);
+    color: var(--color-foreground);
+    background: var(--color-background);
+    box-shadow: 0 14px 34px rgb(var(--color-shadow-rgb) / 0.06);
   }
 
   .es-info-cards__badge {
@@ -145,11 +141,11 @@
     min-height: 28px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     padding: 5px 12px;
     border-radius: 999px;
-    color: rgb(var(--color-background));
-    background: rgb(var(--color-foreground));
+    color: var(--color-background);
+    background: var(--color-foreground);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -167,12 +163,19 @@
     grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
     gap: 36px;
     align-items: start;
-    margin-top: var(--es-info-gap);
-    padding: 26px 30px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--color-border);
   }
 
-  .es-info-cards__notice .es-info-cards__badge {
-    margin-bottom: 12px;
+  .es-info-cards__notice-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.62;
   }
 
   .es-info-cards__notice strong {
@@ -220,20 +223,16 @@
       padding: 24px 22px;
     }
 
-    .es-info-cards__badge {
-      margin-bottom: 24px;
-    }
-
     .es-info-cards__notice {
-      gap: 10px;
-      padding: 22px;
+      gap: 8px;
+      padding-top: 18px;
     }
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "通用｜信息卡片",
+  "name": "信息卡片",
   "class": "section-wrapper",
   "settings": [
     { "type": "color_scheme", "id": "color_scheme", "label": "Section 配色方案", "default": "scheme-1" },
@@ -266,7 +265,7 @@
     },
     {
       "type": "notice",
-      "name": "提示卡片",
+      "name": "提示文本",
       "settings": [
         { "type": "text", "id": "badge", "label": "标签", "default": "Note" },
         { "type": "text", "id": "heading", "label": "标题", "default": "Important information" },
@@ -277,7 +276,7 @@
   "max_blocks": 8,
   "presets": [
     {
-      "name": "通用｜信息卡片",
+      "name": "信息卡片",
       "blocks": [
         { "type": "card" },
         { "type": "card" },

@@ -271,7 +271,7 @@
         "mega_menu_3eqC3t",
         "mega_menu_FkcTxQ"
       ],
-      "name": "通用｜品牌标头",
+      "name": "Enterprise Shares 标头",
       "settings": {
         "logo": "shopify://shop_images/logo_8de0ed43-75e3-440f-9b85-5cb0dff70a4a.png",
         "logo_width": 120,
@@ -283,8 +283,7 @@
         "show_search": true,
         "search_placeholder": "Search projects, creators, and categories",
         "search_max_width": 840,
-        "mobile_menu_font_size": 16,
-        "padding_y": 6
+        "mobile_menu_font_size": 16
       }
     },
     "divider_A4cHJf": {

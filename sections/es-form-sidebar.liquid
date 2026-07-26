@@ -35,7 +35,7 @@
         {% endif %}
 
         {% if section.settings.side_text != blank %}
-          <div class="es-form-sidebar__note color-{{ panel_scheme }}">
+          <div class="es-form-sidebar__note">
             {% if section.settings.side_heading != blank %}
               <strong>{{ section.settings.side_heading | escape }}</strong>
             {% endif %}
@@ -57,7 +57,7 @@
     </div>
 
     {% if section.settings.after_text != blank %}
-      <div class="es-form-sidebar__after color-{{ panel_scheme }}">
+      <div class="es-form-sidebar__after">
         {% if section.settings.after_heading != blank %}
           <strong>{{ section.settings.after_heading | escape }}</strong>
         {% endif %}
@@ -69,7 +69,7 @@
 
 {% stylesheet %}
   .es-form-sidebar {
-    color: rgb(var(--color-foreground));
+    color: var(--color-foreground);
   }
 
   .es-form-sidebar__inner {
@@ -118,19 +118,20 @@
     opacity: 0.72;
   }
 
-  .es-form-sidebar__note,
-  .es-form-sidebar__form,
-  .es-form-sidebar__after {
-    border: 1px solid rgba(var(--color-foreground), 0.14);
+  .es-form-sidebar__form {
+    min-width: 0;
+    padding: 32px;
+    border: 1px solid var(--color-border);
     border-radius: var(--es-form-radius);
-    color: rgb(var(--color-foreground));
-    background: rgb(var(--color-background));
+    color: var(--color-foreground);
+    background: var(--color-background);
     box-shadow: 0 14px 34px rgb(var(--color-shadow-rgb) / 0.05);
   }
 
   .es-form-sidebar__note {
     margin-top: 28px;
-    padding: 22px;
+    padding-top: 22px;
+    border-top: 1px solid var(--color-border);
   }
 
   .es-form-sidebar__note > strong,
@@ -140,14 +141,9 @@
     font-size: 14px;
   }
 
-  .es-form-sidebar__form {
-    min-width: 0;
-    padding: 32px;
-  }
-
   .es-form-sidebar__placeholder {
     padding: 48px 24px;
-    border: 1px dashed rgba(var(--color-foreground), 0.28);
+    border: 1px dashed var(--color-border);
     border-radius: calc(var(--es-form-radius) - 6px);
     text-align: center;
   }
@@ -162,8 +158,9 @@
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
     gap: 36px;
-    margin-top: 24px;
-    padding: 24px 28px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
   }
 
   .es-form-sidebar .rte > :first-child {
@@ -202,19 +199,19 @@
     .es-form-sidebar__after {
       grid-template-columns: 1fr;
       gap: 8px;
-      padding: 20px;
+      padding-top: 18px;
     }
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "通用｜表单与说明",
+  "name": "表单与说明",
   "class": "section-wrapper",
   "blocks": [{ "type": "@app" }],
   "settings": [
     { "type": "color_scheme", "id": "color_scheme", "label": "Section 配色方案", "default": "scheme-3" },
-    { "type": "color_scheme", "id": "panel_color_scheme", "label": "表单和提示配色方案", "default": "scheme-1" },
+    { "type": "color_scheme", "id": "panel_color_scheme", "label": "表单配色方案", "default": "scheme-1" },
     { "type": "select", "id": "layout_width", "label": "Section 宽度", "options": [{ "value": "page", "label": "页面宽度" }, { "value": "full", "label": "全宽" }], "default": "page" },
     { "type": "text", "id": "eyebrow", "label": "顶部小标题", "default": "Application form" },
     { "type": "text", "id": "heading", "label": "标题", "default": "Tell us about your project" },
@@ -227,11 +224,11 @@
     { "type": "range", "id": "heading_size", "label": "标题字号", "min": 28, "max": 60, "step": 2, "unit": "px", "default": 44 },
     { "type": "range", "id": "heading_size_mobile", "label": "移动端标题字号", "min": 24, "max": 42, "step": 1, "unit": "px", "default": 34 },
     { "type": "range", "id": "text_size", "label": "正文字号", "min": 13, "max": 20, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "card_radius", "label": "卡片圆角", "min": 0, "max": 36, "step": 2, "unit": "px", "default": 22 },
+    { "type": "range", "id": "card_radius", "label": "表单圆角", "min": 0, "max": 36, "step": 2, "unit": "px", "default": 22 },
     { "type": "range", "id": "column_gap", "label": "左右栏间距", "min": 20, "max": 100, "step": 4, "unit": "px", "default": 56 },
     { "type": "range", "id": "padding_top", "label": "上间距", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 },
     { "type": "range", "id": "padding_bottom", "label": "下间距", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 96 }
   ],
-  "presets": [{ "name": "通用｜表单与说明" }]
+  "presets": [{ "name": "表单与说明" }]
 }
 {% endschema %}
