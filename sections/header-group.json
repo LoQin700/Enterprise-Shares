@@ -271,10 +271,10 @@
         "mega_menu_3eqC3t",
         "mega_menu_FkcTxQ"
       ],
-      "name": "Enterprise Shares 标头",
+      "name": "通用｜品牌标头",
       "settings": {
         "logo": "shopify://shop_images/logo_8de0ed43-75e3-440f-9b85-5cb0dff70a4a.png",
-        "logo_width": 180,
+        "logo_width": 120,
         "logo_width_mobile": 120,
         "menu": "main-menu",
         "color_scheme": "scheme-1",
@@ -298,7 +298,7 @@
         "width_percent": 100,
         "alignment_horizontal": "center",
         "padding-block-start": 0,
-        "padding-block-end": 16
+        "padding-block-end": 0
       }
     }
   },

@@ -1,0 +1,258 @@
+{% liquid
+  assign layout_width = section.settings.layout_width | default: 'page'
+  assign card_scheme = section.settings.card_color_scheme | default: section.settings.color_scheme
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section
+  class="es-steps-cards section page-width-normal color-{{ section.settings.color_scheme }}{% if layout_width == 'full' %} section--full-width section--full-width-margin{% else %} section--page-width{% endif %}"
+  style="
+    --es-steps-heading: {{ section.settings.heading_size }}px;
+    --es-steps-heading-mobile: {{ section.settings.heading_size_mobile }}px;
+    --es-steps-card-heading: {{ section.settings.card_heading_size }}px;
+    --es-steps-text: {{ section.settings.text_size }}px;
+    --es-steps-radius: {{ section.settings.card_radius }}px;
+    --es-steps-gap: {{ section.settings.card_gap }}px;
+    --es-steps-columns: {{ section.settings.columns }};
+    --es-steps-pt: {{ section.settings.padding_top }}px;
+    --es-steps-pb: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="es-steps-cards__inner">
+    <div class="es-steps-cards__header es-steps-cards__header--{{ section.settings.header_layout }}">
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="es-steps-cards__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <h2>{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+      </div>
+      {% if section.settings.text != blank %}
+        <div class="rte es-steps-cards__intro">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+
+    <div class="es-steps-cards__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'step' %}
+          <article class="es-steps-cards__card color-{{ card_scheme }}" {{ block.shopify_attributes }}>
+            {% if block.settings.badge != blank %}
+              <span class="es-steps-cards__number">{{ block.settings.badge | escape }}</span>
+            {% endif %}
+            {% if block.settings.heading != blank %}
+              <h3>{{ block.settings.heading | escape }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <div class="rte">{{ block.settings.text }}</div>
+            {% endif %}
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .es-steps-cards {
+    color: rgb(var(--color-foreground));
+  }
+
+  .es-steps-cards__inner {
+    width: 100%;
+    padding-top: var(--es-steps-pt);
+    padding-bottom: var(--es-steps-pb);
+  }
+
+  .es-steps-cards__header {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.55fr);
+    gap: 56px;
+    align-items: end;
+    margin-bottom: 40px;
+  }
+
+  .es-steps-cards__header--stacked {
+    display: block;
+    max-width: 820px;
+  }
+
+  .es-steps-cards__header--stacked .es-steps-cards__intro {
+    margin-top: 16px;
+  }
+
+  .es-steps-cards__eyebrow {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.62;
+  }
+
+  .es-steps-cards__header h2 {
+    margin: 0;
+    font-size: var(--es-steps-heading);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .es-steps-cards__intro {
+    font-size: var(--es-steps-text);
+    line-height: 1.7;
+    opacity: 0.72;
+  }
+
+  .es-steps-cards__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--es-steps-columns), minmax(0, 1fr));
+    gap: var(--es-steps-gap);
+  }
+
+  .es-steps-cards__card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 280px;
+    flex-direction: column;
+    padding: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(var(--color-foreground), 0.14);
+    border-radius: var(--es-steps-radius);
+    color: rgb(var(--color-foreground));
+    background: rgb(var(--color-background));
+    box-shadow: 0 14px 34px rgb(var(--color-shadow-rgb) / 0.06);
+  }
+
+  .es-steps-cards__card::after {
+    content: '';
+    position: absolute;
+    right: -46px;
+    bottom: -70px;
+    width: 160px;
+    height: 160px;
+    border-radius: 999px;
+    background: rgba(var(--color-foreground), 0.045);
+    pointer-events: none;
+  }
+
+  .es-steps-cards__number {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-bottom: auto;
+    padding-bottom: 48px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.52;
+  }
+
+  .es-steps-cards__card h3 {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 14px;
+    font-size: var(--es-steps-card-heading);
+    line-height: 1.2;
+  }
+
+  .es-steps-cards__card .rte {
+    position: relative;
+    z-index: 1;
+    font-size: var(--es-steps-text);
+    line-height: 1.65;
+    opacity: 0.72;
+  }
+
+  .es-steps-cards .rte > :first-child {
+    margin-top: 0;
+  }
+
+  .es-steps-cards .rte > :last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .es-steps-cards__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .es-steps-cards.section--full-width .es-steps-cards__inner {
+      padding-inline: var(--page-margin);
+    }
+
+    .es-steps-cards__header {
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    .es-steps-cards__header h2 {
+      margin-bottom: 14px;
+      font-size: var(--es-steps-heading-mobile);
+    }
+
+    .es-steps-cards__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .es-steps-cards__card {
+      min-height: 0;
+      padding: 24px;
+    }
+
+    .es-steps-cards__number {
+      padding-bottom: 36px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "通用｜步骤卡片",
+  "class": "section-wrapper",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Section 配色方案", "default": "scheme-2" },
+    { "type": "color_scheme", "id": "card_color_scheme", "label": "卡片配色方案", "default": "scheme-1" },
+    { "type": "select", "id": "layout_width", "label": "Section 宽度", "options": [{ "value": "page", "label": "页面宽度" }, { "value": "full", "label": "全宽" }], "default": "page" },
+    { "type": "select", "id": "header_layout", "label": "标题布局", "options": [{ "value": "split", "label": "左右布局" }, { "value": "stacked", "label": "上下布局" }], "default": "split" },
+    { "type": "text", "id": "eyebrow", "label": "顶部小标题", "default": "How it works" },
+    { "type": "text", "id": "heading", "label": "标题", "default": "A clear path from idea to review" },
+    { "type": "richtext", "id": "text", "label": "简短说明", "default": "<p>Submitting the form starts a review. Approved projects move forward through direct communication with our team.</p>" },
+    { "type": "header", "content": "布局与尺寸" },
+    { "type": "range", "id": "columns", "label": "电脑端卡片列数", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "range", "id": "heading_size", "label": "标题字号", "min": 28, "max": 64, "step": 2, "unit": "px", "default": 46 },
+    { "type": "range", "id": "heading_size_mobile", "label": "移动端标题字号", "min": 24, "max": 44, "step": 1, "unit": "px", "default": 34 },
+    { "type": "range", "id": "card_heading_size", "label": "卡片标题字号", "min": 18, "max": 32, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "text_size", "label": "正文字号", "min": 13, "max": 20, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "card_radius", "label": "卡片圆角", "min": 0, "max": 36, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "card_gap", "label": "卡片间距", "min": 8, "max": 40, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "padding_top", "label": "上间距", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "下间距", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "步骤卡片",
+      "settings": [
+        { "type": "text", "id": "badge", "label": "编号或标签", "default": "01" },
+        { "type": "text", "id": "heading", "label": "标题", "default": "Step title" },
+        { "type": "richtext", "id": "text", "label": "说明", "default": "<p>Add a short description for this step.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "通用｜步骤卡片",
+      "blocks": [
+        { "type": "step" },
+        { "type": "step" },
+        { "type": "step" }
+      ]
+    }
+  ]
+}
+{% endschema %}
