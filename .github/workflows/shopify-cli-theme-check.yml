@@ -1,0 +1,23 @@
+name: Shopify CLI Theme Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  theme-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install current Shopify CLI
+        run: npm install --no-package-lock --no-save @shopify/cli @shopify/theme
+      - name: Run current Shopify Theme Check
+        run: npx shopify theme check --path . --fail-level error --output json
