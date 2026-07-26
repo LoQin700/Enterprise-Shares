@@ -1,0 +1,227 @@
+{% capture form_blocks %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+<section
+  id="project-application-form"
+  class="es-project-form-host color-{{ section.settings.color_scheme }}"
+  style="
+    --es-form-width: {{ section.settings.section_width }}px;
+    --es-form-heading: {{ section.settings.heading_size }}px;
+    --es-form-heading-mobile: {{ section.settings.heading_size_mobile }}px;
+    --es-form-text: {{ section.settings.text_size }}px;
+    --es-form-radius: {{ section.settings.card_radius }}px;
+    --es-form-pt: {{ section.settings.padding_top }}px;
+    --es-form-pb: {{ section.settings.padding_bottom }}px;
+    --es-form-pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --es-form-pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+  "
+>
+  <div class="es-project-form-host__inner">
+    <div class="es-project-form-host__layout">
+      <aside class="es-project-form-host__aside">
+        {% if section.settings.eyebrow != blank %}
+          <p class="es-project-form-host__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% endif %}
+        <h2>{{ section.settings.heading | escape }}</h2>
+        {% if section.settings.text != blank %}
+          <div class="rte es-project-form-host__intro">{{ section.settings.text }}</div>
+        {% endif %}
+
+        {% if section.settings.side_text != blank %}
+          <div class="es-project-form-host__note">
+            <strong>{{ section.settings.side_heading | escape }}</strong>
+            <div class="rte">{{ section.settings.side_text }}</div>
+          </div>
+        {% endif %}
+      </aside>
+
+      <div class="es-project-form-host__form">
+        {% if form_blocks != blank %}
+          {{ form_blocks }}
+        {% else %}
+          <div class="es-project-form-host__placeholder">
+            <strong>Add your Shopify Forms app block</strong>
+            <p>Open this template in the theme editor, select this section, then choose Add block → Apps → Forms.</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.after_text != blank %}
+      <div class="es-project-form-host__after">
+        <strong>{{ section.settings.after_heading | escape }}</strong>
+        <div class="rte">{{ section.settings.after_text }}</div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .es-project-form-host {
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+  }
+
+  .es-project-form-host__inner {
+    width: min(var(--es-form-width), calc(100% - 40px));
+    margin: 0 auto;
+    padding-top: var(--es-form-pt);
+    padding-bottom: var(--es-form-pb);
+  }
+
+  .es-project-form-host__layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+  }
+
+  .es-project-form-host__aside {
+    position: sticky;
+    top: 120px;
+  }
+
+  .es-project-form-host__eyebrow {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.62;
+  }
+
+  .es-project-form-host__aside h2 {
+    margin: 0 0 18px;
+    font-size: var(--es-form-heading);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .es-project-form-host__intro,
+  .es-project-form-host__note,
+  .es-project-form-host__after {
+    font-size: var(--es-form-text);
+    line-height: 1.7;
+  }
+
+  .es-project-form-host__intro {
+    opacity: 0.72;
+  }
+
+  .es-project-form-host__note {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(var(--color-foreground), 0.16);
+  }
+
+  .es-project-form-host__note > strong,
+  .es-project-form-host__after > strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .es-project-form-host__form {
+    min-width: 0;
+    padding: 36px;
+    border: 1px solid rgba(var(--color-foreground), 0.14);
+    border-radius: var(--es-form-radius);
+    background: rgba(var(--color-foreground), 0.025);
+  }
+
+  .es-project-form-host__placeholder {
+    padding: 48px 24px;
+    border: 1px dashed rgba(var(--color-foreground), 0.28);
+    border-radius: calc(var(--es-form-radius) - 6px);
+    text-align: center;
+  }
+
+  .es-project-form-host__placeholder p {
+    max-width: 520px;
+    margin: 8px auto 0;
+    opacity: 0.7;
+  }
+
+  .es-project-form-host__after {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 36px;
+    margin-top: 28px;
+    padding: 26px 30px;
+    border-radius: var(--es-form-radius);
+    background: rgba(var(--color-foreground), 0.055);
+  }
+
+  .es-project-form-host .rte > :first-child {
+    margin-top: 0;
+  }
+
+  .es-project-form-host .rte > :last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 899px) {
+    .es-project-form-host__layout {
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+
+    .es-project-form-host__aside {
+      position: static;
+      max-width: 720px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .es-project-form-host__inner {
+      width: min(var(--es-form-width), calc(100% - 28px));
+      padding-top: var(--es-form-pt-mobile);
+      padding-bottom: var(--es-form-pb-mobile);
+    }
+
+    .es-project-form-host__aside h2 {
+      font-size: var(--es-form-heading-mobile);
+    }
+
+    .es-project-form-host__form {
+      padding: 18px;
+    }
+
+    .es-project-form-host__after {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 22px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "项目申请｜表单",
+  "class": "section-wrapper",
+  "blocks": [{ "type": "@app" }],
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "配色方案", "default": "scheme-3" },
+    { "type": "text", "id": "eyebrow", "label": "顶部小标题", "default": "Application form" },
+    { "type": "text", "id": "heading", "label": "标题", "default": "Tell us about your project" },
+    { "type": "richtext", "id": "text", "label": "简短说明", "default": "<p>Complete the required fields and submit your clearest available project information.</p>" },
+    { "type": "text", "id": "side_heading", "label": "侧栏提示标题", "default": "Before submitting" },
+    { "type": "richtext", "id": "side_text", "label": "侧栏提示内容", "default": "<p>Check your email address and confirm that every cloud link can be opened without requesting access.</p>" },
+    { "type": "text", "id": "after_heading", "label": "提交后标题", "default": "After submission" },
+    { "type": "richtext", "id": "after_text", "label": "提交后说明", "default": "<p>Our team will review your application and contact you by email when clarification or additional materials are needed. Submission does not guarantee approval or publication.</p>" },
+    { "type": "header", "content": "布局与尺寸" },
+    { "type": "range", "id": "section_width", "label": "内容最大宽度", "min": 900, "max": 1500, "step": 20, "unit": "px", "default": 1220 },
+    { "type": "range", "id": "heading_size", "label": "标题字号", "min": 28, "max": 60, "step": 2, "unit": "px", "default": 44 },
+    { "type": "range", "id": "heading_size_mobile", "label": "移动端标题字号", "min": 24, "max": 42, "step": 1, "unit": "px", "default": 34 },
+    { "type": "range", "id": "text_size", "label": "正文字号", "min": 13, "max": 20, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "card_radius", "label": "表单卡片圆角", "min": 0, "max": 36, "step": 2, "unit": "px", "default": 22 },
+    { "type": "range", "id": "padding_top", "label": "桌面端上间距", "min": 20, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "桌面端下间距", "min": 20, "max": 180, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_top_mobile", "label": "移动端上间距", "min": 20, "max": 120, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "移动端下间距", "min": 20, "max": 140, "step": 4, "unit": "px", "default": 72 }
+  ],
+  "presets": [{ "name": "项目申请｜表单" }]
+}
+{% endschema %}
