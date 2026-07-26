@@ -1,5 +1,6 @@
 (() => {
   const normalize = (value) => String(value || '').trim().toLowerCase();
+  let refreshTimer = null;
 
   const uniqueLinks = (root) => {
     const seen = new Set();
@@ -41,7 +42,12 @@
       const titleLink = document.createElement('a');
       titleLink.className = 'es-mega-categories__title';
       titleLink.href = href;
-      titleLink.innerHTML = `<span>${title}</span><span aria-hidden="true">›</span>`;
+      const titleText = document.createElement('span');
+      titleText.textContent = title;
+      const arrow = document.createElement('span');
+      arrow.setAttribute('aria-hidden', 'true');
+      arrow.textContent = '›';
+      titleLink.append(titleText, arrow);
       categories.appendChild(titleLink);
 
       const linksGrid = document.createElement('div');
@@ -73,11 +79,36 @@
     menus.forEach(enhanceMenu);
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => init(), { once: true });
-  } else {
+  const scheduleRefresh = () => {
+    window.clearTimeout(refreshTimer);
+    refreshTimer = window.setTimeout(() => init(document), 80);
+  };
+
+  const startObserver = () => {
+    const header = document.querySelector('#header-component');
+    if (!header || header.dataset.esObserverReady === 'true') return;
+    header.dataset.esObserverReady = 'true';
+    new MutationObserver((mutations) => {
+      const needsRefresh = mutations.some((mutation) =>
+        [...mutation.addedNodes].some((node) => node.nodeType === 1 && (node.matches?.('header-menu, .menu-list__submenu') || node.querySelector?.('header-menu, .menu-list__submenu')))
+      );
+      if (needsRefresh) scheduleRefresh();
+    }).observe(header, { childList: true, subtree: true });
+  };
+
+  const boot = () => {
     init();
+    startObserver();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
   }
 
-  document.addEventListener('shopify:section:load', (event) => init(event.target));
+  document.addEventListener('shopify:section:load', (event) => {
+    init(event.target);
+    startObserver();
+  });
 })();
