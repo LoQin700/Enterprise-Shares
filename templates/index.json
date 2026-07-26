@@ -438,7 +438,7 @@
           "settings": {
             "heading": "Recommended for you",
             "source": "collection",
-            "collection": "abc",
+            "collection": "demo-kickstarter-projects",
             "products": []
           }
         }
@@ -451,6 +451,11 @@
       "settings": {
         "section_width": "page-width",
         "color_scheme": "",
+        "recommended_limit": 12,
+        "show_view_all": true,
+        "view_all_label": "Discover more",
+        "view_all_link": "shopify://products/es-demo-20260726-stations-heart-card-deck",
+        "mobile_layout": "carousel",
         "column_gap": 40
       }
     }
