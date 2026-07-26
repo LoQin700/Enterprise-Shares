@@ -1,0 +1,337 @@
+npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  blocks/_es-header-mega-item.liquid                                          │
+│                                                                              │
+│                                                                              │
+│  [error]: UnsupportedFilterArguments                                         │
+│  Filters cannot be used on arguments passed to the 'render' tag. Apply the   │
+│  filter beforehand (e.g. with {% assign %}) and pass the result instead.     │
+│                                                                              │
+│  16  {% render 'es-project-product-card', product: featured_product,         │
+│  variant: 'mega', image_ratio: settings.es_card_ratio | default: '16/9' %}   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  blocks/_product-card.liquid                                                 │
+│                                                                              │
+│                                                                              │
+│  [error]: UnsupportedFilterArguments                                         │
+│  Filters cannot be used on arguments passed to the 'render' tag. Apply the   │
+│  filter beforehand (e.g. with {% assign %}) and pass the result instead.     │
+│                                                                              │
+│  12  {% render 'es-project-product-card', product: product, variant:         │
+│  'compact', image_ratio: settings.es_card_ratio | default: '16/9',           │
+│  shopify_attributes: block.shopify_attributes %}                             │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/enterprise-shares-header.liquid                                    │
+│                                                                              │
+│                                                                              │
+│  [error]: UnsupportedFilterArguments                                         │
+│  Filters cannot be used on arguments passed to the 'render' tag. Apply the   │
+│  filter beforehand (e.g. with {% assign %}) and pass the result instead.     │
+│                                                                              │
+│  127  {% render 'es-project-product-card', product: featured_product,        │
+│  variant: 'mega', image_ratio: settings.es_card_ratio | default: '16/9' %}   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/es-main-author.liquid                                              │
+│                                                                              │
+│                                                                              │
+│  [error]: UnsupportedFilterArguments                                         │
+│  Filters cannot be used on arguments passed to the 'render' tag. Apply the   │
+│  filter beforehand (e.g. with {% assign %}) and pass the result instead.     │
+│                                                                              │
+│  34  {% render 'es-product-card-router', product: product, variant:          │
+│  'compact', image_ratio: settings.es_card_ratio | default: '16/9',           │
+│  force_custom: true %}                                                       │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/es-product-recommendation-carousel.liquid                          │
+│                                                                              │
+│                                                                              │
+│  [error]: UnsupportedFilterArguments                                         │
+│  Filters cannot be used on arguments passed to the 'render' tag. Apply the   │
+│  filter beforehand (e.g. with {% assign %}) and pass the result instead.     │
+│                                                                              │
+│  61  {% render 'es-project-product-card', product: product, variant:         │
+│  'compact', image_ratio: settings.es_card_ratio | default: '16/9' %}         │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/media-with-content.liquid                                          │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'disable-section-top-offset' may be defined outside the scope of  │
+│   this file.                                                                 │
+│                                                                              │
+│  17  class="section section--{{ section.settings.section_width }}            │
+│  disable-section-top-offset media-with-content color-{{                      │
+│  section.settings.color_scheme }} spacing-style {{ media_class_modifier }}"  │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/predictive-search.liquid                                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-dropdown' may be defined outside the scope of  │
+│   this file.                                                                 │
+│                                                                              │
+│  6  class="predictive-search-dropdown"                                       │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__list' may be defined outside the      │
+│  scope of this file.                                                         │
+│                                                                              │
+│  42  class="predictive-search-results__list                                  │
+│  predictive-search-results__wrapper                                          │
+│  predictive-search-results__wrapper-queries list-unstyled"                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__wrapper' may be defined outside the   │
+│  scope of this file.                                                         │
+│                                                                              │
+│  42  class="predictive-search-results__list                                  │
+│  predictive-search-results__wrapper                                          │
+│  predictive-search-results__wrapper-queries list-unstyled"                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__wrapper-queries' may be defined       │
+│  outside the scope of this file.                                             │
+│                                                                              │
+│  42  class="predictive-search-results__list                                  │
+│  predictive-search-results__wrapper                                          │
+│  predictive-search-results__wrapper-queries list-unstyled"                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__card--query' may be defined outside   │
+│  the scope of this file.                                                     │
+│                                                                              │
+│  46  class="predictive-search-results__card--query"                          │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__pill' may be defined outside the      │
+│  scope of this file.                                                         │
+│                                                                              │
+│  51  class="pills__pill predictive-search-results__pill"                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__no-results' may be defined outside    │
+│  the scope of this file.                                                     │
+│                                                                              │
+│  103  <p class="predictive-search-results__no-results">                      │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/product-information.liquid                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'add-to-cart-icon' may be defined outside the scope of this       │
+│  file.                                                                       │
+│                                                                              │
+│  132  <span class="svg-wrapper add-to-cart-icon">                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  sections/slideshow.liquid                                                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'disable-section-top-offset' may be defined outside the scope of  │
+│   this file.                                                                 │
+│                                                                              │
+│  66  class="slideshow-section spacing-style section {{ section_width_class   │
+│  }} color-{{ section.settings.color_scheme }} disable-section-top-offset"    │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/cart-summary.liquid                                                │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'details' may be defined outside the scope of this file.          │
+│                                                                              │
+│  52  class="details"                                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'details' may be defined outside the scope of this file.          │
+│                                                                              │
+│  118  class="details"                                                        │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/es-header-search.liquid                                            │
+│                                                                              │
+│                                                                              │
+│  [warning]: OrphanedSnippet                                                  │
+│  This snippet is not referenced by any other files                           │
+│                                                                              │
+│  1  {%- doc -%}                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/es-product-card-router.liquid                                      │
+│                                                                              │
+│                                                                              │
+│  [warning]: OrphanedSnippet                                                  │
+│  This snippet is not referenced by any other files                           │
+│                                                                              │
+│  1  {%- liquid                                                               │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/predictive-search-products-list.liquid                             │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__products' may be defined outside the  │
+│   scope of this file.                                                        │
+│                                                                              │
+│  15  class="predictive-search-results__products"                             │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'recently-viewed-wrapper' may be defined outside the scope of     │
+│  this file.                                                                  │
+│                                                                              │
+│  22  class="recently-viewed-wrapper"                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__title' may be defined outside the     │
+│  scope of this file.                                                         │
+│                                                                              │
+│  26  class="predictive-search-results__title"                                │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__clear' may be defined outside the     │
+│  scope of this file.                                                         │
+│                                                                              │
+│  31  class="predictive-search-results__clear button button-unstyled"         │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__list' may be defined outside the      │
+│  scope of this file.                                                         │
+│                                                                              │
+│  39  class="predictive-search-results__list                                  │
+│  predictive-search-results__wrapper-products list-unstyled"                  │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__wrapper-products' may be defined      │
+│  outside the scope of this file.                                             │
+│                                                                              │
+│  39  class="predictive-search-results__list                                  │
+│  predictive-search-results__wrapper-products list-unstyled"                  │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__title' may be defined outside the     │
+│  scope of this file.                                                         │
+│                                                                              │
+│  84  <h4 class="predictive-search-results__title">                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__list' may be defined outside the      │
+│  scope of this file.                                                         │
+│                                                                              │
+│  88  class="predictive-search-results__list                                  │
+│  predictive-search-results__wrapper-products list-unstyled"                  │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__wrapper-products' may be defined      │
+│  outside the scope of this file.                                             │
+│                                                                              │
+│  88  class="predictive-search-results__list                                  │
+│  predictive-search-results__wrapper-products list-unstyled"                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/predictive-search-resource-carousel.liquid                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__resource-header' may be defined       │
+│  outside the scope of this file.                                             │
+│                                                                              │
+│  21  <div class="predictive-search-results__resource-header">                │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search-results__title' may be defined outside the     │
+│  scope of this file.                                                         │
+│                                                                              │
+│  24  class="predictive-search-results__title"                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  snippets/search-modal.liquid                                                │
+│                                                                              │
+│                                                                              │
+│  [warning]: ValidScopedCSSClass                                              │
+│  CSS class 'predictive-search' may be defined outside the scope of this      │
+│  file.                                                                       │
+│                                                                              │
+│  39  class="predictive-search color-{{ settings.popover_color_scheme }}{%    │
+│  if class != blank %} {{ class | strip }}{% endif %}"                        │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  Theme Check Summary.                                                        │
+│                                                                              │
+│  326 files inspected with 31 total offenses found across 15 files.           │
+│  5 errors.                                                                   │
+│  26 warnings.                                                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+EXIT_CODE=1
