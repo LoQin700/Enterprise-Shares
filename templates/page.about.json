@@ -551,7 +551,7 @@
       "blocks": {
         "image_5": {
           "type": "image",
-          "name": "Image 5 — What We Solve",
+          "name": "Image",
           "settings": {
             "image": "shopify://shop_images/5.jpg",
             "link": "",
@@ -574,7 +574,7 @@
         },
         "group_solve": {
           "type": "group",
-          "name": "What We Solve Content",
+          "name": "群组",
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -612,11 +612,37 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "text_YKFFkU": {
+              "type": "text",
+              "name": "标题",
+              "settings": {
+                "text": "<h3>What We Solve</h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_solve": {
               "type": "text",
-              "name": "What We Solve",
+              "name": "content",
               "settings": {
-                "text": "<h2>What We Solve</h2><p>After extensive research and screening, we will promote promising individuals and companies, as well as projects involving individuals and companies, through solutions and equity incentives. This allows for better communication and negotiation with a large number of creators, artists, and entrepreneurs.</p>",
+                "text": "<p>After extensive research and screening, we will promote promising individuals and companies, as well as projects involving individuals and companies, through solutions and equity incentives. This allows for better communication and negotiation with a large number of creators, artists, and entrepreneurs.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -640,6 +666,7 @@
             }
           },
           "block_order": [
+            "text_YKFFkU",
             "text_solve"
           ]
         }
@@ -648,7 +675,7 @@
         "image_5",
         "group_solve"
       ],
-      "name": "About — What We Solve · Image 5",
+      "name": "What We Solve",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -682,7 +709,7 @@
       "blocks": {
         "group_rewards": {
           "type": "group",
-          "name": "Your Rewards Content",
+          "name": "群组",
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -722,9 +749,35 @@
           "blocks": {
             "text_rewards": {
               "type": "text",
-              "name": "Your Rewards",
+              "name": "标题",
               "settings": {
-                "text": "<h2>Your Rewards</h2><p>Your rewards include creator gifts and thank-you letters, as well as company equity. Equity valued at $10 million can grow multiple or dozens of times to hundreds of millions in value, with regular dividends on top.</p>",
+                "text": "<h3>Your Rewards</h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_FX44Dk": {
+              "type": "text",
+              "name": "conten",
+              "settings": {
+                "text": "<p>Your rewards include creator gifts and thank-you letters, as well as company equity. Equity valued at $10 million can grow multiple or dozens of times to hundreds of millions in value, with regular dividends on top.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -748,13 +801,15 @@
             }
           },
           "block_order": [
-            "text_rewards"
+            "text_rewards",
+            "text_FX44Dk"
           ]
         },
         "image_6": {
           "type": "image",
-          "name": "Image 6 — Your Rewards",
+          "name": "Image",
           "settings": {
+            "image": "shopify://shop_images/6.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "custom",
@@ -778,7 +833,7 @@
         "group_rewards",
         "image_6"
       ],
-      "name": "About — Your Rewards · Image 6",
+      "name": "Your Rewards",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
