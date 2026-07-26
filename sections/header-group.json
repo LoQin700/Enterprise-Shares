@@ -145,11 +145,26 @@
         "mobile_menu_font_size": 16,
         "padding_y": 10
       }
+    },
+    "divider_A4cHJf": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "",
+        "section_width": "full-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 0,
+        "padding-block-end": 16
+      }
     }
   },
   "order": [
     "header_announcements_9jGBFp",
     "header_section",
-    "enterprise_shares_header_dLhfgb"
+    "enterprise_shares_header_dLhfgb",
+    "divider_A4cHJf"
   ]
 }
