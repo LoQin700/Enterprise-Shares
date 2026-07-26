@@ -256,7 +256,7 @@
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 64,
-        "section_width": "full-width",
+        "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
         "color_scheme": "scheme-2",
@@ -280,7 +280,7 @@
       "blocks": {
         "image_3": {
           "type": "image",
-          "name": "Image 3 — Background Story",
+          "name": "Image",
           "settings": {
             "image": "shopify://shop_images/3.jpg",
             "link": "",
@@ -303,7 +303,7 @@
         },
         "text_story": {
           "type": "text",
-          "name": "Background Story Content",
+          "name": "标题",
           "settings": {
             "text": "<h3>Background Story</h3>",
             "width": "100%",
@@ -329,7 +329,7 @@
         },
         "text_bHmUnt": {
           "type": "text",
-          "name": "Background Story Content",
+          "name": "Content",
           "settings": {
             "text": "<p>In a village, there were two fruit farmers with different mindsets, resulting in vastly different harvests.</p><p>One farmer was narrow-minded, full of small-farmer mentality, like a miser guarding every inch of land, only concerned with immediate petty gains. As soon as the fruit trees bore fruit, the green, hard, and sour fruits were picked hastily, before the wind could ripen them or the sun could sweeten them. His orchard was neglected and barren; his fruit was small and unripe; his harvest was meager, barely enough to make ends meet, year after year, with no progress.</p><p>The other farmer was broad-minded, with the vision of a wealthy farmer, like a wise cultivator of hope, with a long-term harvest in mind. He doesn't seek quick profits; he cultivates diligently in spring with deep irrigation, carefully fertilizes in summer, prunes and protects buds, and controls pests and diseases, nurturing his orchard day after day. His orchard is a lush and vibrant place; his fruit is plump and golden; his harvest is abundant wealth, sweet and tempting, of considerable value, bringing prosperity year after year.</p><p><strong>Those who are impatient for quick gains reap only small profits from unripe fruit; those who cultivate patiently await maturity and ultimately achieve great success.</strong></p>",
             "width": "100%",
@@ -337,7 +337,7 @@
             "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-body--family)",
-            "font_size": "1.125rem",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
