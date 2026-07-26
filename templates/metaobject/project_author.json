@@ -11,7 +11,24 @@
   "sections": {
     "main": {
       "type": "es-main-author",
-      "settings": {}
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "avatar_size": 160,
+        "avatar_radius": 50,
+        "title_size": 42,
+        "bio_size": 17,
+        "show_joined": true,
+        "show_project_count": true,
+        "show_projects": true,
+        "projects_heading": "Created Projects",
+        "project_limit": 12,
+        "desktop_columns": 3,
+        "mobile_columns": "2",
+        "grid_gap": 24,
+        "padding_top": 64,
+        "padding_bottom": 80
+      }
     }
   },
   "order": ["main"]
