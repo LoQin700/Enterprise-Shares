@@ -9,6 +9,27 @@
   min-height: 50px;
 }
 
+body.page-width-wide {
+  --es-global-page-content-width: var(--wide-page-width);
+}
+
+body.page-width-normal {
+  --es-global-page-content-width: var(--normal-page-width);
+}
+
+body.page-width-narrow {
+  --es-global-page-content-width: var(--narrow-page-width);
+}
+
+body.page-width-content {
+  --es-global-page-content-width: var(--normal-content-width);
+}
+
+:is(.es-steps-cards, .es-info-cards, .es-form-sidebar) {
+  --page-content-width: var(--es-global-page-content-width, var(--normal-page-width));
+  --page-width: calc(var(--page-content-width) + (var(--page-margin) * 2));
+}
+
 @media screen and (max-width: 749px) {
   .section-enterprise-shares-header .esh__top {
     min-height: 64px;
