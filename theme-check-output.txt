@@ -1,0 +1,1256 @@
+Checking . ...
+[DEPRECATION] Template.register_tag is deprecated. Use Environment#register_tag instead. Called from /opt/hostedtoolcache/Ruby/3.3.12/x64/lib/ruby/gems/3.3.0/gems/theme-check-1.15.0/lib/theme_check/tags.rb:214:in `register_tag'
+[34mblocks/_blog-post-info-text.liquid:11[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% assign block_settings = block.settings %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-gallery.liquid:7[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% capture children %}
+	   ^^^^^^^^^^^^^^^^^
+
+[34mblocks/_image.liquid:11[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% assign block_settings = block.settings %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_inline-collection-title.liquid:6[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{%- assign block_settings = block.settings -%}
+	    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_product-list-button.liquid:3[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% assign button_collection = closest.collection %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/collection-title.liquid:3[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if closest.collection == blank %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/filters.liquid:156[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if should_show_pane %}
+	   ^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/icon.liquid:3[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% assign block_settings = block.settings %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/product-title.liquid:3[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if closest.product == blank %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mlayout/password.liquid:28[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{%- render 'meta-tags' -%}
+	    ^^^^^^^^^^^^^^^^^^^
+
+[34mlayout/theme.liquid:28[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{%- render 'meta-tags' -%}
+	    ^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search.liquid:73[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if predictive_search.resources.collections.size > 0 %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search.liquid:123[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if predictive_search.performed %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/color-schemes.liquid:13[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% assign background_brightness = scheme.settings.background | color_brightness %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/es-project-product-card.liquid:64[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{%- if tags_field.value -%}
+	    ^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:101[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if linklist.levels < 3 %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-row.liquid:73[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{%- for column in columns -%}
+	    ^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/image.liquid:15[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if image != blank %}
+	   ^^^^^^^^^^^^^^^^^^
+
+[34msnippets/link-featured-image.liquid:12[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% assign image_sizes = sizes | default: 'auto' %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/mega-menu-list.liquid:114[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% if menu_content_type == 'collection_images' %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/mega-menu-list.liquid:307[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% assign collection_handles = collection_handles | split: ',' | uniq %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/product-media-gallery-content.liquid:390[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% render 'slideshow-slide',
+
+[34msnippets/resource-list.liquid:114[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{% case settings.layout_type %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/tax-info.liquid:9[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{%- if cart.duties_included and cart.taxes_included -%}
+	    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/volume-pricing-info.liquid:110[0m: [35msuggestion[0m: [33mLiquidTag[0m: Use {% liquid ... %} to write multiple tags.
+	{%- for price_break in variant.quantity_price_breaks -%}
+	    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-gallery.liquid:15[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-gallery.liquid:15[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-gallery.liquid:15[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-gallery.liquid:15[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-information-carousel.liquid:3[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'product-media-gallery-content',
+
+[34mblocks/_featured-product-information-carousel.liquid:3[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'product-media-gallery-content',
+
+[34mblocks/_product-card-gallery.liquid:35[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_product-card-gallery.liquid:35[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_product-card-gallery.liquid:35[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_product-card-gallery.liquid:35[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'card-gallery', children: children %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_product-media-gallery.liquid:2[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'product-media-gallery-content',
+
+[34mblocks/_product-media-gallery.liquid:2[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'product-media-gallery-content',
+
+[34mlayout/theme.liquid:133[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'search-modal' %}
+	   ^^^^^^^^^^^^^^^^^^^^^^
+
+[34mlayout/theme.liquid:133[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'search-modal' %}
+	   ^^^^^^^^^^^^^^^^^^^^^^
+
+[34mlayout/theme.liquid:133[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'search-modal' %}
+	   ^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search-empty.liquid:3[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-empty-state',
+
+[34msections/predictive-search-empty.liquid:3[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-empty-state',
+
+[34msections/predictive-search-empty.liquid:3[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-empty-state',
+
+[34msections/predictive-search.liquid:69[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	render 'predictive-search-products-list', title: title, products: products
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search.liquid:69[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	render 'predictive-search-products-list', title: title, products: products
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search.liquid:69[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	render 'predictive-search-products-list', title: title, products: products
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search.liquid:76[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:76[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:76[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:86[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:86[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:86[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:96[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:96[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:96[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-resource-carousel',
+
+[34msections/predictive-search.liquid:119[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	render 'predictive-search-products-list', title: title, products: products, order_ids: new_products_ids, limit: 4
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search.liquid:119[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	render 'predictive-search-products-list', title: title, products: products, order_ids: new_products_ids, limit: 4
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/predictive-search.liquid:119[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	render 'predictive-search-products-list', title: title, products: products, order_ids: new_products_ids, limit: 4
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/predictive-search-empty-state.liquid:30[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-products-list',
+
+[34msnippets/predictive-search-empty-state.liquid:30[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-products-list',
+
+[34msnippets/predictive-search-empty-state.liquid:30[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-products-list',
+
+[34msnippets/resource-list.liquid:122[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'resource-list-carousel',
+
+[34msnippets/resource-list.liquid:122[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'resource-list-carousel',
+
+[34msnippets/resource-list.liquid:168[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'resource-list-carousel',
+
+[34msnippets/resource-list.liquid:168[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'resource-list-carousel',
+
+[34msnippets/search-modal.liquid:118[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-empty-state',
+
+[34msnippets/search-modal.liquid:118[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-empty-state',
+
+[34msnippets/search-modal.liquid:118[0m: [35msuggestion[0m: [33mNestedSnippet[0m: Too many nested snippets.
+	{% render 'predictive-search-empty-state',
+
+[34mblocks/_blog-post-info-text.liquid:22[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '%}'.
+	{% if block_settings.type_preset != '' %}{{ block_settings.type_preset }}{% endif%}
+	    ^
+
+[34mblocks/_product-card-gallery.liquid:29[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Too many spaces after '{%'.
+	{%  if settings.quick_add or settings.mobile_quick_add %}
+	  ^^
+
+[34mblocks/email-signup.liquid:78[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Too many spaces before '-%}'.
+	{%- render 'icon', icon: 'error'  -%}
+	                                ^^
+
+[34mblocks/product-inventory.liquid:48[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '%}'.
+	{% if block_settings.type_preset != '' %}{{ block_settings.type_preset }}{% endif%}
+	    ^
+
+[34mblocks/video.liquid:6[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Too many spaces after '{%'.
+	{%  render 'spacing-style', settings: block_settings %}
+	  ^^
+
+[34mlayout/password.liquid:130[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Too many spaces before '-%}'.
+	{%- render 'icon', icon: 'error'  -%}
+	                                ^^
+
+[34msnippets/card-gallery.liquid:26[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing after ':'.
+	# if the card-gallery has a section.settings.product_card_size:
+	                                                              ^
+
+[34msnippets/card-gallery.liquid:29[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing after ':'.
+	# if section has section.settings.columns:
+	                                         ^
+
+[34msnippets/cart-products.liquid:71[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Too many spaces after '{%'.
+	style="{%  render 'spacing-style', settings: block_settings %} --cart-items-gap:{{ block_settings.gap | append: "px" ...
+	         ^^
+
+[34msnippets/header-actions.liquid:177[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing after '{%'.
+	class="cart-drawer__dialog dialog-modal dialog-drawer color-{{ settings.drawer_color_scheme }}{% if cart.empty? %} ca...
+	                ^
+
+[34msnippets/header-actions.liquid:177[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '%}'.
+	class="cart-drawer__dialog dialog-modal dialog-drawer color-{{ settings.drawer_color_scheme }}{% if cart.empty? %} ca...
+	                                                                                                  ^
+
+[34msnippets/jumbo-text.liquid:43[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	--font-family: var(--font-{{ block_settings.font | default: 'accent'}}--family);
+	                                                            ^
+
+[34msnippets/jumbo-text.liquid:44[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	--font-weight: var(--font-{{ block_settings.font | default: 'accent'}}--weight);
+	                                                            ^
+
+[34msnippets/jumbo-text.liquid:59[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing after '{{'.
+	--text-trim: {{text_trim}};
+	  ^
+
+[34msnippets/jumbo-text.liquid:59[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	--text-trim: {{text_trim}};
+	          ^
+
+[34msnippets/product-card.liquid:103[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	{% if block_settings.padding-inline-start > 0 %}--zoom-out-padding-inline-start: min(var(--padding-xs), {{ block_sett...
+
+[34msnippets/product-card.liquid:104[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	{% if block_settings.padding-inline-end > 0 %}--zoom-out-padding-inline-end: min(var(--padding-xs), {{ block_settings...
+
+[34msnippets/product-card.liquid:105[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	{% if block_settings.padding-block-start > 0 %}--zoom-out-padding-block-start: min(var(--padding-xs), {{ block_settin...
+
+[34msnippets/product-card.liquid:106[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	{% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.p...
+
+[34msnippets/product-media-gallery-content.liquid:343[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '%}'.
+	{% if block_settings.media_columns == "two" and block_settings.large_first_image%}media-gallery--large-first-image{% ...
+	             ^
+
+[34msnippets/product-media-gallery-content.liquid:566[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing before '}}'.
+	id="product-{{ media.id}}-{{ forloop.index }}"
+	 ^
+
+[34msnippets/text.liquid:77[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Space missing after ','.
+	# the click-to-edit connection in the theme editor. Any break between the text,
+	                                                                              ^
+
+[34msnippets/variant-main-picker.liquid:178[0m: [36mstyle[0m: [33mSpaceInsideBraces[0m: Too many spaces before '-%}'.
+	{%- if property_being_updated  -%}
+	                             ^^
+
+[34mblocks/_accordion-row.liquid:30[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_blog-post-card.liquid:10[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', id: 'image', type: '_blog-post-image', article: article %}
+
+[34mblocks/_card.liquid:6[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_carousel-content.liquid:32[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_collection-card.liquid:6[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block',
+
+[34mblocks/_collection-info.liquid:10[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_collection-link.liquid:36[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: '_inline-collection-title', id: 'title', suffix: count %}
+
+[34mblocks/_content-without-appearance.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_content.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_featured-blog-posts-card.liquid:29[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block',
+
+[34mblocks/_featured-product.liquid:16[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: 'product-title', id: 'featured-product-title' %}
+
+[34mblocks/_footer-social-icons.liquid:7[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_header-menu.liquid:12[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% capture es_mega_configs %}{% content_for 'blocks' %}{% endcapture %}
+
+[34mblocks/_layered-slide.liquid:81[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_marquee.liquid:39[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_product-card-group.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_product-card.liquid:15[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks', closest.product: product %}
+
+[34mblocks/_product-details.liquid:26[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/_product-list-content.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{%- content_for 'blocks' -%}
+
+[34mblocks/_slide.liquid:107[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/accordion.liquid:18[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/buy-buttons.liquid:109[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: 'quantity', id: 'quantity' %}
+
+[34mblocks/collection-card.liquid:6[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block',
+
+[34mblocks/contact-form.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: 'contact-form-submit-button', id: 'submit-button' %}
+
+[34mblocks/featured-collection.liquid:7[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/group.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/popup-link.liquid:36[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34mblocks/product-card.liquid:8[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks', closest.product: product %}
+
+[34mblocks/product-recommendations.liquid:64[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/_blocks.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/carousel.liquid:19[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: 'group', id: 'static-header' %}
+
+[34msections/collection-links.liquid:50[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block',
+
+[34msections/collection-list.liquid:36[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{%- content_for 'blocks' -%}
+
+[34msections/featured-blog-posts.liquid:23[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', id: 'static-blog-title', type: '_featured-blog-posts-title' %}
+
+[34msections/featured-product-information.liquid:8[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block',
+
+[34msections/featured-product.liquid:39[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: '_media-without-appearance', id: 'media', closest.product: section.settings.product %}
+
+[34msections/footer-utilities.liquid:13[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/footer.liquid:45[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/header-announcements.liquid:36[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/header.liquid:52[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	content_for 'block', type: '_header-logo', id: 'header-logo'
+
+[34msections/hero.liquid:537[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/layered-slideshow.liquid:51[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/main-404.liquid:24[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/main-blog-post.liquid:19[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{%- content_for 'block', id: 'blog-post-title', type: 'text' %}
+
+[34msections/main-blog.liquid:22[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/main-cart.liquid:5[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{%- content_for 'blocks' -%}
+
+[34msections/main-collection-list.liquid:25[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{%- content_for 'blocks' -%}
+
+[34msections/main-collection.liquid:38[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block',
+
+[34msections/main-page.liquid:18[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/marquee.liquid:34[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/media-with-content.liquid:44[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: '_media-without-appearance', id: 'media' %}
+
+[34msections/password.liquid:33[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/product-hotspots.liquid:43[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: 'text', id: 'heading' %}
+
+[34msections/product-information.liquid:8[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{%- content_for 'block',
+
+[34msections/product-list.liquid:24[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{%- content_for 'block', type: '_product-list-content', id: 'static-header' -%}
+
+[34msections/product-recommendations.liquid:60[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/search-header.liquid:22[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', id: 'heading', type: '_heading', text: heading_text %}
+
+[34msections/search-results.liquid:30[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'block', type: 'filters', id: 'filters', results: search, results_size: search.results_count %}
+
+[34msections/section.liquid:4[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msections/slideshow.liquid:24[0m: [31merror[0m: [33mSyntaxError[0m: Unknown tag 'content_for'.
+	{% content_for 'blocks' %}
+
+[34msnippets/header-drawer.liquid[0m: [35msuggestion[0m: [33mTemplateLength[0m: Template has too many lines [767/600].
+
+[34msnippets/product-media-gallery-content.liquid[0m: [35msuggestion[0m: [33mTemplateLength[0m: Template has too many lines [643/600].
+
+[34msnippets/theme-styles-variables.liquid[0m: [35msuggestion[0m: [33mTemplateLength[0m: Template has too many lines [688/600].
+
+[34mblocks/_announcement.liquid:5[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `find_index`.
+	{%- assign block_index = section.blocks | find_index: 'id', block.id -%}
+	                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_search-input.liquid:32[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-search.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_search-input.liquid:55[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-reset.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/comparison-slider.liquid:111[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-chevron-left.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/comparison-slider.liquid:114[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-chevron-right.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/email-signup.liquid:92[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-checkmark.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/filters.liquid:295[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-filter.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/filters.liquid:417[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-close.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/menu.liquid:53[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-plus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/menu.liquid:57[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/product-inventory.liquid:60[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-inventory.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mlayout/password.liquid:75[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-close.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/password-footer.liquid:16[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-shopify.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:4[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `line_items_for`.
+	assign items_in_cart = cart | line_items_for: product
+	                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:88[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `line_items_for`.
+	assign variant_line_items = cart | line_items_for: variant
+	                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:89[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `sum`.
+	assign variant_cart_quantity = variant_line_items | sum: 'quantity' | default: 0
+	                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:227[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-delete.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:284[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-delete.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:349[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `sum`.
+	assign total_items_count = items_in_cart | sum: 'quantity' | default: 0
+	                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:350[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `line_items_for`.
+	assign total_price_value = cart | line_items_for: product | sum: 'original_line_price'
+	                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:350[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `sum`.
+	assign total_price_value = cart | line_items_for: product | sum: 'original_line_price'
+	                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:373[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-delete.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:390[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-checkmark.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msections/quick-order-list.liquid:399[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/add-to-cart-button.liquid:50[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-add-to-cart.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/add-to-cart-button.liquid:64[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-checkmark-burst.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/blog-comment-form.liquid:19[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/blog-comment-form.liquid:49[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-checkmark.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/card-gallery.liquid:94[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `reject`.
+	assign other_media = product.media | reject: 'src', product.featured_media
+	                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/cart-products.liquid:332[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-delete.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/cart-products.liquid:348[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/cart-summary.liquid:29[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-discount.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/cart-summary.liquid:63[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-plus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/cart-summary.liquid:127[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-plus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/cart-summary.liquid:173[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/cart-summary.liquid:204[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-filters-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/checkbox.liquid:54[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-checkmark.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/es-header-search.liquid:15[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-search.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/filter-remove-buttons.liquid:46[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-filters-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/filter-remove-buttons.liquid:79[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-filters-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/gift-card-recipient-form.liquid:83[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/gift-card-recipient-form.liquid:115[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/gift-card-recipient-form.liquid:165[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/gift-card-recipient-form.liquid:199[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-error.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/grid-density-controls.liquid:27[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-one-col-mobile.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/grid-density-controls.liquid:43[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-grid-default.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/grid-density-controls.liquid:61[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-grid-default.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/grid-density-controls.liquid:76[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-grid-dense.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-actions.liquid:34[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-cart.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-actions.liquid:132[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-actions.liquid:215[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:63[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-menu.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:66[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:83[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:131[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-plus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:278[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:295[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:306[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:385[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-plus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:659[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:676[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/header-drawer.liquid:687[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/list-filter.liquid:15[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `find_index`.
+	assign swatch_index = filter.values | find_index: 'swatch'
+	                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/list-filter.liquid:104[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/list-filter.liquid:393[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-plus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/localization-form.liquid:61[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-search.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/localization-form.liquid:99[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-reset.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/localization-form.liquid:159[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-checkmark.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/localization-form.liquid:214[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-checkmark.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/localization-form.liquid:272[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/pagination-controls.liquid:43[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-chevron-left.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/pagination-controls.liquid:51[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-chevron-left.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/pagination-controls.liquid:148[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-chevron-right.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/pagination-controls.liquid:156[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-chevron-right.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/predictive-search-products-list.liquid:51[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `find`.
+	{% assign product = products | find: 'id', int_id %}
+	                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/price-filter.liquid:63[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/product-media-gallery-content.liquid:121[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `has`.
+	assign has_image_drop = sorted_media | has: 'media_type', 'image'
+	                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/product-media-gallery-content.liquid:513[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-close.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/quantity-selector.liquid:59[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-minus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/quantity-selector.liquid:97[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-plus.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/quick-add-modal.liquid:18[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-close.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/quick-add.liquid:100[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-add-to-cart.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/search-modal.liquid:87[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-search.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/search-modal.liquid:107[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-close.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/search.liquid:27[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-search.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/slideshow-arrow.liquid:44[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/slideshow-arrow.liquid:46[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-arrow.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/slideshow-controls.liquid:90[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-pause.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/slideshow-controls.liquid:98[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-play.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/slideshow-controls.liquid:135[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-play.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/sorting.liquid:99[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-caret.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/sorting.liquid:136[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-checkmark.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/theme-styles-variables.liquid:277[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `find_index`.
+	assign index = font_size_values | find_index: font_size_string
+	               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/unit-price.liquid:15[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `unit_price_with_measurement`.
+	{{ price | unit_price_with_measurement: measurement }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/video.liquid:148[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-play.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/video.liquid:162[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-play.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/video.liquid:166[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-pause.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/video.liquid:200[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-play.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/volume-pricing-info.liquid:63[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	<span class="svg-wrapper">{{- 'icon-info.svg' | inline_asset_content -}}</span>
+	                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/volume-pricing-info.liquid:105[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	><span class="volume-pricing-info__checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/volume-pricing-info.liquid:130[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{- 'icon-checkmark.svg' | inline_asset_content -}}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mtemplates/gift_card.liquid:189[0m: [31merror[0m: [33mUnknownFilter[0m: Undefined filter `inline_asset_content`.
+	{{ 'icon-checkmark.svg' | inline_asset_content }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/product-media.liquid:23[0m: [35msuggestion[0m: [33mUnusedAssign[0m: `ref_image_to_transition` is never used.
+	assign ref_image_to_transition = 'imagesToTransition[]'
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34msnippets/blog-comment-form.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/collection-card.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/es-header-search.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/gift-card-recipient-form.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/group.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/header-actions.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/header-drawer.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/header-row.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/mega-menu-list.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/predictive-search-styles.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/product-card.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/product-grid.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/product-information-content.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/resource-list.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/search.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[34msnippets/section.liquid[0m: [35msuggestion[0m: [33mUnusedSnippet[0m: This snippet is not used.
+
+[31merror[0m: [33mMissingRequiredTemplateFiles[0m: 'templates/customers/account.liquid' or 'templates/customers/account.json' is missing.
+
+[31merror[0m: [33mMissingRequiredTemplateFiles[0m: 'templates/customers/activate_account.liquid' or 'templates/customers/activate_account.json' is missing.
+
+[31merror[0m: [33mMissingRequiredTemplateFiles[0m: 'templates/customers/addresses.liquid' or 'templates/customers/addresses.json' is missing.
+
+[31merror[0m: [33mMissingRequiredTemplateFiles[0m: 'templates/customers/login.liquid' or 'templates/customers/login.json' is missing.
+
+[31merror[0m: [33mMissingRequiredTemplateFiles[0m: 'templates/customers/order.liquid' or 'templates/customers/order.json' is missing.
+
+[31merror[0m: [33mMissingRequiredTemplateFiles[0m: 'templates/customers/register.liquid' or 'templates/customers/register.json' is missing.
+
+[31merror[0m: [33mMissingRequiredTemplateFiles[0m: 'templates/customers/reset_password.liquid' or 'templates/customers/reset_password.json' is missing.
+
+[34mblocks/_blog-post-description.liquid:53[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `should_truncate`.
+	{% unless should_truncate or article.image %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_blog-post-description.liquid:66[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `show_read_more`.
+	{% if show_read_more %}
+	   ^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_blog-post-featured-image.liquid:9[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign image = closest.article.image
+	               ^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_cart-title.liquid:24[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `force_empty`.
+	{%- if cart.empty? or force_empty -%}
+
+[34mblocks/_collection-card-image.liquid:15[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `parent_block_id`.
+	{% render 'resource-image',
+
+[34mblocks/_featured-blog-posts-image.liquid:11[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `parent_block_id`.
+	{% render 'resource-image',
+
+[34mblocks/_featured-blog-posts-title.liquid:18[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	if closest.blog != blank
+	^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-blog-posts-title.liquid:19[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign blog_title = closest.blog.title
+	                    ^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-gallery.liquid:4[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product = closest.product
+	                 ^^^^^^^^^^^^^^^
+
+[34mblocks/_featured-product-price.liquid:4[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product = closest.product
+	                 ^^^^^^^^^^^^^^^
+
+[34mblocks/_heading.liquid:9[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `text`.
+	{% render 'text', width: '100%', block: block, fallback_text: text %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_hotspot-product.liquid:4[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign hotspot_product = closest.product
+	                         ^^^^^^^^^^^^^^^
+
+[34mblocks/_image.liquid:13[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `decorative_image`.
+	{% if decorative_image %}
+	   ^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_image.liquid:34[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `loading`.
+	{{
+
+[34mblocks/_inline-collection-title.liquid:7[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% if closest.collection == blank %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_inline-collection-title.liquid:10[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% assign collection_title = closest.collection.title %}
+	                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/_inline-collection-title.liquid:27[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `suffix`.
+	<span>{{ collection_title }}</span>{{ suffix }}
+	                                     ^^^^^^^^
+
+[34mblocks/_inline-text.liquid:24[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `suffix`.
+	<span>{{ block.settings.text }}</span>{{ suffix }}
+	                                        ^^^^^^^^
+
+[34mblocks/_product-card-gallery.liquid:3[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% assign product = closest.product %}
+	                    ^^^^^^^^^^^^^^^^
+
+[34mblocks/_product-list-button.liquid:3[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% assign button_collection = closest.collection %}
+	                              ^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/accelerated-checkout.liquid:15[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product = closest.product
+	                 ^^^^^^^^^^^^^^^
+
+[34mblocks/accelerated-checkout.liquid:22[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `form_obj`.
+	{% if product != blank and form_obj != blank %}
+
+[34mblocks/accelerated-checkout.liquid:23[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `form_obj`.
+	{{ form_obj | payment_button }}
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/accelerated-checkout.liquid:35[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `can_add_to_cart`.
+	{% unless can_add_to_cart %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/add-to-cart.liquid:20[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `can_add_to_cart`.
+	{% render 'add-to-cart-button',
+
+[34mblocks/add-to-cart.liquid:20[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% render 'add-to-cart-button',
+
+[34mblocks/add-to-cart.liquid:20[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `add_to_cart_text`.
+	{% render 'add-to-cart-button',
+
+[34mblocks/collection-title.liquid:3[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% if closest.collection == blank %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/collection-title.liquid:8[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% assign collection_title = '<p>' | append: closest.collection.title | append: '</p>' %}
+	                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/filters.liquid:24[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results_size`.
+	assign products_count = results_size
+	                        ^^^^^^^^^^^^
+
+[34mblocks/filters.liquid:56[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results`.
+	if results.url
+	^^^^^^^^^^^^^^
+
+[34mblocks/filters.liquid:57[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results`.
+	assign results_url = results.url
+	                     ^^^^^^^^^^^
+
+[34mblocks/filters.liquid:59[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results`.
+	assign terms = results.terms | escape
+	               ^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/filters.liquid:100[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results`.
+	{% render 'sorting',
+
+[34mblocks/filters.liquid:258[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results`.
+	{% render 'sorting',
+
+[34mblocks/filters.liquid:342[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results`.
+	{% render 'sorting',
+
+[34mblocks/filters.liquid:464[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `results`.
+	{% render 'sorting',
+
+[34mblocks/price.liquid:5[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product_resource = closest.product
+	                          ^^^^^^^^^^^^^^^
+
+[34mblocks/product-custom-property.liquid:8[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product_id = closest.product.id
+	                    ^^^^^^^^^^^^^^^^^^
+
+[34mblocks/product-inventory.liquid:5[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign variant = closest.product.selected_or_first_available_variant
+	                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/product-inventory.liquid:35[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	if closest.product.selected_or_first_available_variant != null
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/product-title.liquid:3[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% if closest.product == blank %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/product-title.liquid:8[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% assign product_title = '<p role="heading" aria-level="3">' | append: closest.product.title | append: '</p>' %}
+	                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/product-title.liquid:12[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	href="{{ closest.product.selected_or_first_available_variant.url }}"
+	        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/quantity.liquid:3[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% render 'quantity-selector', product: closest.product %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/review.liquid:5[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product = closest.product
+	                 ^^^^^^^^^^^^^^^
+
+[34mblocks/sku.liquid:5[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product_resource = closest.product
+	                          ^^^^^^^^^^^^^^^
+
+[34mblocks/swatches.liquid:5[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	for product_option in closest.product.options_with_values
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/swatches.liquid:27[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	data-product-id="{{ closest.product.id }}"
+	                   ^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/swatches.liquid:28[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	data-product-url="{{ closest.product.url }}"
+	                    ^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/swatches.liquid:41[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	{% render 'variant-swatches', product_resource: closest.product %}
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[34mblocks/variant-picker.liquid:4[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product_resource = closest.product
+	                          ^^^^^^^^^^^^^^^
+
+[34msections/section-rendering-product-card.liquid:12[0m: [31merror[0m: [33mUndefinedObject[0m: Undefined object `closest`.
+	assign product = closest.product
+	                 ^^^^^^^^^^^^^^^
+
+[34mblocks/_blog-post-info-text.liquid[0m: [31merror[0m: [33mMissingEnableComment[0m: ValidVisibleIf was disabled but not re-enabled with theme-check-enable.
+
+[34mblocks/_product-media-gallery.liquid[0m: [31merror[0m: [33mMissingEnableComment[0m: ValidVisibleIf was disabled but not re-enabled with theme-check-enable.
+
+[34mblocks/swatches.liquid[0m: [31merror[0m: [33mMissingEnableComment[0m: All checks were disabled but not re-enabled with theme-check-enable.
+
+[34msnippets/bento-grid.liquid[0m: [31merror[0m: [33mMissingEnableComment[0m: UnclosedHTMLElement was disabled but not re-enabled with theme-check-enable.
+
+[34mblocks/_blog-post-content.liquid:16[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34mblocks/_blog-post-featured-image.liquid:88[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34mblocks/_blog-post-image.liquid:59[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34mblocks/_search-input.liquid:201[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34mblocks/contact-form-submit-button.liquid:18[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34mblocks/video.liquid:40[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/es-editorial-card-carousel.liquid:74[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/es-featured-recommended-products.liquid:189[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/es-main-author.liquid:43[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/es-product-recommendation-carousel.liquid:72[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/logo.liquid:121[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/predictive-search-empty.liquid:9[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/predictive-search.liquid:152[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/quick-order-list.liquid:1110[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msections/section-rendering-product-card.liquid:67[0m: [36mstyle[0m: [33mSchemaJsonFormat[0m: JSON formatting could be improved.
+	{% schema %}
+	   ^^^^^^^
+
+[34msnippets/image.liquid:2[0m: [35msuggestion[0m: [33mImgLazyLoading[0m: Use loading="eager" for images visible in the viewport on load and loading="lazy" for others.
+	Renders the <img> element using provided image object
+	            ^^^^^
+
+[34msnippets/util-autofill-img-size-attr.liquid:2[0m: [35msuggestion[0m: [33mImgLazyLoading[0m: Use loading="eager" for images visible in the viewport on load and loading="lazy" for others.
+	Echo a sizes attribute for an <img> tag based on a minimum image size.
+	                              ^^^^^
+
+448 files inspected, [31m354 offenses[0m detected, [33m62 offenses[0m auto-correctable
