@@ -216,6 +216,42 @@
             "label": "Featured project",
             "product": "es-demo-20260726-stations-heart-card-deck"
           }
+        },
+        "mega_menu_mx3rQg": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_index": 12,
+            "show_featured": true,
+            "label": "Featured project",
+            "product": "es-demo-20260726-station-404-survival-game"
+          }
+        },
+        "mega_menu_g7Aiwk": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_index": 13,
+            "show_featured": true,
+            "label": "Featured project",
+            "product": "es-demo-20260726-stations-heart-card-deck"
+          }
+        },
+        "mega_menu_3eqC3t": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_index": 14,
+            "show_featured": true,
+            "label": "Featured project",
+            "product": "es-demo-20260726-state-of-flux-visual-novel"
+          }
+        },
+        "mega_menu_FkcTxQ": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_index": 15,
+            "show_featured": true,
+            "label": "Featured project",
+            "product": "es-demo-20260726-forest-bathing-soap"
+          }
         }
       },
       "block_order": [
@@ -229,7 +265,11 @@
         "mega_menu_44QQha",
         "mega_menu_9N644G",
         "mega_menu_LVDWbd",
-        "mega_menu_gTdVjx"
+        "mega_menu_gTdVjx",
+        "mega_menu_mx3rQg",
+        "mega_menu_g7Aiwk",
+        "mega_menu_3eqC3t",
+        "mega_menu_FkcTxQ"
       ],
       "name": "Enterprise Shares 标头",
       "settings": {
