@@ -1,0 +1,36 @@
+name: Fix Render Filter Errors
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/fix-render-filter-errors.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fix render argument filters
+        run: python scripts/fix_render_filter_errors.py
+      - name: Verify replacements
+        run: |
+          ! grep -R "image_ratio: settings.es_card_ratio | default" blocks/_es-header-mega-item.liquid blocks/_product-card.liquid sections/enterprise-shares-header.liquid sections/es-main-author.liquid sections/es-product-recommendation-carousel.liquid
+      - name: Commit fixes
+        run: |
+          rm .github/workflows/fix-render-filter-errors.yml
+          rm scripts/fix_render_filter_errors.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: resolve Shopify render filter errors [skip ci]"
+          git push
