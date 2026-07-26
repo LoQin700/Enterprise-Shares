@@ -9,8 +9,80 @@
  */
 {
   "sections": {
-    "project_application": {
-      "type": "es-project-application",
+    "project_hero": {
+      "type": "es-project-hero",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "alignment": "center",
+        "eyebrow": "Project application",
+        "heading": "Launch Your Dream Project",
+        "text": "<p>Share your idea, your team, and the change you want to create. We review every application before discussing the next stage.</p>",
+        "show_button": true,
+        "button_label": "Start your application",
+        "content_width": 920,
+        "heading_size": 68,
+        "text_size": 18,
+        "padding_top": 112,
+        "padding_bottom": 104,
+        "heading_size_mobile": 42,
+        "text_size_mobile": 16,
+        "padding_top_mobile": 72,
+        "padding_bottom_mobile": 68
+      }
+    },
+    "project_process": {
+      "type": "es-project-process",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "eyebrow": "How it works",
+        "heading": "A clear path from idea to review",
+        "text": "<p>Submitting the form starts a review. Approved projects move forward through direct communication with our team.</p>",
+        "step_1_heading": "Apply",
+        "step_1_text": "<p>Share the essential project, team, funding, and delivery information.</p>",
+        "step_2_heading": "Review",
+        "step_2_text": "<p>We review feasibility, materials, positioning, and platform suitability.</p>",
+        "step_3_heading": "Discuss",
+        "step_3_text": "<p>Suitable applicants are contacted to confirm details and next steps.</p>",
+        "section_width": 1180,
+        "heading_size": 46,
+        "heading_size_mobile": 34,
+        "card_heading_size": 24,
+        "text_size": 16,
+        "card_radius": 20,
+        "card_gap": 20,
+        "padding_top": 88,
+        "padding_bottom": 96,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 64
+      }
+    },
+    "project_prep": {
+      "type": "es-project-prep",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Before you begin",
+        "heading": "Prepare the essentials",
+        "text": "<p>Preparing these materials in advance will make the application faster.</p>",
+        "details_heading": "Project details",
+        "details_text": "<ul><li>Project overview, location, category, and funding goal</li><li>Founder or team introduction</li><li>Current progress, use of funds, delivery plan, and risks</li></ul>",
+        "files_heading": "Files and media",
+        "files_text": "<ul><li>Representative project images</li><li>Business registration or supporting PDF when applicable</li><li>Video or cloud-storage link for larger files</li></ul>",
+        "note_heading": "Large files",
+        "note_text": "<p>ZIP files, videos, source files, and extra documents should be shared through a public Google Drive, Dropbox, or OneDrive link.</p>",
+        "section_width": 1120,
+        "heading_size": 46,
+        "heading_size_mobile": 34,
+        "card_heading_size": 24,
+        "text_size": 16,
+        "card_radius": 22,
+        "padding_top": 92,
+        "padding_bottom": 92,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "project_form": {
+      "type": "es-project-form-host",
       "blocks": {
         "forms_inline_cnGfQb": {
           "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
@@ -34,35 +106,30 @@
         "forms_inline_cnGfQb"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "eyebrow": "Project application",
-        "heading": "Launch Your Dream Project",
-        "intro": "<p>Tell us about your idea, your team, and the impact you want to create. Complete the application below so our team can review your project and contact you about the next steps.</p>",
-        "process_heading": "How the application works",
-        "process_intro": "<p>Your submission is an application for review. It does not automatically publish a crowdfunding project or guarantee approval.</p>",
-        "step_1_heading": "Submit your application",
-        "step_1_text": "<p>Complete the form and provide the clearest available information about your project.</p>",
-        "step_2_heading": "Project review",
-        "step_2_text": "<p>Our team reviews the project information, materials, feasibility, and suitability for the platform.</p>",
-        "step_3_heading": "Follow-up and launch",
-        "step_3_text": "<p>If the project is suitable, we will contact you to confirm details, request additional materials, and discuss publication.</p>",
-        "prepare_heading": "Prepare before you begin",
-        "prepare_intro": "<p>Having the following materials ready will make the application faster and help us understand your project.</p>",
-        "project_info_heading": "Project information",
-        "project_info_text": "<ul><li>Project name, category, industry, and location</li><li>Clear project description and fundraising goal</li><li>Team or founder introduction</li><li>Project origin, current progress, and implementation plan</li><li>Reward, delivery, risk, and sustainability information</li></ul>",
-        "files_heading": "Files and media",
-        "files_text": "<ul><li>Up to three representative project images</li><li>Business license or supporting PDF when applicable</li><li>Project video link when available</li><li>A public cloud-storage link for ZIP files, source files, videos, or additional materials</li></ul>",
-        "file_eyebrow": "Before uploading",
-        "file_heading": "File submission guidance",
-        "file_text": "<p>Use the upload fields for supported images or PDF documents up to 20 MB each. For ZIP files, large videos, source files, or additional documents, upload them to Google Drive, Dropbox, OneDrive, or another cloud service and paste a public sharing link into the form.</p><p><strong>Important:</strong> Set the link permission to anyone with the link can view or download.</p>",
-        "form_heading": "Project Application Form",
-        "form_intro": "<p>Complete all required fields. Optional questions can be left blank when they do not apply to your project.</p>",
-        "after_heading": "What happens after submission?",
-        "after_text": "<p>You will see a confirmation message after the form is submitted successfully. Our team will review the information provided and contact you by email when we need clarification, additional materials, or wish to discuss the next stage.</p><p>Please ensure your email address and cloud-file permissions remain valid. Submitting an application does not guarantee approval, funding, investment, publication, or financial returns.</p>"
+        "color_scheme": "scheme-3",
+        "eyebrow": "Application form",
+        "heading": "Tell us about your project",
+        "text": "<p>Complete the required fields and submit your clearest available project information.</p>",
+        "side_heading": "Before submitting",
+        "side_text": "<p>Check your email address and confirm that every cloud link can be opened without requesting access.</p>",
+        "after_heading": "After submission",
+        "after_text": "<p>Our team will review your application and contact you by email when clarification or additional materials are needed. Submission does not guarantee approval or publication.</p>",
+        "section_width": 1220,
+        "heading_size": 44,
+        "heading_size_mobile": 34,
+        "text_size": 16,
+        "card_radius": 22,
+        "padding_top": 96,
+        "padding_bottom": 112,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 72
       }
     }
   },
   "order": [
-    "project_application"
+    "project_hero",
+    "project_process",
+    "project_prep",
+    "project_form"
   ]
 }
