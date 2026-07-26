@@ -1,0 +1,237 @@
+{% liquid
+  assign layout_width = section.settings.layout_width | default: 'page'
+  assign panel_scheme = section.settings.panel_color_scheme | default: section.settings.color_scheme
+%}
+
+{% capture form_blocks %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section
+  id="application-form"
+  class="es-form-sidebar section page-width-normal color-{{ section.settings.color_scheme }}{% if layout_width == 'full' %} section--full-width section--full-width-margin{% else %} section--page-width{% endif %}"
+  style="
+    --es-form-heading: {{ section.settings.heading_size }}px;
+    --es-form-heading-mobile: {{ section.settings.heading_size_mobile }}px;
+    --es-form-text: {{ section.settings.text_size }}px;
+    --es-form-radius: {{ section.settings.card_radius }}px;
+    --es-form-gap: {{ section.settings.column_gap }}px;
+    --es-form-pt: {{ section.settings.padding_top }}px;
+    --es-form-pb: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="es-form-sidebar__inner">
+    <div class="es-form-sidebar__layout">
+      <aside class="es-form-sidebar__aside">
+        {% if section.settings.eyebrow != blank %}
+          <p class="es-form-sidebar__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <h2>{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="rte es-form-sidebar__intro">{{ section.settings.text }}</div>
+        {% endif %}
+
+        {% if section.settings.side_text != blank %}
+          <div class="es-form-sidebar__note color-{{ panel_scheme }}">
+            {% if section.settings.side_heading != blank %}
+              <strong>{{ section.settings.side_heading | escape }}</strong>
+            {% endif %}
+            <div class="rte">{{ section.settings.side_text }}</div>
+          </div>
+        {% endif %}
+      </aside>
+
+      <div class="es-form-sidebar__form color-{{ panel_scheme }}">
+        {% if form_blocks != blank %}
+          {{ form_blocks }}
+        {% else %}
+          <div class="es-form-sidebar__placeholder">
+            <strong>Add a form app block</strong>
+            <p>Choose Add block → Apps and select the form you want to display.</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.after_text != blank %}
+      <div class="es-form-sidebar__after color-{{ panel_scheme }}">
+        {% if section.settings.after_heading != blank %}
+          <strong>{{ section.settings.after_heading | escape }}</strong>
+        {% endif %}
+        <div class="rte">{{ section.settings.after_text }}</div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .es-form-sidebar {
+    color: rgb(var(--color-foreground));
+  }
+
+  .es-form-sidebar__inner {
+    width: 100%;
+    padding-top: var(--es-form-pt);
+    padding-bottom: var(--es-form-pb);
+  }
+
+  .es-form-sidebar__layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+    gap: var(--es-form-gap);
+    align-items: start;
+  }
+
+  .es-form-sidebar__aside {
+    position: sticky;
+    top: 112px;
+  }
+
+  .es-form-sidebar__eyebrow {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.62;
+  }
+
+  .es-form-sidebar__aside h2 {
+    margin: 0 0 18px;
+    font-size: var(--es-form-heading);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .es-form-sidebar__intro,
+  .es-form-sidebar__note,
+  .es-form-sidebar__after {
+    font-size: var(--es-form-text);
+    line-height: 1.7;
+  }
+
+  .es-form-sidebar__intro {
+    opacity: 0.72;
+  }
+
+  .es-form-sidebar__note,
+  .es-form-sidebar__form,
+  .es-form-sidebar__after {
+    border: 1px solid rgba(var(--color-foreground), 0.14);
+    border-radius: var(--es-form-radius);
+    color: rgb(var(--color-foreground));
+    background: rgb(var(--color-background));
+    box-shadow: 0 14px 34px rgb(var(--color-shadow-rgb) / 0.05);
+  }
+
+  .es-form-sidebar__note {
+    margin-top: 28px;
+    padding: 22px;
+  }
+
+  .es-form-sidebar__note > strong,
+  .es-form-sidebar__after > strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .es-form-sidebar__form {
+    min-width: 0;
+    padding: 32px;
+  }
+
+  .es-form-sidebar__placeholder {
+    padding: 48px 24px;
+    border: 1px dashed rgba(var(--color-foreground), 0.28);
+    border-radius: calc(var(--es-form-radius) - 6px);
+    text-align: center;
+  }
+
+  .es-form-sidebar__placeholder p {
+    max-width: 520px;
+    margin: 8px auto 0;
+    opacity: 0.7;
+  }
+
+  .es-form-sidebar__after {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 36px;
+    margin-top: 24px;
+    padding: 24px 28px;
+  }
+
+  .es-form-sidebar .rte > :first-child {
+    margin-top: 0;
+  }
+
+  .es-form-sidebar .rte > :last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 899px) {
+    .es-form-sidebar__layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .es-form-sidebar__aside {
+      position: static;
+      max-width: 720px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .es-form-sidebar.section--full-width .es-form-sidebar__inner {
+      padding-inline: var(--page-margin);
+    }
+
+    .es-form-sidebar__aside h2 {
+      font-size: var(--es-form-heading-mobile);
+    }
+
+    .es-form-sidebar__form {
+      padding: 18px;
+    }
+
+    .es-form-sidebar__after {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 20px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "通用｜表单与说明",
+  "class": "section-wrapper",
+  "blocks": [{ "type": "@app" }],
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Section 配色方案", "default": "scheme-3" },
+    { "type": "color_scheme", "id": "panel_color_scheme", "label": "表单和提示配色方案", "default": "scheme-1" },
+    { "type": "select", "id": "layout_width", "label": "Section 宽度", "options": [{ "value": "page", "label": "页面宽度" }, { "value": "full", "label": "全宽" }], "default": "page" },
+    { "type": "text", "id": "eyebrow", "label": "顶部小标题", "default": "Application form" },
+    { "type": "text", "id": "heading", "label": "标题", "default": "Tell us about your project" },
+    { "type": "richtext", "id": "text", "label": "简短说明", "default": "<p>Complete the required fields and submit your clearest available information.</p>" },
+    { "type": "text", "id": "side_heading", "label": "侧栏提示标题", "default": "Before submitting" },
+    { "type": "richtext", "id": "side_text", "label": "侧栏提示内容", "default": "<p>Check your email address and confirm that every shared link can be opened without requesting access.</p>" },
+    { "type": "text", "id": "after_heading", "label": "底部提示标题", "default": "After submission" },
+    { "type": "richtext", "id": "after_text", "label": "底部提示内容", "default": "<p>We will review the submitted information and contact you when clarification or additional materials are needed.</p>" },
+    { "type": "header", "content": "布局与尺寸" },
+    { "type": "range", "id": "heading_size", "label": "标题字号", "min": 28, "max": 60, "step": 2, "unit": "px", "default": 44 },
+    { "type": "range", "id": "heading_size_mobile", "label": "移动端标题字号", "min": 24, "max": 42, "step": 1, "unit": "px", "default": 34 },
+    { "type": "range", "id": "text_size", "label": "正文字号", "min": 13, "max": 20, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "card_radius", "label": "卡片圆角", "min": 0, "max": 36, "step": 2, "unit": "px", "default": 22 },
+    { "type": "range", "id": "column_gap", "label": "左右栏间距", "min": 20, "max": 100, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_top", "label": "上间距", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "下间距", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 96 }
+  ],
+  "presets": [{ "name": "通用｜表单与说明" }]
+}
+{% endschema %}
