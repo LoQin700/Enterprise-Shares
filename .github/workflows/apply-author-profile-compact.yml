@@ -1,0 +1,115 @@
+name: Compact Author Profile Page
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/apply-author-profile-compact.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-theme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compact author page styles and settings
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          section_path = Path('sections/es-main-author.liquid')
+          text = section_path.read_text(encoding='utf-8')
+
+          text = text.replace(
+              '    --es-author-avatar-size: {{ section.settings.avatar_size }}px;\n    --es-author-avatar-radius: {{ section.settings.avatar_radius }}%;\n',
+              ''
+          )
+
+          text = text.replace(
+              '    width: var(--es-author-avatar-size);\n    height: var(--es-author-avatar-size);\n    flex: 0 0 var(--es-author-avatar-size);',
+              '    width: 120px;\n    height: 120px;\n    flex: 0 0 120px;'
+          )
+
+          text = text.replace(
+              '    border-radius: var(--es-author-avatar-radius);',
+              '    border-radius: 50%;'
+          )
+
+          text = text.replace(
+              '    font-size: calc(var(--es-author-avatar-size) * 0.38);',
+              '    font-size: 42px;'
+          )
+
+          text = text.replace(
+              '    font-size: 1.4rem;\n  }\n\n  .es-author-page__bio {',
+              '    font-size: 16px;\n  }\n\n  .es-author-page__bio {'
+          )
+
+          text = text.replace(
+              '    font-size: clamp(2.2rem, 3vw, 3.2rem);',
+              '    font-size: 28px;'
+          )
+
+          text = text.replace(
+              '      width: min(var(--es-author-avatar-size), 150px);\n      height: min(var(--es-author-avatar-size), 150px);\n      flex-basis: min(var(--es-author-avatar-size), 150px);',
+              '      width: 96px;\n      height: 96px;\n      flex-basis: 96px;'
+          )
+
+          mobile_insert = '''\n    .es-author-page__meta {\n      font-size: 14px;\n    }\n\n    .es-author-page__projects-heading h2 {\n      font-size: 24px;\n    }\n'''
+          marker = '    .es-author-page__bio {\n      margin-top: 20px;\n    }\n'
+          if mobile_insert.strip() not in text:
+              text = text.replace(marker, marker + mobile_insert)
+
+          card_cleanup = '''\n  .es-author-page .es-card__footer {\n    grid-template-columns: minmax(0, 1fr) !important;\n  }\n\n  .es-author-page .es-card__footer > .es-author {\n    display: none !important;\n  }\n'''
+          css_marker = '  .es-author-page__grid {\n    display: grid;'
+          if card_cleanup.strip() not in text:
+              text = text.replace(css_marker, card_cleanup + '\n' + css_marker)
+
+          avatar_settings_pattern = re.compile(
+              r'\n    \{\n      "type": "range",\n      "id": "avatar_size",.*?\n    \},\n    \{\n      "type": "range",\n      "id": "avatar_radius",.*?\n    \},',
+              re.S,
+          )
+          text, count = avatar_settings_pattern.subn('', text, count=1)
+          if count != 1:
+              raise RuntimeError('Could not remove author avatar settings')
+
+          text = text.replace(
+              '      "min": 24,\n      "max": 64,\n      "step": 2,\n      "unit": "px",\n      "default": 42',
+              '      "min": 20,\n      "max": 40,\n      "step": 1,\n      "unit": "px",\n      "default": 30'
+          )
+
+          section_path.write_text(text, encoding='utf-8')
+
+          template_path = Path('templates/metaobject/project_author.json')
+          template_text = template_path.read_text(encoding='utf-8')
+          template_text = re.sub(r'\n\s*"avatar_size":\s*\d+,', '', template_text)
+          template_text = re.sub(r'\n\s*"avatar_radius":\s*\d+,', '', template_text)
+          template_text = template_text.replace('"title_size": 42', '"title_size": 30')
+          template_path.write_text(template_text, encoding='utf-8')
+          PY
+
+      - name: Shopify CLI Theme Check
+        run: npx --yes @shopify/cli@latest theme check --path . --fail-level error
+
+      - name: Remove temporary workflow
+        run: rm .github/workflows/apply-author-profile-compact.yml
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: compact author profile page typography [skip ci]"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
