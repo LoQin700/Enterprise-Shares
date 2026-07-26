@@ -38,7 +38,19 @@ jobs:
               if line.startswith('      - name:'):
                   break
               body.append(line[10:] if line.startswith('          ') else line)
-          Path('/tmp/product-tabs-installer.sh').write_text('\n'.join(body) + '\n', encoding='utf-8')
+          script = '\n'.join(body) + '\n'
+          replacements = {
+              "'sticky_navigation': true": "'sticky_navigation': True",
+              "'show_campaign': true": "'show_campaign': True",
+              "'show_creator': true": "'show_creator': True",
+              "'show_faq': true": "'show_faq': True",
+              "'open_first_faq': false": "'open_first_faq': False",
+              "'show_comments': true": "'show_comments': True",
+              "'show_comments_when_empty': false": "'show_comments_when_empty': False",
+          }
+          for old, new in replacements.items():
+              script = script.replace(old, new)
+          Path('/tmp/product-tabs-installer.sh').write_text(script, encoding='utf-8')
           PY
 
           set +e
