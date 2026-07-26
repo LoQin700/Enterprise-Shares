@@ -258,7 +258,13 @@
           "type": "creator",
           "settings": {
             "tab_label": "Creator",
-            "creator_source": "{{ product.metafields.custom.author.value }}"
+            "heading": "About the creator",
+            "heading_font_size": 30,
+            "name_font_size": 20,
+            "bio_font_size": 16,
+            "creator_source": "{{ product.metafields.custom.author.value }}",
+            "view_more_label": "View more",
+            "view_more_link": ""
           }
         },
         "faq_default": {
@@ -266,7 +272,8 @@
           "settings": {
             "tab_label": "FAQ",
             "heading": "Frequently Asked Questions",
-            "faq_source": [],
+            "heading_font_size": 30,
+            "faq_text_source": "{{ product.metafields.custom.project_faqs | metafield_tag }}",
             "open_first_faq": false
           }
         },
