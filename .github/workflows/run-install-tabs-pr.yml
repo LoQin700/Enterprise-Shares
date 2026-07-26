@@ -21,11 +21,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Run installer embedded in main workflow
+      - name: Extract installer embedded in main workflow
         run: |
           python - <<'PY'
           from pathlib import Path
-          import subprocess
 
           path = Path('.github/workflows/install-es-product-project-tabs.yml')
           lines = path.read_text(encoding='utf-8').splitlines()
@@ -40,8 +39,10 @@ jobs:
                   break
               body.append(line[10:] if line.startswith('          ') else line)
           script = '\n'.join(body) + '\n'
-          subprocess.run(['bash', '-lc', script], check=True)
+          Path('/tmp/product-tabs-installer.sh').write_text(script, encoding='utf-8')
+          print(f'Extracted {len(body)} installer lines')
           PY
+          bash -x /tmp/product-tabs-installer.sh
 
       - name: Validate product template JSON
         run: |
