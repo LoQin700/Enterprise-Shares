@@ -1,0 +1,113 @@
+name: Fix Product Tabs Block Structure
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-install:
+    if: github.head_ref == 'fix/product-tabs-block-structure'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Replace default product tab blocks
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('templates/product.json')
+          text = path.read_text(encoding='utf-8')
+          json_start = text.find('{')
+          prefix = text[:json_start]
+          data = json.loads(text[json_start:])
+
+          section = data['sections']['es_project_tabs']
+          section['blocks'] = {
+              'campaign_default': {
+                  'type': 'campaign',
+                  'settings': {
+                      'tab_label': 'Campaign',
+                      'use_product_description': True
+                  }
+              },
+              'creator_default': {
+                  'type': 'creator',
+                  'settings': {
+                      'tab_label': 'Creator'
+                  }
+              },
+              'faq_default': {
+                  'type': 'faq',
+                  'settings': {
+                      'tab_label': 'FAQ',
+                      'heading': 'Frequently Asked Questions',
+                      'open_first_faq': False
+                  }
+              },
+              'comments_liquid_default': {
+                  'type': 'comments_liquid',
+                  'settings': {
+                      'tab_label': 'Comments',
+                      'show_when_empty': False
+                  }
+              },
+              'comments_text_default': {
+                  'type': 'comments_text',
+                  'settings': {
+                      'tab_label': 'Comments',
+                      'show_when_empty': False
+                  }
+              }
+          }
+          section['block_order'] = [
+              'campaign_default',
+              'creator_default',
+              'faq_default',
+              'comments_liquid_default',
+              'comments_text_default'
+          ]
+          section['settings'] = {
+              'section_width': 'page-width',
+              'color_scheme': 'scheme-1',
+              'sticky_navigation': True,
+              'tab_font_size': 16,
+              'content_width': 1100,
+              'padding_top': 48,
+              'padding_bottom': 64
+          }
+
+          path.write_text(prefix + json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Validate product template JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          text = Path('templates/product.json').read_text(encoding='utf-8')
+          json.loads(text[text.find('{'):])
+          PY
+
+      - name: Shopify CLI Theme Check
+        run: npx --yes @shopify/cli@latest theme check --path . --fail-level error
+
+      - name: Remove temporary workflow and commit
+        run: |
+          rm -f .github/workflows/fix-product-tabs-block-structure.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "fix: install block-based product tabs"
+          git push origin HEAD:${{ github.head_ref }}
