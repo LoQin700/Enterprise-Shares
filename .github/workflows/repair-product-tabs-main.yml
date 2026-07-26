@@ -1,0 +1,142 @@
+name: One-time product tabs repair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/repair-product-tabs-main.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Repair product tabs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          product_path = Path('templates/product.json')
+          product = product_path.read_text()
+          if '"faq_source": []' in product:
+              product = product.replace('"faq_source": []', '"faq_source": ""', 1)
+          elif '"faq_source": ""' not in product:
+              raise SystemExit('Unexpected FAQ setting value in product template')
+          product_path.write_text(product)
+
+          section_path = Path('sections/es-product-project-tabs.liquid')
+          section = section_path.read_text()
+
+          marker = "  assign comments_have_content = false\n"
+          replacement = "  assign comments_have_content = false\n  assign faq_items = '' | split: ','\n  assign faq_count = 0\n"
+          if replacement not in section:
+              if marker not in section:
+                  raise SystemExit('FAQ initialization marker not found')
+              section = section.replace(marker, replacement, 1)
+
+          old_article = '<article class="es-project-creator">'
+          new_article = '''<article
+                        class="es-project-creator"
+                        style="--es-creator-heading-size: {{ block.settings.heading_font_size }}px; --es-creator-name-size: {{ block.settings.name_font_size }}px; --es-creator-bio-size: {{ block.settings.bio_font_size }}px;"
+                      >'''
+          if new_article not in section:
+              if old_article not in section:
+                  raise SystemExit('Creator article marker not found')
+              section = section.replace(old_article, new_article, 1)
+
+          old_heading_css = '''  .es-product-tabs__heading,
+  .es-project-creator__title {
+    margin: 0 0 28px;
+    font-family: var(--font-heading--family);
+  }
+'''
+          new_heading_css = '''  .es-product-tabs__heading {
+    margin: 0 0 28px;
+    font-family: var(--font-heading--family);
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.2;
+  }
+
+  .es-project-creator__title {
+    margin: 0 0 28px;
+    font-family: var(--font-heading--family);
+    font-size: var(--es-creator-heading-size, 30px);
+    line-height: 1.2;
+  }
+'''
+          if new_heading_css not in section:
+              if old_heading_css not in section:
+                  raise SystemExit('Creator heading CSS marker not found')
+              section = section.replace(old_heading_css, new_heading_css, 1)
+
+          if 'font-size: var(--es-creator-name-size, 20px);' not in section:
+              old_name = '    font-size: clamp(1.25rem, 2vw, 1.5rem);'
+              if old_name not in section:
+                  raise SystemExit('Creator name font marker not found')
+              section = section.replace(old_name, '    font-size: var(--es-creator-name-size, 20px);', 1)
+
+          old_bio = '''  .es-project-creator__bio {
+    margin-top: 28px;
+  }
+'''
+          new_bio = '''  .es-project-creator__bio {
+    margin-top: 28px;
+    font-size: var(--es-creator-bio-size, 16px);
+    line-height: 1.65;
+  }
+'''
+          if new_bio not in section:
+              if old_bio not in section:
+                  raise SystemExit('Creator bio CSS marker not found')
+              section = section.replace(old_bio, new_bio, 1)
+
+          old_schema = '''        { "type": "text", "id": "tab_label", "label": "Tab 文案", "default": "Creator" },
+        { "type": "text", "id": "heading", "label": "内容标题", "default": "About the creator" },
+        { "type": "metaobject", "id": "creator_source", "label": "Creator 动态源", "metaobject_type": "project_author" },'''
+          new_schema = '''        { "type": "text", "id": "tab_label", "label": "Tab 文案", "default": "Creator" },
+        { "type": "text", "id": "heading", "label": "内容标题", "default": "About the creator" },
+        { "type": "range", "id": "heading_font_size", "label": "内容标题字号", "min": 20, "max": 40, "step": 1, "unit": "px", "default": 30 },
+        { "type": "range", "id": "name_font_size", "label": "作者名称字号", "min": 16, "max": 28, "step": 1, "unit": "px", "default": 20 },
+        { "type": "range", "id": "bio_font_size", "label": "作者简介字号", "min": 14, "max": 20, "step": 1, "unit": "px", "default": 16 },
+        { "type": "metaobject", "id": "creator_source", "label": "Creator 动态源", "metaobject_type": "project_author" },'''
+          if new_schema not in section:
+              if old_schema not in section:
+                  raise SystemExit('Creator schema marker not found')
+              section = section.replace(old_schema, new_schema, 1)
+
+          section = section.replace('"label": "FAQ 列表动态源"', '"label": "FAQ 列表动态源（单行文本列表）"', 1)
+          section_path.write_text(section)
+          PY
+
+      - name: Validate JSON
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, re
+          for path in pathlib.Path('templates').glob('*.json'):
+              text = path.read_text()
+              text = re.sub(r'^/\*.*?\*/\s*', '', text, flags=re.S)
+              json.loads(text)
+          PY
+
+      - name: Shopify Theme Check
+        run: npx --yes @shopify/cli@latest theme check --path . --fail-level error
+
+      - name: Commit repair
+        run: |
+          rm -f .github/workflows/repair-product-tabs-main.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sections/es-product-project-tabs.liquid templates/product.json .github/workflows/repair-product-tabs-main.yml
+          git commit -m "Fix product tabs schema and creator typography"
+          git push origin HEAD:main
