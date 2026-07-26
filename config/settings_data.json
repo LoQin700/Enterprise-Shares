@@ -352,7 +352,15 @@
           "selected_variant_hover_border_color": "#1a1a1a"
         }
       }
-    }
+    },
+    "es_cards_enable": true,
+    "es_card_ratio": "16/9",
+    "es_card_title_size": 16,
+    "es_card_description_size": 14,
+    "es_hover_second_image": false,
+    "es_media_accent_enable": true,
+    "es_media_accent_height": 6,
+    "es_wishlist_enable": true
   },
   "presets": {
     "Horizon": {

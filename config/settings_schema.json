@@ -2336,43 +2336,37 @@
         "type": "text",
         "id": "es_mf_namespace",
         "label": "元字段命名空间",
-        "default": "custom",
-        "info": "填写 Shopify 产品元字段的命名空间，建议保持 custom。"
+        "default": "custom"
       },
       {
         "type": "text",
         "id": "es_deadline_key",
         "label": "截至时间字段 Key",
-        "default": "project_deadline",
-        "info": "类型必须为“日期和时间”；前台根据当前时间自动计算剩余天数、小时或分钟。"
+        "default": "project_deadline"
       },
       {
         "type": "text",
         "id": "es_desc_key",
         "label": "卡片简介字段 Key",
-        "default": "card_description",
-        "info": "建议使用多行文本；重点商品常显，推荐商品 Hover 时显示。"
+        "default": "card_description"
       },
       {
         "type": "text",
         "id": "es_author_key",
         "label": "作者关联字段 Key",
-        "default": "author",
-        "info": "类型为 Metaobject 引用，并关联 project_author 作者元对象。"
+        "default": "author"
       },
       {
         "type": "text",
         "id": "es_tags_key",
         "label": "卡片标签字段 Key",
-        "default": "card_tags",
-        "info": "建议使用单行文本列表；如果导入值包含分号或逗号，前台会自动拆分为独立标签。"
+        "default": "card_tags"
       },
       {
         "type": "text",
         "id": "es_location_key",
         "label": "地区字段 Key",
-        "default": "card_location",
-        "info": "可选；使用单行文本，作为卡片补充标签显示。"
+        "default": "card_location"
       },
       {
         "type": "header",
@@ -2439,6 +2433,22 @@
         "id": "es_hover_second_image",
         "label": "Hover 显示第二张图片",
         "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "es_media_accent_enable",
+        "label": "显示图片底部主题色条",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "es_media_accent_height",
+        "label": "主题色条高度",
+        "min": 2,
+        "max": 12,
+        "step": 1,
+        "unit": "px",
+        "default": 6
       },
       {
         "type": "checkbox",
