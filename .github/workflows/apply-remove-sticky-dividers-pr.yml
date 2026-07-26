@@ -28,34 +28,46 @@ jobs:
         run: |
           python - <<'PY'
           import json
-          import re
           from pathlib import Path
 
           section_path = Path('sections/enterprise-shares-header.liquid')
-          text = section_path.read_text(encoding='utf-8')
+          source_lines = section_path.read_text(encoding='utf-8').splitlines()
+          output = []
+          skip_sticky_css = False
 
-          text = text.replace(
-              'class="esh color-{{ section.settings.color_scheme }}{% if section.settings.sticky_header %} esh--sticky{% endif %}"',
-              'class="esh color-{{ section.settings.color_scheme }}"',
-          )
-          text = re.sub(
-              r'\n\s*\.esh--sticky\s*\{\s*position:\s*sticky;\s*top:\s*0;\s*\}\s*',
-              '\n',
-              text,
-          )
+          for line in source_lines:
+              if '.esh--sticky {' in line:
+                  skip_sticky_css = True
+                  continue
 
-          text = text.replace('    border-top: 1px solid var(--color-border);\n', '')
-          text = text.replace('    border-bottom: 1px solid var(--color-border);\n', '')
-          text = text.replace('    border-right: 1px solid var(--color-border);\n', '')
+              if skip_sticky_css:
+                  if line.strip() == '}':
+                      skip_sticky_css = False
+                  continue
 
-          text = re.sub(
-              r'(\{ "type": "range", "id": "padding_y"[^\n]+"default": 10 \}),\n\s*\{ "type": "checkbox", "id": "sticky_header"[^\n]+\}',
-              r'\1',
-              text,
-          )
+              line = line.replace(
+                  '{% if section.settings.sticky_header %} esh--sticky{% endif %}',
+                  '',
+              )
 
-          if 'section.settings.sticky_header' in text or '"id": "sticky_header"' in text:
-              raise RuntimeError('Sticky Header code or schema setting still remains')
+              if '"id": "sticky_header"' in line:
+                  if output and output[-1].rstrip().endswith(','):
+                      output[-1] = output[-1].rstrip()[:-1]
+                  continue
+
+              stripped = line.strip()
+              if stripped in {
+                  'border-top: 1px solid var(--color-border);',
+                  'border-bottom: 1px solid var(--color-border);',
+                  'border-right: 1px solid var(--color-border);',
+              }:
+                  continue
+
+              output.append(line)
+
+          text = '\n'.join(output) + '\n'
+          if 'section.settings.sticky_header' in text or '"id": "sticky_header"' in text or '.esh--sticky' in text:
+              raise RuntimeError('Sticky Header code or setting still remains')
 
           section_path.write_text(text, encoding='utf-8')
 
