@@ -152,7 +152,7 @@
           "settings": {
             "image": "shopify://shop_images/7.jpg",
             "heading": "Launch Your Dream Project",
-            "text": "<p>Share your idea, your team, and the change you want to create. We review every application before discussing the next stage.</p>",
+            "text": "<p>Share your idea, your team, and the change you want to create. </p>",
             "link_label": "Discover more",
             "link": "shopify://pages/crowdfunding-project-application",
             "color_scheme": "scheme-2",
