@@ -259,11 +259,11 @@
               "type": "_featured-blog-posts-image",
               "static": true,
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 5
+                "border_radius": 0
               },
               "blocks": {}
             },
