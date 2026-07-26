@@ -1,0 +1,28 @@
+name: Enterprise Header Final Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  theme-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON
+        run: |
+          python -m json.tool config/settings_schema.json >/dev/null
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for file in ('config/settings_data.json', 'sections/header-group.json'):
+              text = Path(file).read_text(encoding='utf-8')
+              json.loads(text[text.find('{'):])
+          PY
+      - name: Shopify CLI Theme Check
+        run: npx -y @shopify/cli@latest theme check --fail-level error
