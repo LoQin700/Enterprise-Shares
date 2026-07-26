@@ -526,6 +526,7 @@
           "type": "image",
           "name": "Image 5 — What We Solve",
           "settings": {
+            "image": "shopify://shop_images/5.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "custom",
