@@ -10,7 +10,7 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <section
   id="EnterpriseSharesHeader-{{ section.id }}"
-  class="esh color-{{ section.settings.color_scheme }}{% if section.settings.sticky_header %} esh--sticky{% endif %}"
+  class="esh color-{{ section.settings.color_scheme }}"
   style="--esh-search-width: {{ section.settings.search_max_width }}px; --esh-logo-width: {{ section.settings.logo_width }}px; --esh-logo-width-mobile: {{ section.settings.logo_width_mobile }}px; --esh-mobile-menu-size: {{ section.settings.mobile_menu_font_size }}px; --esh-padding-y: {{ section.settings.padding_y }}px;"
 >
   <div class="esh__container esh__container--{{ section.settings.section_width }} esh__top">
@@ -136,10 +136,6 @@
     background: var(--color-background);
   }
 
-  .esh--sticky {
-    position: sticky;
-    top: 0;
-  }
 
   .esh__container {
     width: calc(100% - 40px);
@@ -235,8 +231,6 @@
 
   .esh__nav-row {
     position: relative;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
     background: var(--color-background);
   }
 
@@ -285,7 +279,6 @@
     left: 0;
     z-index: 60;
     visibility: hidden;
-    border-bottom: 1px solid var(--color-border);
     background: var(--color-background);
     box-shadow: 0 16px 28px rgb(var(--color-shadow-rgb) / 0.1);
     opacity: 0;
@@ -317,7 +310,6 @@
 
   .esh__mega-inner--featured .esh__mega-categories {
     padding-right: 44px;
-    border-right: 1px solid var(--color-border);
   }
 
   .esh__mega-title {
@@ -456,8 +448,6 @@
       z-index: 80;
       max-height: calc(100vh - 64px);
       overflow-y: auto;
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
       background: var(--color-background);
       box-shadow: 0 14px 30px rgb(var(--color-shadow-rgb) / 0.12);
     }
@@ -522,8 +512,7 @@
     { "type": "text", "id": "search_placeholder", "label": "搜索框预设文案", "default": "Search projects, creators, and categories" },
     { "type": "range", "id": "search_max_width", "label": "搜索框最大宽度", "min": 360, "max": 1000, "step": 20, "unit": "px", "default": 840 },
     { "type": "range", "id": "mobile_menu_font_size", "label": "手机端菜单字号", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "padding_y", "label": "顶部栏上下内间距", "min": 6, "max": 24, "step": 2, "unit": "px", "default": 10 },
-    { "type": "checkbox", "id": "sticky_header", "label": "启用 Sticky Header", "default": true }
+    { "type": "range", "id": "padding_y", "label": "顶部栏上下内间距", "min": 6, "max": 24, "step": 2, "unit": "px", "default": 10 }
   ],
   "blocks": [
     {
