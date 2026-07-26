@@ -2,19 +2,17 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <section
   id="project-application-form"
-  class="es-project-form-host color-{{ section.settings.color_scheme }}"
+  class="es-project-form-host section page-width-normal color-{{ section.settings.color_scheme }}{% if section.settings.layout_width == 'full' %} section--full-width section--full-width-margin{% else %} section--page-width{% endif %}"
   style="
-    --es-form-width: {{ section.settings.section_width }}px;
     --es-form-heading: {{ section.settings.heading_size }}px;
     --es-form-heading-mobile: {{ section.settings.heading_size_mobile }}px;
     --es-form-text: {{ section.settings.text_size }}px;
     --es-form-radius: {{ section.settings.card_radius }}px;
     --es-form-pt: {{ section.settings.padding_top }}px;
     --es-form-pb: {{ section.settings.padding_bottom }}px;
-    --es-form-pt-mobile: {{ section.settings.padding_top_mobile }}px;
-    --es-form-pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
   "
 >
   <div class="es-project-form-host__inner">
@@ -59,13 +57,11 @@
 
 {% stylesheet %}
   .es-project-form-host {
-    background: rgb(var(--color-background));
     color: rgb(var(--color-foreground));
   }
 
   .es-project-form-host__inner {
-    width: min(var(--es-form-width), calc(100% - 40px));
-    margin: 0 auto;
+    width: 100%;
     padding-top: var(--es-form-pt);
     padding-bottom: var(--es-form-pb);
   }
@@ -175,10 +171,8 @@
   }
 
   @media screen and (max-width: 749px) {
-    .es-project-form-host__inner {
-      width: min(var(--es-form-width), calc(100% - 28px));
-      padding-top: var(--es-form-pt-mobile);
-      padding-bottom: var(--es-form-pb-mobile);
+    .es-project-form-host.section--full-width .es-project-form-host__inner {
+      padding-inline: var(--page-margin);
     }
 
     .es-project-form-host__aside h2 {
@@ -204,6 +198,16 @@
   "blocks": [{ "type": "@app" }],
   "settings": [
     { "type": "color_scheme", "id": "color_scheme", "label": "配色方案", "default": "scheme-3" },
+    {
+      "type": "select",
+      "id": "layout_width",
+      "label": "Section 宽度",
+      "options": [
+        { "value": "page", "label": "页面宽度" },
+        { "value": "full", "label": "全宽" }
+      ],
+      "default": "page"
+    },
     { "type": "text", "id": "eyebrow", "label": "顶部小标题", "default": "Application form" },
     { "type": "text", "id": "heading", "label": "标题", "default": "Tell us about your project" },
     { "type": "richtext", "id": "text", "label": "简短说明", "default": "<p>Complete the required fields and submit your clearest available project information.</p>" },
@@ -212,15 +216,12 @@
     { "type": "text", "id": "after_heading", "label": "提交后标题", "default": "After submission" },
     { "type": "richtext", "id": "after_text", "label": "提交后说明", "default": "<p>Our team will review your application and contact you by email when clarification or additional materials are needed. Submission does not guarantee approval or publication.</p>" },
     { "type": "header", "content": "布局与尺寸" },
-    { "type": "range", "id": "section_width", "label": "内容最大宽度", "min": 900, "max": 1500, "step": 20, "unit": "px", "default": 1220 },
     { "type": "range", "id": "heading_size", "label": "标题字号", "min": 28, "max": 60, "step": 2, "unit": "px", "default": 44 },
     { "type": "range", "id": "heading_size_mobile", "label": "移动端标题字号", "min": 24, "max": 42, "step": 1, "unit": "px", "default": 34 },
     { "type": "range", "id": "text_size", "label": "正文字号", "min": 13, "max": 20, "step": 1, "unit": "px", "default": 16 },
     { "type": "range", "id": "card_radius", "label": "表单卡片圆角", "min": 0, "max": 36, "step": 2, "unit": "px", "default": 22 },
-    { "type": "range", "id": "padding_top", "label": "桌面端上间距", "min": 20, "max": 160, "step": 4, "unit": "px", "default": 96 },
-    { "type": "range", "id": "padding_bottom", "label": "桌面端下间距", "min": 20, "max": 180, "step": 4, "unit": "px", "default": 112 },
-    { "type": "range", "id": "padding_top_mobile", "label": "移动端上间距", "min": 20, "max": 120, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "移动端下间距", "min": 20, "max": 140, "step": 4, "unit": "px", "default": 72 }
+    { "type": "range", "id": "padding_top", "label": "上间距", "min": 20, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "下间距", "min": 20, "max": 180, "step": 4, "unit": "px", "default": 112 }
   ],
   "presets": [{ "name": "项目申请｜表单" }]
 }
