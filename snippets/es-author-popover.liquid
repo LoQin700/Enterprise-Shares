@@ -25,35 +25,25 @@
   assign author_avatar = author_avatar_field.value
   assign author_bio = author_bio_field.value
   assign author_url = author.system.url
-
-  assign author_projects = blank
-  assign author_collection = blank
   assign project_count = 0
-  assign project_link = blank
 
   if author_projects_field != blank
     assign projects_value = author_projects_field.value
 
     if author_projects_field.type contains 'list.'
-      assign author_projects = projects_value
-      assign project_count = author_projects.size
+      assign project_count = projects_value.size
     elsif author_projects_field.type == 'collection_reference'
-      assign author_collection = projects_value
-      assign project_count = author_collection.products_count
-      assign project_link = author_collection.url
+      assign project_count = projects_value.products_count
     elsif projects_value.products_count != blank
-      assign author_collection = projects_value
-      assign project_count = author_collection.products_count
-      assign project_link = author_collection.url
+      assign project_count = projects_value.products_count
     else
-      assign author_projects = projects_value
-      assign project_count = author_projects.size
+      assign project_count = projects_value.size
     endif
   endif
 -%}
 
 <div class="es-author" data-es-author>
-  {%- if author_url != blank -%}<a href="{{ author_url }}" class="es-author__trigger">{%- else -%}<div class="es-author__trigger" tabindex="0">{%- endif -%}
+  {%- if author_url != blank -%}<a href="{{ author_url }}" class="es-author__trigger" aria-label="View {{ author_name | escape }} profile">{%- else -%}<div class="es-author__trigger" tabindex="0">{%- endif -%}
     {%- if author_avatar -%}
       {{ author_avatar | image_url: width: 96 | image_tag: class: 'es-author__avatar', loading: 'lazy', alt: author_name }}
     {%- else -%}
@@ -83,25 +73,17 @@
     {%- endif -%}
 
     {%- if project_count > 0 -%}
-      {%- if project_link != blank -%}
-        <a href="{{ project_link }}" class="es-author__count es-author__count--link">
+      {%- if author_url != blank -%}
+        <a href="{{ author_url }}" class="es-author__count es-author__count--link">
           <strong>{{ project_count }}</strong>
           <span>Projects</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-      {%- elsif author_projects != blank -%}
-        <details class="es-author__projects">
-          <summary class="es-author__count">
-            <strong>{{ project_count }}</strong>
-            <span>Projects</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </summary>
-          <div class="es-author__project-list">
-            {%- for linked_product in author_projects limit: 12 -%}
-              <a href="{{ linked_product.url }}" class="es-author__project-link">{{ linked_product.title }}</a>
-            {%- endfor -%}
-          </div>
-        </details>
+      {%- else -%}
+        <div class="es-author__count">
+          <strong>{{ project_count }}</strong>
+          <span>Projects</span>
+        </div>
       {%- endif -%}
     {%- endif -%}
   </div>

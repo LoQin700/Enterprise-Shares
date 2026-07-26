@@ -9,7 +9,7 @@
 -%}
 
 {%- if use_custom -%}
-  {% render 'es-project-product-card', product: product, variant: variant, image_ratio: image_ratio %}
+  {% render 'es-project-product-card', product: product, variant: variant, image_ratio: image_ratio, hide_author: hide_author %}
 {%- else -%}
   <article class="es-basic-card">
     <a href="{{ product.url }}">
