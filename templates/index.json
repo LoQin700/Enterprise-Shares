@@ -470,7 +470,7 @@
             "text": "<p>Add a short introduction for this card.</p>",
             "link_label": "Discover more",
             "link": "shopify://products/es-demo-20260726-state-of-flux-visual-novel",
-            "color_scheme": "",
+            "color_scheme": "scheme-2",
             "show_line": true,
             "line_color": "#008060"
           }
@@ -483,7 +483,7 @@
             "text": "<p>Add a short introduction for this card.</p>",
             "link_label": "Discover more",
             "link": "shopify://products/es-demo-20260726-state-of-flux-visual-novel",
-            "color_scheme": "",
+            "color_scheme": "scheme-2",
             "show_line": true,
             "line_color": "#008060"
           }

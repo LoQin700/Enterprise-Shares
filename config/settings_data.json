@@ -76,7 +76,18 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "es_cards_enable": true,
+    "es_card_ratio": "16/9",
+    "es_card_title_size": 16,
+    "es_card_description_size": 14,
+    "es_card_content_padding_y": 20,
+    "es_card_content_padding_y_mobile": 14,
+    "es_hover_second_image": false,
+    "es_media_accent_enable": true,
+    "es_media_accent_height": 6,
+    "es_media_accent_color": "#00c875",
     "es_show_price": false,
+    "es_wishlist_enable": true,
     "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
@@ -123,8 +134,8 @@
           "background": "#f5f5f5",
           "foreground_heading": "#000000",
           "foreground": "#000000cf",
-          "primary": "#000000cf",
-          "primary_hover": "#ffffff",
+          "primary": "#0800FFCF",
+          "primary_hover": "#000000",
           "border": "#dfdfdf",
           "shadow": "#000000",
           "primary_button_background": "#000000",
@@ -352,18 +363,7 @@
           "selected_variant_hover_border_color": "#1a1a1a"
         }
       }
-    },
-    "es_cards_enable": true,
-    "es_card_ratio": "16/9",
-    "es_card_title_size": 16,
-    "es_card_description_size": 14,
-    "es_hover_second_image": false,
-    "es_media_accent_enable": true,
-    "es_media_accent_height": 6,
-    "es_wishlist_enable": true,
-    "es_media_accent_color": "#00c875",
-    "es_card_content_padding_y": 20,
-    "es_card_content_padding_y_mobile": 14
+    }
   },
   "presets": {
     "Horizon": {
