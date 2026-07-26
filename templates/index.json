@@ -102,7 +102,7 @@
           "type": "featured_product",
           "settings": {
             "heading": "Featured product",
-            "product": "es-demo-20260726-elven-princess-diorama"
+            "product": "es-demo-20260726-forest-bathing-soap"
           }
         },
         "recommended_products_wc6F69": {
@@ -110,7 +110,7 @@
           "settings": {
             "heading": "Recommended for you",
             "source": "collection",
-            "collection": "demo-kickstarter-projects",
+            "collection": "3d-printing",
             "products": []
           }
         }
