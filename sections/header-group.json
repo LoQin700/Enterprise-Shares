@@ -120,7 +120,7 @@
         "mega_menu_xHcqYt": {
           "type": "mega_menu",
           "settings": {
-            "menu_title": "2",
+            "menu_index": 2,
             "show_featured": true,
             "label": "Featured project",
             "product": "es-demo-20260726-elven-princess-diorama"
@@ -130,19 +130,19 @@
       "block_order": [
         "mega_menu_xHcqYt"
       ],
-      "name": "Enterprise Shares Header",
+      "name": "Enterprise Shares 标头",
       "settings": {
         "logo_width": 180,
         "logo_width_mobile": 120,
         "menu": "main-menu",
-        "color_scheme": "",
-        "menu_color_scheme": "",
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
         "section_width": "page-width",
         "show_search": true,
         "search_placeholder": "Search projects, creators, and categories",
         "search_max_width": 840,
         "mobile_menu_font_size": 16,
-        "padding_y": 16,
+        "padding_y": 10,
         "sticky_header": true
       }
     }
