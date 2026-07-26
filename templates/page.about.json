@@ -9,55 +9,534 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "about_dream": {
+      "type": "section",
+      "name": "About — Our Dream · Image 1",
       "blocks": {
-        "heading": {
+        "text_dream": {
           "type": "text",
-          "name": "Title",
+          "name": "Our Dream",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
+            "text": "<h1>Our Dream</h1><p><strong>What is your dream?</strong></p><p>Yes, our dream is to help you achieve your dreams.</p>",
             "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "max_width": "narrow",
+            "alignment": "center",
+            "type_preset": "rte"
           },
           "blocks": {}
         },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
+        "image_1": {
+          "type": "image",
+          "name": "Image 1 — Our Dream",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
           "blocks": {}
         }
       },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
+      "block_order": ["text_dream", "image_1"],
       "settings": {
         "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 36,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 88,
+        "padding-block-end": 88
+      }
+    },
+    "about_mission": {
+      "type": "section",
+      "name": "About — Mission & Vision · Image 2",
+      "blocks": {
+        "image_2": {
+          "type": "image",
+          "name": "Image 2 — Mission & Vision",
+          "settings": {
+            "image_ratio": "portrait",
+            "width": "custom",
+            "custom_width": 46,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        },
+        "group_mission": {
+          "type": "group",
+          "name": "Mission & Vision Content",
+          "settings": {
+            "content_direction": "column",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "fill",
+            "horizontal_alignment_flex_direction_column": "flex-start"
+          },
+          "blocks": {
+            "text_mission": {
+              "type": "text",
+              "name": "Mission & Vision",
+              "settings": {
+                "text": "<h2>Mission</h2><p>To help you find your life's interests and goals.</p><h2>Vision</h2><p>We aim to break boundaries via technology, enabling people from diverse industries to find aligned collaborators. We stand by creators and entrepreneurs who have faced rejection, supporting them to realize their aspirations.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["text_mission"]
+        }
+      },
+      "block_order": ["image_2", "group_mission"],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 64,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "about_story": {
+      "type": "section",
+      "name": "About — Background Story · Image 3",
+      "blocks": {
+        "image_3": {
+          "type": "image",
+          "name": "Image 3 — Background Story",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        },
+        "text_story": {
+          "type": "text",
+          "name": "Background Story Content",
+          "settings": {
+            "text": "<h2>Background Story</h2><p>In a village, there were two fruit farmers with different mindsets, resulting in vastly different harvests.</p><p>One farmer was narrow-minded, full of small-farmer mentality, like a miser guarding every inch of land, only concerned with immediate petty gains. As soon as the fruit trees bore fruit, the green, hard, and sour fruits were picked hastily, before the wind could ripen them or the sun could sweeten them. His orchard was neglected and barren; his fruit was small and unripe; his harvest was meager, barely enough to make ends meet, year after year, with no progress.</p><p>The other farmer was broad-minded, with the vision of a wealthy farmer, like a wise cultivator of hope, with a long-term harvest in mind. He doesn't seek quick profits; he cultivates diligently in spring with deep irrigation, carefully fertilizes in summer, prunes and protects buds, and controls pests and diseases, nurturing his orchard day after day. His orchard is a lush and vibrant place; his fruit is plump and golden; his harvest is abundant wealth, sweet and tempting, of considerable value, bringing prosperity year after year.</p><p><strong>Those who are impatient for quick gains reap only small profits from unripe fruit; those who cultivate patiently await maturity and ultimately achieve great success.</strong></p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["image_3", "text_story"],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 40,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
         "padding-block-end": 80
+      }
+    },
+    "about_team": {
+      "type": "section",
+      "name": "About — Our Team · Image 4",
+      "blocks": {
+        "group_team": {
+          "type": "group",
+          "name": "Our Team Content",
+          "settings": {
+            "content_direction": "column",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "fill",
+            "horizontal_alignment_flex_direction_column": "flex-start"
+          },
+          "blocks": {
+            "text_team": {
+              "type": "text",
+              "name": "Our Team",
+              "settings": {
+                "text": "<h2>Our Team</h2><p>We are a passionate and professional team from different regions. This includes an investment director, research director, human resources, administration, finance, board secretary, industry researchers, macro researchers, credit researchers, engineers, traders, and other related staff.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["text_team"]
+        },
+        "image_4": {
+          "type": "image",
+          "name": "Image 4 — Our Team",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 46,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["group_team", "image_4"],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 64,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "about_solve": {
+      "type": "section",
+      "name": "About — What We Solve · Image 5",
+      "blocks": {
+        "image_5": {
+          "type": "image",
+          "name": "Image 5 — What We Solve",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 46,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        },
+        "group_solve": {
+          "type": "group",
+          "name": "What We Solve Content",
+          "settings": {
+            "content_direction": "column",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "fill",
+            "horizontal_alignment_flex_direction_column": "flex-start"
+          },
+          "blocks": {
+            "text_solve": {
+              "type": "text",
+              "name": "What We Solve",
+              "settings": {
+                "text": "<h2>What We Solve</h2><p>After extensive research and screening, we will promote promising individuals and companies, as well as projects involving individuals and companies, through solutions and equity incentives. This allows for better communication and negotiation with a large number of creators, artists, and entrepreneurs.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["text_solve"]
+        }
+      },
+      "block_order": ["image_5", "group_solve"],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 64,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "about_rewards": {
+      "type": "section",
+      "name": "About — Your Rewards · Image 6",
+      "blocks": {
+        "group_rewards": {
+          "type": "group",
+          "name": "Your Rewards Content",
+          "settings": {
+            "content_direction": "column",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "fill",
+            "horizontal_alignment_flex_direction_column": "flex-start"
+          },
+          "blocks": {
+            "text_rewards": {
+              "type": "text",
+              "name": "Your Rewards",
+              "settings": {
+                "text": "<h2>Your Rewards</h2><p>Your rewards include creator gifts and thank-you letters, as well as company equity. Equity valued at $10 million can grow multiple or dozens of times to hundreds of millions in value, with regular dividends on top.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["text_rewards"]
+        },
+        "image_6": {
+          "type": "image",
+          "name": "Image 6 — Your Rewards",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 46,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["group_rewards", "image_6"],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 64,
+        "section_width": "page-width",
+        "color_scheme": "scheme-3",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "about_chase": {
+      "type": "section",
+      "name": "About — Chase Your Dreams · Image 7",
+      "blocks": {
+        "image_7": {
+          "type": "image",
+          "name": "Image 7 — Chase Your Dreams",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        },
+        "group_chase": {
+          "type": "group",
+          "name": "Chase Your Dreams Content",
+          "settings": {
+            "content_direction": "column",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 46,
+            "width_mobile": "fill",
+            "horizontal_alignment_flex_direction_column": "flex-start"
+          },
+          "blocks": {
+            "text_chase": {
+              "type": "text",
+              "name": "Chase Your Dreams",
+              "settings": {
+                "text": "<h2>Are you ready to chase your dreams?</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte"
+              },
+              "blocks": {}
+            },
+            "button_started": {
+              "type": "button",
+              "name": "Let's Get Started Button",
+              "settings": {
+                "label": "Let’s get started",
+                "link": "shopify://collections/all",
+                "style_class": "button",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["text_chase", "button_started"]
+        }
+      },
+      "block_order": ["image_7", "group_chase"],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 64,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "about_back": {
+      "type": "section",
+      "name": "About — Back Your Dreams · Image 8",
+      "blocks": {
+        "group_back": {
+          "type": "group",
+          "name": "Back Your Dreams Content",
+          "settings": {
+            "content_direction": "column",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 46,
+            "width_mobile": "fill",
+            "horizontal_alignment_flex_direction_column": "flex-start"
+          },
+          "blocks": {
+            "text_back": {
+              "type": "text",
+              "name": "Back Your Dreams",
+              "settings": {
+                "text": "<h2>Ready to back your dreams?</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte"
+              },
+              "blocks": {}
+            },
+            "button_back": {
+              "type": "button",
+              "name": "Explore Projects Button",
+              "settings": {
+                "label": "Explore projects",
+                "link": "shopify://collections/all",
+                "style_class": "button",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["text_back", "button_back"]
+        },
+        "image_8": {
+          "type": "image",
+          "name": "Image 8 — Back Your Dreams",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["group_back", "image_8"],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 64,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    },
+    "about_launch": {
+      "type": "section",
+      "name": "About — Launch Your Project · Image 9",
+      "blocks": {
+        "image_9": {
+          "type": "image",
+          "name": "Image 9 — Launch Your Project",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "fill",
+            "border_radius": 14
+          },
+          "blocks": {}
+        },
+        "group_launch": {
+          "type": "group",
+          "name": "Launch Your Project Content",
+          "settings": {
+            "content_direction": "column",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 46,
+            "width_mobile": "fill",
+            "horizontal_alignment_flex_direction_column": "flex-start"
+          },
+          "blocks": {
+            "text_launch": {
+              "type": "text",
+              "name": "Launch Your Dream Project",
+              "settings": {
+                "text": "<h2>Launch your dream project.</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte"
+              },
+              "blocks": {}
+            },
+            "button_launch": {
+              "type": "button",
+              "name": "Launch Project Button",
+              "settings": {
+                "label": "Launch your project",
+                "link": "shopify://pages/contact",
+                "style_class": "button",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["text_launch", "button_launch"]
+        }
+      },
+      "block_order": ["image_9", "group_launch"],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "gap": 64,
+        "section_width": "page-width",
+        "color_scheme": "scheme-3",
+        "padding-block-start": 88,
+        "padding-block-end": 88
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["about_dream", "about_mission", "about_story", "about_team", "about_solve", "about_rewards", "about_chase", "about_back", "about_launch"]
 }
