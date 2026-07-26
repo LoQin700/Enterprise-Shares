@@ -226,6 +226,7 @@
       "block_order": [
         "text_cwrXwf"
       ],
+      "disabled": true,
       "name": "t:names.large_logo",
       "settings": {
         "content_direction": "column",
