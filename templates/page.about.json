@@ -122,7 +122,7 @@
       "blocks": {
         "image_2": {
           "type": "image",
-          "name": "Image 2 — Mission & Vision",
+          "name": "Image",
           "settings": {
             "image": "shopify://shop_images/2.jpg",
             "link": "",
@@ -145,7 +145,7 @@
         },
         "group_mission": {
           "type": "group",
-          "name": "Mission & Vision Content",
+          "name": "群组",
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -246,7 +246,7 @@
         "image_2",
         "group_mission"
       ],
-      "name": "About — Mission & Vision · Image 2",
+      "name": "Mission & Vision",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -867,8 +867,9 @@
       "blocks": {
         "image_7": {
           "type": "image",
-          "name": "Image 7 — Chase Your Dreams",
+          "name": "Image",
           "settings": {
+            "image": "shopify://shop_images/7.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "custom",
@@ -889,7 +890,7 @@
         },
         "group_chase": {
           "type": "group",
-          "name": "Chase Your Dreams Content",
+          "name": "群组",
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -929,7 +930,7 @@
           "blocks": {
             "text_chase": {
               "type": "text",
-              "name": "Chase Your Dreams",
+              "name": "标题",
               "settings": {
                 "text": "<h2>Are you ready to chase your dreams?</h2>",
                 "width": "100%",
@@ -955,7 +956,7 @@
             },
             "button_started": {
               "type": "button",
-              "name": "Let's Get Started Button",
+              "name": "按钮",
               "settings": {
                 "label": "Let’s get started",
                 "link": "shopify://collections/all",
@@ -1013,7 +1014,7 @@
       "blocks": {
         "group_back": {
           "type": "group",
-          "name": "Back Your Dreams Content",
+          "name": "群组",
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -1053,7 +1054,7 @@
           "blocks": {
             "text_back": {
               "type": "text",
-              "name": "Back Your Dreams",
+              "name": "标题",
               "settings": {
                 "text": "<h2>Ready to back your dreams?</h2>",
                 "width": "100%",
@@ -1079,7 +1080,7 @@
             },
             "button_back": {
               "type": "button",
-              "name": "Explore Projects Button",
+              "name": "按钮",
               "settings": {
                 "label": "Explore projects",
                 "link": "shopify://collections/all",
@@ -1100,8 +1101,9 @@
         },
         "image_8": {
           "type": "image",
-          "name": "Image 8 — Back Your Dreams",
+          "name": "Image",
           "settings": {
+            "image": "shopify://shop_images/8.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "custom",
@@ -1125,7 +1127,7 @@
         "group_back",
         "image_8"
       ],
-      "name": "About — Back Your Dreams · Image 8",
+      "name": "Back Your Dreams",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -1152,6 +1154,104 @@
         "gradient_direction": "to top",
         "padding-block-start": 72,
         "padding-block-end": 72
+      }
+    },
+    "slideshow_JpgCwM": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_tmPNWR": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/1.jpg",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "toggle_overlay": true,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 48,
+            "padding-block-end": 48,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
+          "blocks": {
+            "text_qrPcCA": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Launch your dream project.</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_MjJGQH": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Right Now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_qrPcCA",
+            "button_MjJGQH"
+          ]
+        }
+      },
+      "block_order": [
+        "slide_tmPNWR"
+      ],
+      "name": "t:names.slideshow_inset",
+      "settings": {
+        "display_mode": "full_frame",
+        "section_width": "full-width",
+        "full_frame_on_mobile": false,
+        "slideshow_gap": 18,
+        "corner_radius": 20,
+        "slide_height": "medium",
+        "content_position": "on-media",
+        "color_scheme": "scheme-6",
+        "icons_style": "arrows_large",
+        "icons_shape": "none",
+        "slideshow_controls_style": "none",
+        "autoplay": false,
+        "autoplay_speed": 4,
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "about_launch": {
@@ -1271,7 +1371,8 @@
         "image_9",
         "group_launch"
       ],
-      "name": "About — Launch Your Project · Image 9",
+      "disabled": true,
+      "name": "Launch Your Project",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -1310,6 +1411,7 @@
     "about_rewards",
     "about_chase",
     "about_back",
+    "slideshow_JpgCwM",
     "about_launch"
   ]
 }
