@@ -1,0 +1,47 @@
+name: Rebuild Enterprise Shares Header V2
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/rebuild-enterprise-shares-header-v2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply dedicated header rebuild
+        run: python scripts/rebuild_enterprise_shares_header_v2.py
+      - name: Validate generated JSON
+        run: |
+          python -m json.tool config/settings_schema.json >/dev/null
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for file in ('config/settings_data.json', 'sections/header-group.json'):
+              text = Path(file).read_text(encoding='utf-8')
+              json.loads(text[text.find('{'):])
+          PY
+          grep -q 'Enterprise Shares Header' sections/enterprise-shares-header.liquid
+          grep -q '图片底部主题色条颜色' config/settings_schema.json
+      - name: Commit rebuilt theme files
+        run: |
+          rm -f .github/workflows/rebuild-enterprise-shares-header.yml
+          rm -f .github/workflows/rebuild-enterprise-shares-header-v2.yml
+          rm -f scripts/rebuild_enterprise_shares_header_v2.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: add dedicated Enterprise Shares header and refine product cards [skip ci]"
+          git push
