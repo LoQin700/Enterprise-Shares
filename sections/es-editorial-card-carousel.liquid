@@ -1,0 +1,231 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} es-section-carousel es-editorial-carousel"
+  style="--es-section-padding-top: {{ section.settings.padding_top }}px; --es-section-padding-bottom: {{ section.settings.padding_bottom }}px; --es-section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --es-section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px; --es-desktop-columns: {{ section.settings.desktop_columns }}; --es-mobile-columns: {{ section.settings.mobile_columns }}; --es-card-gap: {{ section.settings.gap }}px; --es-card-gap-mobile: {{ section.settings.mobile_gap }}px; --es-editorial-ratio: {{ section.settings.image_ratio }}; --es-editorial-radius: {{ section.settings.image_radius }}px;"
+  data-es-responsive-carousel
+  data-desktop-columns="{{ section.settings.desktop_columns }}"
+  data-mobile-columns="{{ section.settings.mobile_columns }}"
+  data-mobile-layout="carousel"
+>
+  {{ 'es-carousel-sections.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'es-section-carousel.js' | asset_url }}" defer="defer"></script>
+
+  <div class="es-section-carousel__inner">
+    {%- if section.settings.heading != blank -%}
+      <div class="es-section-carousel__header">
+        <div class="es-section-carousel__title-group">
+          <h2 class="es-section-carousel__title">{{ section.settings.heading }}</h2>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="es-editorial-carousel__viewport-wrap">
+      <button type="button" class="es-section-carousel__arrow es-section-carousel__arrow--side es-section-carousel__arrow--prev" data-es-carousel-prev aria-label="Previous" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="es-r-carousel__viewport" data-es-carousel-viewport>
+        <div class="es-r-carousel__track" data-es-carousel-track>
+          {%- for block in section.blocks -%}
+            <article
+              class="es-r-carousel__item es-editorial-card color-{{ block.settings.color_scheme }}{% unless block.settings.show_line %} es-editorial-card--no-line{% endunless %}"
+              data-es-carousel-item
+              style="--es-editorial-line-color: {{ block.settings.line_color }};"
+              {{ block.shopify_attributes }}
+            >
+              <div class="es-editorial-card__image-wrap">
+                {%- if block.settings.image -%}
+                  {{ block.settings.image | image_url: width: 1800 | image_tag:
+                    class: 'es-editorial-card__image',
+                    loading: 'lazy',
+                    widths: '480, 720, 960, 1200, 1600, 1800',
+                    sizes: '(min-width: 990px) 50vw, 100vw',
+                    alt: block.settings.image.alt | default: block.settings.heading
+                  }}
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'es-editorial-card__placeholder' }}
+                {%- endif -%}
+              </div>
+
+              <div class="es-editorial-card__body">
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="es-editorial-card__heading">{{ block.settings.heading }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="es-editorial-card__text rte">{{ block.settings.text }}</div>
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+                <a class="es-editorial-card__link" href="{{ block.settings.link }}">{{ block.settings.link_label }}</a>
+              {%- endif -%}
+            </article>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <button type="button" class="es-section-carousel__arrow es-section-carousel__arrow--side es-section-carousel__arrow--next" data-es-carousel-next aria-label="Next" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "图文卡片轮播",
+  "tag": "section",
+  "class": "section-es-editorial-carousel",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section 标题"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "内容宽度",
+      "default": "page-width",
+      "options": [
+        { "value": "page-width", "label": "页面宽度" },
+        { "value": "full-width", "label": "全宽" }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Section 颜色方案",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "电脑端每行显示",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "手机端每行显示",
+      "default": "1",
+      "options": [
+        { "value": "1", "label": "1个" },
+        { "value": "2", "label": "2个" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "图片比例",
+      "default": "16 / 9",
+      "options": [
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "3 / 2", "label": "3:2" },
+        { "value": "16 / 9", "label": "16:9" },
+        { "value": "4 / 5", "label": "4:5" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "图片圆角",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "电脑端卡片间距",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "手机端卡片间距",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "电脑端上间距",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "电脑端下间距",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "手机端上间距",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "手机端下间距",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "图文卡片",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "图片" },
+        { "type": "text", "id": "heading", "label": "标题", "default": "Card title" },
+        { "type": "richtext", "id": "text", "label": "正文", "default": "<p>Add a short introduction for this card.</p>" },
+        { "type": "text", "id": "link_label", "label": "链接文案", "default": "Discover more" },
+        { "type": "url", "id": "link", "label": "链接" },
+        { "type": "color_scheme", "id": "color_scheme", "label": "卡片颜色方案", "default": "scheme-1" },
+        { "type": "checkbox", "id": "show_line", "label": "显示左侧装饰线", "default": true },
+        { "type": "color", "id": "line_color", "label": "装饰线颜色", "default": "#008060" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "图文卡片轮播",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
