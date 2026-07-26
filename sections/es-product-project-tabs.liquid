@@ -1,0 +1,541 @@
+{%- liquid
+  assign creator = section.settings.creator_source
+  assign faqs = section.settings.faq_source
+  assign faq_count = faqs.size | default: 0
+
+  assign has_campaign = false
+  if section.settings.show_campaign and product.description != blank
+    assign has_campaign = true
+  endif
+
+  assign has_creator = false
+  if section.settings.show_creator and creator != blank
+    assign has_creator = true
+  endif
+
+  assign has_faq = false
+  if section.settings.show_faq and faq_count > 0
+    assign has_faq = true
+  endif
+
+  assign comments_have_content = false
+  for block in section.blocks
+    case block.type
+      when 'comments_liquid'
+        if block.settings.liquid != blank
+          assign comments_have_content = true
+        endif
+      when 'comments_text'
+        if block.settings.heading != blank or block.settings.text != blank or block.settings.button_label != blank
+          assign comments_have_content = true
+        endif
+    endcase
+  endfor
+
+  assign has_comments = false
+  if section.settings.show_comments
+    if comments_have_content or section.settings.show_comments_when_empty
+      assign has_comments = true
+    endif
+  endif
+
+  assign first_tab = blank
+  if has_campaign
+    assign first_tab = 'campaign'
+  elsif has_creator
+    assign first_tab = 'creator'
+  elsif has_faq
+    assign first_tab = 'faq'
+  elsif has_comments
+    assign first_tab = 'comments'
+  endif
+
+  assign creator_name = blank
+  assign creator_avatar = blank
+  assign creator_bio = blank
+  assign creator_joined = blank
+  assign creator_collection = blank
+  assign creator_url = blank
+  if creator != blank
+    assign creator_name = creator.display_name.value | default: creator.system.handle
+    assign creator_avatar = creator.avatar.value
+    assign creator_bio = creator.bio
+    assign creator_joined = creator.joined_date.value
+    assign creator_collection = creator.projects_collection.value
+    assign creator_url = creator.system.url
+  endif
+-%}
+
+{%- if first_tab != blank -%}
+  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  <es-product-tabs
+    id="ESProductTabs-{{ section.id }}"
+    class="es-product-tabs color-{{ section.settings.color_scheme }}{% if section.settings.sticky_navigation %} es-product-tabs--sticky{% endif %}"
+    style="--es-tabs-font-size: {{ section.settings.tab_font_size }}px; --es-tabs-content-width: {{ section.settings.content_width }}px; --es-tabs-padding-top: {{ section.settings.padding_top }}px; --es-tabs-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  >
+    <div class="es-product-tabs__nav-shell">
+      <div class="es-product-tabs__container es-product-tabs__container--{{ section.settings.section_width }}">
+        <div class="es-product-tabs__nav" role="tablist" aria-label="Product project information">
+          {%- if has_campaign -%}
+            <button type="button" class="es-product-tabs__tab{% if first_tab == 'campaign' %} is-active{% endif %}" role="tab" aria-selected="{% if first_tab == 'campaign' %}true{% else %}false{% endif %}" aria-controls="ESProductTabsPanel-{{ section.id }}-campaign" data-es-tab="campaign">
+              {{ section.settings.campaign_label }}
+            </button>
+          {%- endif -%}
+          {%- if has_creator -%}
+            <button type="button" class="es-product-tabs__tab{% if first_tab == 'creator' %} is-active{% endif %}" role="tab" aria-selected="{% if first_tab == 'creator' %}true{% else %}false{% endif %}" aria-controls="ESProductTabsPanel-{{ section.id }}-creator" data-es-tab="creator">
+              {{ section.settings.creator_label }}
+            </button>
+          {%- endif -%}
+          {%- if has_faq -%}
+            <button type="button" class="es-product-tabs__tab{% if first_tab == 'faq' %} is-active{% endif %}" role="tab" aria-selected="{% if first_tab == 'faq' %}true{% else %}false{% endif %}" aria-controls="ESProductTabsPanel-{{ section.id }}-faq" data-es-tab="faq">
+              {{ section.settings.faq_label }}<sup>{{ faq_count }}</sup>
+            </button>
+          {%- endif -%}
+          {%- if has_comments -%}
+            <button type="button" class="es-product-tabs__tab{% if first_tab == 'comments' %} is-active{% endif %}" role="tab" aria-selected="{% if first_tab == 'comments' %}true{% else %}false{% endif %}" aria-controls="ESProductTabsPanel-{{ section.id }}-comments" data-es-tab="comments">
+              {{ section.settings.comments_label }}
+            </button>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="es-product-tabs__container es-product-tabs__container--{{ section.settings.section_width }} es-product-tabs__body">
+      {%- if has_campaign -%}
+        <div id="ESProductTabsPanel-{{ section.id }}-campaign" class="es-product-tabs__panel{% if first_tab == 'campaign' %} is-active{% endif %}" role="tabpanel" data-es-panel="campaign" {% unless first_tab == 'campaign' %}hidden{% endunless %}>
+          <div class="es-product-tabs__content rte">{{ product.description }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if has_creator -%}
+        <div id="ESProductTabsPanel-{{ section.id }}-creator" class="es-product-tabs__panel{% if first_tab == 'creator' %} is-active{% endif %}" role="tabpanel" data-es-panel="creator" {% unless first_tab == 'creator' %}hidden{% endunless %}>
+          <div class="es-product-tabs__content">
+            <article class="es-project-creator">
+              {%- if creator_avatar != blank -%}
+                {{ creator_avatar | image_url: width: 240 | image_tag: class: 'es-project-creator__avatar', loading: 'lazy', alt: creator_name }}
+              {%- else -%}
+                <div class="es-project-creator__avatar es-project-creator__avatar--fallback" aria-hidden="true">{{ creator_name | slice: 0 | upcase }}</div>
+              {%- endif -%}
+              <div class="es-project-creator__main">
+                <div class="es-project-creator__heading">
+                  {%- if creator_url != blank -%}
+                    <a href="{{ creator_url }}" class="es-project-creator__name">{{ creator_name }}</a>
+                  {%- else -%}
+                    <h2 class="es-project-creator__name">{{ creator_name }}</h2>
+                  {%- endif -%}
+                  {%- if creator_joined != blank -%}
+                    <span class="es-project-creator__joined">Joined {{ creator_joined | date: '%B %Y' }}</span>
+                  {%- endif -%}
+                </div>
+                {%- if creator_bio != blank -%}
+                  <div class="es-project-creator__bio rte">{{ creator_bio | metafield_tag }}</div>
+                {%- endif -%}
+                {%- if creator_collection != blank -%}
+                  <div class="es-project-creator__projects">{{ creator_collection.products_count }} Projects</div>
+                {%- endif -%}
+              </div>
+            </article>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if has_faq -%}
+        <div id="ESProductTabsPanel-{{ section.id }}-faq" class="es-product-tabs__panel{% if first_tab == 'faq' %} is-active{% endif %}" role="tabpanel" data-es-panel="faq" {% unless first_tab == 'faq' %}hidden{% endunless %}>
+          <div class="es-product-tabs__content">
+            <h2 class="es-product-tabs__heading">{{ section.settings.faq_heading }}</h2>
+            <div class="es-project-faqs">
+              {%- for faq in faqs -%}
+                {%- assign faq_question = faq.question.value | default: faq.system.handle -%}
+                <details class="es-project-faq" {% if forloop.first and section.settings.open_first_faq %}open{% endif %}>
+                  <summary class="es-project-faq__question">
+                    <span>{{ faq_question }}</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 9 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </summary>
+                  {%- if faq.answer != blank -%}
+                    <div class="es-project-faq__answer rte">{{ faq.answer | metafield_tag }}</div>
+                  {%- endif -%}
+                </details>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if has_comments -%}
+        <div id="ESProductTabsPanel-{{ section.id }}-comments" class="es-product-tabs__panel{% if first_tab == 'comments' %} is-active{% endif %}" role="tabpanel" data-es-panel="comments" {% unless first_tab == 'comments' %}hidden{% endunless %}>
+          <div class="es-product-tabs__content es-product-tabs__comments">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'comments_liquid' -%}
+                  {%- if block.settings.liquid != blank -%}
+                    <div class="es-project-comments__liquid" {{ block.shopify_attributes }}>{{ block.settings.liquid }}</div>
+                  {%- endif -%}
+                {%- when 'comments_text' -%}
+                  {%- if block.settings.heading != blank or block.settings.text != blank or block.settings.button_label != blank -%}
+                    <div class="es-project-comments__text" {{ block.shopify_attributes }}>
+                      {%- if block.settings.heading != blank -%}<h2>{{ block.settings.heading }}</h2>{%- endif -%}
+                      {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+                      {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                        <a href="{{ block.settings.button_link }}" class="button">{{ block.settings.button_label }}</a>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </es-product-tabs>
+{%- endif -%}
+
+{% stylesheet %}
+  .es-product-tabs {
+    display: block;
+    color: var(--color-foreground);
+    background: var(--color-background);
+  }
+
+  .es-product-tabs__container {
+    width: calc(100% - 40px);
+    margin-inline: auto;
+  }
+
+  .es-product-tabs__container--page-width {
+    max-width: var(--page-width);
+  }
+
+  .es-product-tabs__container--full-width {
+    max-width: none;
+  }
+
+  .es-product-tabs__nav-shell {
+    position: relative;
+    z-index: 20;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-background);
+  }
+
+  .es-product-tabs--sticky .es-product-tabs__nav-shell {
+    position: sticky;
+    top: 0;
+  }
+
+  .es-product-tabs__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 4vw, 64px);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .es-product-tabs__nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .es-product-tabs__tab {
+    position: relative;
+    flex: 0 0 auto;
+    padding: 20px 0 18px;
+    border: 0;
+    color: var(--color-foreground);
+    background: transparent;
+    font: inherit;
+    font-size: var(--es-tabs-font-size);
+    cursor: pointer;
+  }
+
+  .es-product-tabs__tab::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 3px;
+    background: currentColor;
+    content: '';
+    opacity: 0;
+    transform: scaleX(.4);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .es-product-tabs__tab.is-active {
+    font-weight: 700;
+  }
+
+  .es-product-tabs__tab.is-active::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .es-product-tabs__tab sup {
+    margin-left: 4px;
+    font-size: .65em;
+    color: var(--color-primary);
+    vertical-align: super;
+  }
+
+  .es-product-tabs__body {
+    padding-top: var(--es-tabs-padding-top);
+    padding-bottom: var(--es-tabs-padding-bottom);
+  }
+
+  .es-product-tabs__panel[hidden] {
+    display: none;
+  }
+
+  .es-product-tabs__content {
+    width: min(100%, var(--es-tabs-content-width));
+    margin-inline: auto;
+  }
+
+  .es-product-tabs__heading {
+    margin: 0 0 28px;
+    font-family: var(--font-heading--family);
+  }
+
+  .es-project-creator {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .es-project-creator__avatar {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgb(var(--color-foreground-rgb) / .06);
+  }
+
+  .es-project-creator__avatar--fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  .es-project-creator__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 18px;
+  }
+
+  .es-project-creator__name {
+    margin: 0;
+    color: inherit;
+    font-family: var(--font-heading--family);
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .es-project-creator__joined,
+  .es-project-creator__projects {
+    color: rgb(var(--color-foreground-rgb) / .62);
+  }
+
+  .es-project-creator__bio {
+    margin-top: 18px;
+  }
+
+  .es-project-creator__projects {
+    margin-top: 18px;
+    font-weight: 600;
+  }
+
+  .es-project-faqs {
+    display: grid;
+    gap: 14px;
+  }
+
+  .es-project-faq {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .es-project-faq__question {
+    display: flex;
+    min-height: 68px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  .es-project-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .es-project-faq__question svg {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+  }
+
+  .es-project-faq[open] .es-project-faq__question svg {
+    transform: rotate(180deg);
+  }
+
+  .es-project-faq__answer {
+    padding: 0 20px 22px;
+  }
+
+  .es-product-tabs__comments {
+    display: grid;
+    gap: 28px;
+  }
+
+  .es-project-comments__text h2 {
+    margin-top: 0;
+  }
+
+  .es-project-comments__text .button {
+    margin-top: 18px;
+  }
+
+  @media (max-width: 749px) {
+    .es-product-tabs__container {
+      width: calc(100% - 32px);
+    }
+
+    .es-product-tabs__nav {
+      gap: 28px;
+    }
+
+    .es-product-tabs__tab {
+      padding-top: 16px;
+      padding-bottom: 14px;
+    }
+
+    .es-project-creator {
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .es-project-creator__avatar {
+      width: 72px;
+      height: 72px;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  if (!customElements.get('es-product-tabs')) {
+    customElements.define('es-product-tabs', class extends HTMLElement {
+      connectedCallback() {
+        if (this.dataset.bound === 'true') return;
+        this.dataset.bound = 'true';
+        this.tabs = Array.from(this.querySelectorAll('[data-es-tab]'));
+        this.panels = Array.from(this.querySelectorAll('[data-es-panel]'));
+        this.tabs.forEach((tab, index) => {
+          tab.addEventListener('click', () => this.activate(tab.dataset.esTab));
+          tab.addEventListener('keydown', (event) => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            let nextIndex = index;
+            if (event.key === 'ArrowRight') nextIndex = (index + 1) % this.tabs.length;
+            if (event.key === 'ArrowLeft') nextIndex = (index - 1 + this.tabs.length) % this.tabs.length;
+            if (event.key === 'Home') nextIndex = 0;
+            if (event.key === 'End') nextIndex = this.tabs.length - 1;
+            this.tabs[nextIndex].focus();
+            this.activate(this.tabs[nextIndex].dataset.esTab);
+          });
+        });
+      }
+
+      activate(name) {
+        this.tabs.forEach((tab) => {
+          const active = tab.dataset.esTab === name;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        this.panels.forEach((panel) => {
+          const active = panel.dataset.esPanel === name;
+          panel.hidden = !active;
+          panel.classList.toggle('is-active', active);
+        });
+      }
+    });
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "产品项目 Tabs",
+  "tag": "section",
+  "class": "section-es-product-project-tabs",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "内容宽度",
+      "default": "page-width",
+      "options": [
+        { "value": "page-width", "label": "页面宽度" },
+        { "value": "full-width", "label": "全宽" }
+      ]
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "颜色方案", "default": "scheme-1" },
+    { "type": "checkbox", "id": "sticky_navigation", "label": "启用 Sticky Tab 导航", "default": true },
+    { "type": "range", "id": "tab_font_size", "label": "Tab 字号", "min": 12, "max": 22, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "content_width", "label": "正文最大宽度", "min": 720, "max": 1400, "step": 20, "unit": "px", "default": 1100 },
+    { "type": "range", "id": "padding_top", "label": "顶部间距", "min": 20, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "底部间距", "min": 20, "max": 120, "step": 4, "unit": "px", "default": 64 },
+    { "type": "header", "content": "Campaign" },
+    { "type": "checkbox", "id": "show_campaign", "label": "显示 Campaign", "default": true },
+    { "type": "text", "id": "campaign_label", "label": "Campaign 文案", "default": "Campaign" },
+    { "type": "header", "content": "Creator" },
+    { "type": "checkbox", "id": "show_creator", "label": "显示 Creator", "default": true },
+    { "type": "text", "id": "creator_label", "label": "Creator 文案", "default": "Creator" },
+    { "type": "metaobject", "id": "creator_source", "label": "Creator 动态源", "metaobject_type": "project_author" },
+    { "type": "header", "content": "FAQ" },
+    { "type": "checkbox", "id": "show_faq", "label": "显示 FAQ", "default": true },
+    { "type": "text", "id": "faq_label", "label": "FAQ 文案", "default": "FAQ" },
+    { "type": "text", "id": "faq_heading", "label": "FAQ 内容标题", "default": "Frequently Asked Questions" },
+    { "type": "metaobject_list", "id": "faq_source", "label": "FAQ 动态源", "metaobject_type": "project_faq", "limit": 50 },
+    { "type": "checkbox", "id": "open_first_faq", "label": "默认展开第一条 FAQ", "default": false },
+    { "type": "header", "content": "Comments" },
+    { "type": "checkbox", "id": "show_comments", "label": "显示 Comments", "default": true },
+    { "type": "text", "id": "comments_label", "label": "Comments 文案", "default": "Comments" },
+    { "type": "checkbox", "id": "show_comments_when_empty", "label": "内容为空时仍显示 Comments", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "comments_liquid",
+      "name": "Comments — Custom Liquid",
+      "settings": [
+        { "type": "liquid", "id": "liquid", "label": "Custom Liquid" }
+      ]
+    },
+    {
+      "type": "comments_text",
+      "name": "Comments — Text",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "标题" },
+        { "type": "richtext", "id": "text", "label": "正文" },
+        { "type": "text", "id": "button_label", "label": "按钮文案" },
+        { "type": "url", "id": "button_link", "label": "按钮链接" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "产品项目 Tabs",
+      "blocks": [
+        { "type": "comments_liquid" },
+        { "type": "comments_text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

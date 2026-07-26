@@ -216,40 +216,13 @@
                 }
               },
               "block_order": []
-            },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "Product description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "buy_buttons_eYQEYi"
           ]
         }
       },
@@ -404,10 +377,48 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "es_project_tabs": {
+      "type": "es-product-project-tabs",
+      "blocks": {
+        "comments_liquid_default": {
+          "type": "comments_liquid",
+          "settings": {}
+        },
+        "comments_text_default": {
+          "type": "comments_text",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "comments_liquid_default",
+        "comments_text_default"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "sticky_navigation": true,
+        "tab_font_size": 16,
+        "content_width": 1100,
+        "padding_top": 48,
+        "padding_bottom": 64,
+        "show_campaign": true,
+        "campaign_label": "Campaign",
+        "show_creator": true,
+        "creator_label": "Creator",
+        "show_faq": true,
+        "faq_label": "FAQ",
+        "faq_heading": "Frequently Asked Questions",
+        "open_first_faq": false,
+        "show_comments": true,
+        "comments_label": "Comments",
+        "show_comments_when_empty": false
+      }
     }
   },
   "order": [
     "main",
+    "es_project_tabs",
     "product_recommendations_qggXJq"
   ]
 }
