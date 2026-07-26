@@ -95,17 +95,7 @@
 
               {%- when 'faq' -%}
                 {%- liquid
-                  assign faq_markup = block.settings.faq_source
-                  assign faq_serialized = faq_markup | replace: '</li>', '|||ES_FAQ_ITEM|||' | replace: '</p>', '|||ES_FAQ_ITEM|||' | replace: '<br>', '|||ES_FAQ_ITEM|||' | replace: '<br/>', '|||ES_FAQ_ITEM|||' | replace: '<br />', '|||ES_FAQ_ITEM|||'
-                  assign faq_items = faq_serialized | split: '|||ES_FAQ_ITEM|||'
-                  assign faq_count = 0
-                  for faq_item in faq_items
-                    assign faq_text = faq_item | strip_html | strip
-                    if faq_text != blank
-                      assign faq_count = faq_count | plus: 1
-                    endif
-                  endfor
-                  assign tab_id = 'faq-' | append: block.id
+                                    assign tab_id = 'faq-' | append: block.id
                 -%}
                 {%- if faq_count > 0 -%}
                   <button type="button" class="es-product-tabs__tab{% if first_tab == tab_id %} is-active{% endif %}" role="tab" aria-selected="{% if first_tab == tab_id %}true{% else %}false{% endif %}" aria-controls="ESProductTabsPanel-{{ section.id }}-{{ tab_id }}" data-es-tab="{{ tab_id }}">
@@ -151,24 +141,14 @@
                 assign creator_avatar = blank
                 assign creator_bio = blank
                 assign creator_joined = blank
-                assign creator_projects = blank
-                assign creator_project_count = 0
                 assign creator_url = block.settings.view_more_link
                 if creator != blank
                   assign creator_name = creator.display_name.value | default: creator.system.handle
                   assign creator_avatar = creator.avatar.value
                   assign creator_bio = creator.bio
                   assign creator_joined = creator.joined_date.value
-                  assign creator_projects = creator.projects_collection.value
                   if creator.system.url != blank
                     assign creator_url = creator.system.url
-                  endif
-                  if creator_projects != blank
-                    if creator_projects.products_count != blank
-                      assign creator_project_count = creator_projects.products_count
-                    elsif creator_projects.size != blank
-                      assign creator_project_count = creator_projects.size
-                    endif
                   endif
                 endif
               -%}
@@ -194,19 +174,6 @@
                         </div>
                       </div>
 
-                      <div class="es-project-creator__stats">
-                        <div class="es-project-creator__stat">
-                          <strong>{{ creator_project_count }}</strong>
-                          <span>{% if creator_project_count == 1 %}created project{% else %}created projects{% endif %}</span>
-                        </div>
-                        {%- if creator_joined != blank -%}
-                          <div class="es-project-creator__stat">
-                            <strong>{{ creator_joined | date: '%B %Y' }}</strong>
-                            <span>account created</span>
-                          </div>
-                        {%- endif -%}
-                      </div>
-
                       {%- if creator_bio != blank -%}
                         <div class="es-project-creator__bio rte">{{ creator_bio | metafield_tag }}</div>
                       {%- endif -%}
@@ -221,17 +188,7 @@
 
             {%- when 'faq' -%}
               {%- liquid
-                assign faq_markup = block.settings.faq_source
-                assign faq_serialized = faq_markup | replace: '</li>', '|||ES_FAQ_ITEM|||' | replace: '</p>', '|||ES_FAQ_ITEM|||' | replace: '<br>', '|||ES_FAQ_ITEM|||' | replace: '<br/>', '|||ES_FAQ_ITEM|||' | replace: '<br />', '|||ES_FAQ_ITEM|||'
-                assign faq_items = faq_serialized | split: '|||ES_FAQ_ITEM|||'
-                assign faq_count = 0
-                for faq_item in faq_items
-                  assign faq_text = faq_item | strip_html | strip
-                  if faq_text != blank
-                    assign faq_count = faq_count | plus: 1
-                  endif
-                endfor
-                assign tab_id = 'faq-' | append: block.id
+                                assign tab_id = 'faq-' | append: block.id
               -%}
               {%- if faq_count > 0 -%}
                 <div id="ESProductTabsPanel-{{ section.id }}-{{ tab_id }}" class="es-product-tabs__panel{% if first_tab == tab_id %} is-active{% endif %}" role="tabpanel" data-es-panel="{{ tab_id }}" {% unless first_tab == tab_id %}hidden{% endunless %} {{ block.shopify_attributes }}>
