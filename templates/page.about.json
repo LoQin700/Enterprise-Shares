@@ -41,7 +41,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>New arrivals</h3>",
+                "text": "<h1>Our Dream</h1>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -66,7 +66,7 @@
             "text_RnTfx4": {
               "type": "text",
               "settings": {
-                "text": "<p>Introducing our latest products, made especially for the season. Shop your favorites before they're gone!</p>",
+                "text": "<p><strong>What is your dream?Y</strong></p><p>es, our dream is to help you achieve your dreams.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -87,26 +87,11 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "button_EFhcGm": {
-              "type": "button",
-              "settings": {
-                "label": "Shop now",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "text_8MiJaK",
-            "text_RnTfx4",
-            "button_EFhcGm"
+            "text_RnTfx4"
           ]
         }
       },
@@ -132,91 +117,6 @@
         "padding-block-end": 0
       }
     },
-    "about_dream": {
-      "type": "section",
-      "blocks": {
-        "text_dream": {
-          "type": "text",
-          "name": "Our Dream",
-          "settings": {
-            "text": "<h1>Our Dream</h1><p><strong>What is your dream?</strong></p><p>Yes, our dream is to help you achieve your dreams.</p>",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "image_1": {
-          "type": "image",
-          "name": "Image 1 — Our Dream",
-          "settings": {
-            "link": "",
-            "image_ratio": "landscape",
-            "width": "custom",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 14,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_dream",
-        "image_1"
-      ],
-      "name": "About — Our Dream · Image 1",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 36,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 88,
-        "padding-block-end": 88
-      }
-    },
     "about_mission": {
       "type": "section",
       "blocks": {
@@ -224,6 +124,7 @@
           "type": "image",
           "name": "Image 2 — Mission & Vision",
           "settings": {
+            "image": "shopify://shop_images/2.jpg",
             "link": "",
             "image_ratio": "portrait",
             "width": "custom",
@@ -252,7 +153,7 @@
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "space-between",
             "gap": 18,
             "width": "custom",
             "custom_width": 50,
@@ -282,11 +183,37 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "text_AHm8xN": {
+              "type": "text",
+              "name": "Mission",
+              "settings": {
+                "text": "<h3>Mission</h3><p>To help you find your life's interests and goals.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_mission": {
               "type": "text",
-              "name": "Mission & Vision",
+              "name": "Mission ",
               "settings": {
-                "text": "<h2>Mission</h2><p>To help you find your life's interests and goals.</p><h2>Vision</h2><p>We aim to break boundaries via technology, enabling people from diverse industries to find aligned collaborators. We stand by creators and entrepreneurs who have faced rejection, supporting them to realize their aspirations.</p>",
+                "text": "<h3>Vision</h3><p>We aim to break boundaries via technology, enabling people from diverse industries to find aligned collaborators. We stand by creators and entrepreneurs who have faced rejection, supporting them to realize their aspirations.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -310,6 +237,7 @@
             }
           },
           "block_order": [
+            "text_AHm8xN",
             "text_mission"
           ]
         }
@@ -328,7 +256,7 @@
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 64,
-        "section_width": "page-width",
+        "section_width": "full-width",
         "section_height": "",
         "section_height_custom": 50,
         "color_scheme": "scheme-2",
@@ -1263,7 +1191,6 @@
   },
   "order": [
     "slideshow_YPxh9B",
-    "about_dream",
     "about_mission",
     "about_story",
     "about_team",
