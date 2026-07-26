@@ -11,7 +11,7 @@
 <section
   id="EnterpriseSharesHeader-{{ section.id }}"
   class="esh color-{{ section.settings.color_scheme }}"
-  style="--esh-search-width: {{ section.settings.search_max_width }}px; --esh-logo-width: {{ section.settings.logo_width }}px; --esh-logo-width-mobile: {{ section.settings.logo_width_mobile }}px; --esh-mobile-menu-size: {{ section.settings.mobile_menu_font_size }}px; --esh-padding-y: {{ section.settings.padding_y }}px;"
+  style="--esh-search-width: {{ section.settings.search_max_width }}px; --esh-logo-width: {{ section.settings.logo_width }}px; --esh-logo-width-mobile: {{ section.settings.logo_width_mobile }}px; --esh-mobile-menu-size: {{ section.settings.mobile_menu_font_size }}px; --esh-padding-y: 10px;"
 >
   <div class="esh__container esh__container--{{ section.settings.section_width }} esh__top">
     <details class="esh__mobile-menu">
@@ -136,7 +136,6 @@
     background: var(--color-background);
   }
 
-
   .esh__container {
     width: calc(100% - 40px);
     margin-inline: auto;
@@ -155,7 +154,7 @@
     grid-template-columns: minmax(150px, 1fr) minmax(360px, var(--esh-search-width)) minmax(150px, 1fr);
     align-items: center;
     gap: 28px;
-    min-height: 72px;
+    min-height: 80px;
     padding-block: var(--esh-padding-y);
   }
 
@@ -243,7 +242,7 @@
     align-items: center;
     justify-content: center;
     gap: 24px;
-    min-height: 54px;
+    min-height: 50px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -256,7 +255,7 @@
   .esh__nav-link {
     display: inline-flex;
     align-items: center;
-    min-height: 54px;
+    min-height: 50px;
     color: var(--color-foreground);
     font-size: 1rem;
     line-height: 1;
@@ -402,7 +401,7 @@
       display: flex;
       min-height: 64px;
       gap: 6px;
-      padding-block: 8px;
+      padding-block: 10px;
     }
 
     .esh__mobile-menu {
@@ -511,8 +510,7 @@
     { "type": "checkbox", "id": "show_search", "label": "显示完整搜索框", "default": true },
     { "type": "text", "id": "search_placeholder", "label": "搜索框预设文案", "default": "Search projects, creators, and categories" },
     { "type": "range", "id": "search_max_width", "label": "搜索框最大宽度", "min": 360, "max": 1000, "step": 20, "unit": "px", "default": 840 },
-    { "type": "range", "id": "mobile_menu_font_size", "label": "手机端菜单字号", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "padding_y", "label": "顶部栏上下内间距", "min": 6, "max": 24, "step": 2, "unit": "px", "default": 10 }
+    { "type": "range", "id": "mobile_menu_font_size", "label": "手机端菜单字号", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 }
   ],
   "blocks": [
     {
