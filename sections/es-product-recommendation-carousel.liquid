@@ -1,0 +1,198 @@
+{%- liquid
+  assign recommended_products = section.settings.products
+  assign recommended_collection = section.settings.collection
+  if section.settings.source == 'collection' and recommended_collection != blank
+    assign recommended_products = recommended_collection.products
+  endif
+
+  assign product_limit = section.settings.product_limit | default: 12
+  assign effective_count = recommended_products.size | default: 0
+  if effective_count > product_limit
+    assign effective_count = product_limit
+  endif
+
+  assign view_all_url = section.settings.view_all_link
+  if view_all_url == blank and section.settings.source == 'collection' and recommended_collection != blank
+    assign view_all_url = recommended_collection.url
+  endif
+-%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} es-section-carousel es-product-carousel"
+  style="--es-section-padding-top: {{ section.settings.padding_top }}px; --es-section-padding-bottom: {{ section.settings.padding_bottom }}px; --es-section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --es-section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px; --es-desktop-columns: {{ section.settings.desktop_columns }}; --es-mobile-columns: 2; --es-card-gap: {{ section.settings.gap }}px; --es-card-gap-mobile: {{ section.settings.mobile_gap }}px;"
+  data-es-responsive-carousel
+  data-desktop-columns="{{ section.settings.desktop_columns }}"
+  data-mobile-columns="2"
+  data-mobile-layout="{{ section.settings.mobile_layout }}"
+>
+  {{ 'es-carousel-sections.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'es-section-carousel.js' | asset_url }}" defer="defer"></script>
+
+  <div class="es-section-carousel__inner">
+    <div class="es-section-carousel__header">
+      <div class="es-section-carousel__title-group">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="es-section-carousel__title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.show_view_all and view_all_url != blank -%}
+          <a class="es-section-carousel__view-all" href="{{ view_all_url }}">
+            <span>{{ section.settings.view_all_label | default: 'Discover more' }}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        {%- endif -%}
+      </div>
+
+      <div class="es-section-carousel__controls">
+        <button type="button" class="es-section-carousel__arrow" data-es-carousel-prev aria-label="Previous" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="es-section-carousel__arrow" data-es-carousel-next aria-label="Next" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    {%- if effective_count > 0 -%}
+      <div class="es-r-carousel__viewport" data-es-carousel-viewport>
+        <div class="es-r-carousel__track" data-es-carousel-track>
+          {%- for product in recommended_products limit: effective_count -%}
+            <div class="es-r-carousel__item" data-es-carousel-item>
+              {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: settings.es_card_ratio | default: '16/9' %}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- else -%}
+      <div class="es-section-placeholder">Select a collection or products.</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "产品推荐轮播",
+  "tag": "section",
+  "class": "section-es-product-carousel",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Section 标题", "default": "Recommended for you" },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "内容宽度",
+      "default": "page-width",
+      "options": [
+        { "value": "page-width", "label": "页面宽度" },
+        { "value": "full-width", "label": "全宽" }
+      ]
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "颜色方案", "default": "scheme-1" },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "商品来源",
+      "default": "collection",
+      "options": [
+        { "value": "collection", "label": "关联商品系列" },
+        { "value": "manual", "label": "手动选择商品" }
+      ]
+    },
+    { "type": "collection", "id": "collection", "label": "商品系列" },
+    { "type": "product_list", "id": "products", "label": "手动选择商品", "limit": 20 },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "推荐商品总数量",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "电脑端每页显示",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "手机端布局",
+      "default": "carousel",
+      "options": [
+        { "value": "carousel", "label": "轮播" },
+        { "value": "grid", "label": "网格" }
+      ]
+    },
+    { "type": "checkbox", "id": "show_view_all", "label": "显示 View all", "default": true },
+    { "type": "text", "id": "view_all_label", "label": "View all 文案", "default": "Discover more" },
+    { "type": "url", "id": "view_all_link", "label": "View all 链接" },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "电脑端卡片间距",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "手机端卡片间距",
+      "min": 8,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "电脑端上间距",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "电脑端下间距",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "手机端上间距",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "手机端下间距",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    }
+  ],
+  "presets": [
+    { "name": "产品推荐轮播" }
+  ]
+}
+{% endschema %}
