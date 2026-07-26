@@ -1,0 +1,19 @@
+{%- doc -%}
+  Renders the full-width visual search trigger used by the custom desktop header.
+  @param {string} placeholder
+{%- enddoc -%}
+
+<search-button class="es-header-search">
+  <button
+    type="button"
+    on:click="#search-modal/showDialog"
+    class="button-unstyled es-header-search__button"
+    aria-label="{{ 'content.search_input_label' | t }}"
+    aria-haspopup="dialog"
+  >
+    <span class="svg-wrapper es-header-search__icon">
+      {{- 'icon-search.svg' | inline_asset_content -}}
+    </span>
+    <span class="es-header-search__placeholder">{{ placeholder | default: 'Search projects, creators, and categories' }}</span>
+  </button>
+</search-button>
