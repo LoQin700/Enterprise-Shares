@@ -11,6 +11,7 @@
   assign author_bio = author[bio_key].value
   assign author_collection = author[collection_key].value
   assign author_joined = author[joined_key].value
+  assign card_ratio = settings.es_card_ratio | default: '16/9'
 -%}
 
 <section class="es-author-page">
@@ -31,7 +32,7 @@
       {%- paginate author_collection.products by 24 -%}
         <div class="es-author-page__grid">
           {%- for product in author_collection.products -%}
-            {% render 'es-product-card-router', product: product, variant: 'compact', image_ratio: settings.es_card_ratio | default: '16/9', force_custom: true %}
+            {% render 'es-product-card-router', product: product, variant: 'compact', image_ratio: card_ratio, force_custom: true %}
           {%- endfor -%}
         </div>
         <div class="es-author-page__pagination">{{ paginate | default_pagination }}</div>

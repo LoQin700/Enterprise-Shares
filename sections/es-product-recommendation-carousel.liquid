@@ -15,6 +15,7 @@
   if view_all_url == blank and section.settings.source == 'collection' and recommended_collection != blank
     assign view_all_url = recommended_collection.url
   endif
+  assign card_ratio = settings.es_card_ratio | default: '16/9'
 -%}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
@@ -58,7 +59,7 @@
         <div class="es-r-carousel__track" data-es-carousel-track>
           {%- for product in recommended_products limit: effective_count -%}
             <div class="es-r-carousel__item" data-es-carousel-item>
-              {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: settings.es_card_ratio | default: '16/9' %}
+              {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: card_ratio %}
             </div>
           {%- endfor -%}
         </div>

@@ -1,6 +1,7 @@
 {%- liquid
   assign featured_product = block.settings.product
   assign menu_title = block.settings.menu_title | strip
+  assign card_ratio = settings.es_card_ratio | default: '16/9'
 -%}
 
 <div
@@ -13,7 +14,7 @@
     {%- if block.settings.show_featured and featured_product != blank -%}
       <aside class="es-mega-featured">
         <div class="es-mega-featured__label">{{ block.settings.label | default: 'Featured project' }}</div>
-        {% render 'es-project-product-card', product: featured_product, variant: 'mega', image_ratio: settings.es_card_ratio | default: '16/9' %}
+        {% render 'es-project-product-card', product: featured_product, variant: 'mega', image_ratio: card_ratio %}
       </aside>
     {%- endif -%}
   </template>

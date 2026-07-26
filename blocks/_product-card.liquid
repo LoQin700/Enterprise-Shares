@@ -6,10 +6,11 @@
   if settings.es_cards_enable == false
     assign es_cards_enabled = false
   endif
+  assign card_ratio = settings.es_card_ratio | default: '16/9'
 -%}
 
 {% if es_cards_enabled and product != blank %}
-  {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: settings.es_card_ratio | default: '16/9', shopify_attributes: block.shopify_attributes %}
+  {% render 'es-project-product-card', product: product, variant: 'compact', image_ratio: card_ratio, shopify_attributes: block.shopify_attributes %}
 {% else %}
   {% capture children %}
     {% content_for 'blocks', closest.product: product %}

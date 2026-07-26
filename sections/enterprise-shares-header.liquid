@@ -4,6 +4,7 @@
   if header_logo == blank
     assign header_logo = settings.logo
   endif
+  assign card_ratio = settings.es_card_ratio | default: '16/9'
 -%}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
@@ -124,7 +125,7 @@
                   {%- if featured_product != blank -%}
                     <aside class="esh__mega-featured" {{ mega_block.shopify_attributes }}>
                       <div class="esh__mega-label">{{ mega_block.settings.label | default: 'Featured project' }}</div>
-                      {% render 'es-project-product-card', product: featured_product, variant: 'mega', image_ratio: settings.es_card_ratio | default: '16/9' %}
+                      {% render 'es-project-product-card', product: featured_product, variant: 'mega', image_ratio: card_ratio %}
                     </aside>
                   {%- endif -%}
                 </div>
