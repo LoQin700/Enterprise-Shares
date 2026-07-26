@@ -1,0 +1,69 @@
+name: Run Product Tabs Installer
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    if: github.head_ref == 'feat/product-project-tabs'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run installer embedded in main workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          path = Path('.github/workflows/install-es-product-project-tabs.yml')
+          lines = path.read_text(encoding='utf-8').splitlines()
+          marker = '      - name: Create project tabs section and connect product template'
+          start = lines.index(marker) + 1
+          while start < len(lines) and lines[start].strip() != 'run: |':
+              start += 1
+          start += 1
+          body = []
+          for line in lines[start:]:
+              if line.startswith('      - name:'):
+                  break
+              body.append(line[10:] if line.startswith('          ') else line)
+          script = '\n'.join(body) + '\n'
+          subprocess.run(['bash', '-lc', script], check=True)
+          PY
+
+      - name: Validate product template JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          text = Path('templates/product.json').read_text(encoding='utf-8')
+          json.loads(text[text.find('{'):])
+          PY
+
+      - name: Shopify CLI Theme Check
+        run: npx --yes @shopify/cli@latest theme check --path . --fail-level error
+
+      - name: Remove temporary workflows
+        run: |
+          rm -f .github/workflows/install-es-product-project-tabs.yml
+          rm -f .github/workflows/run-install-tabs-pr.yml
+
+      - name: Commit generated theme files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "feat: add dynamic product project tabs"
+          git push origin HEAD:${{ github.head_ref }}
