@@ -1,0 +1,18 @@
+.section-enterprise-shares-header .esh__top {
+  min-height: 72px;
+  max-height: 96px;
+  overflow: hidden;
+}
+
+.section-enterprise-shares-header .esh__nav-list,
+.section-enterprise-shares-header .esh__nav-link {
+  min-height: 46px;
+}
+
+@media screen and (max-width: 749px) {
+  .section-enterprise-shares-header .esh__top {
+    min-height: 64px;
+    max-height: none;
+    overflow: visible;
+  }
+}
