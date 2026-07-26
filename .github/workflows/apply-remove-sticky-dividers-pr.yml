@@ -28,24 +28,34 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import re
           from pathlib import Path
 
           section_path = Path('sections/enterprise-shares-header.liquid')
           text = section_path.read_text(encoding='utf-8')
 
-          replacements = [
-              ('class="esh color-{{ section.settings.color_scheme }}{% if section.settings.sticky_header %} esh--sticky{% endif %}"', 'class="esh color-{{ section.settings.color_scheme }}"'),
-              ("\n  .esh--sticky {\n    position: sticky;\n    top: 0;\n  }\n", "\n"),
-              ("    border-top: 1px solid var(--color-border);\n    border-bottom: 1px solid var(--color-border);\n", ""),
-              ("    border-bottom: 1px solid var(--color-border);\n", ""),
-              ("    padding-right: 44px;\n    border-right: 1px solid var(--color-border);\n", "    padding-right: 44px;\n"),
-              ('    { "type": "range", "id": "padding_y", "label": "顶部栏上下内间距", "min": 6, "max": 24, "step": 2, "unit": "px", "default": 10 },\n    { "type": "checkbox", "id": "sticky_header", "label": "启用 Sticky Header", "default": true }', '    { "type": "range", "id": "padding_y", "label": "顶部栏上下内间距", "min": 6, "max": 24, "step": 2, "unit": "px", "default": 10 }'),
-          ]
+          text = text.replace(
+              'class="esh color-{{ section.settings.color_scheme }}{% if section.settings.sticky_header %} esh--sticky{% endif %}"',
+              'class="esh color-{{ section.settings.color_scheme }}"',
+          )
+          text = re.sub(
+              r'\n\s*\.esh--sticky\s*\{\s*position:\s*sticky;\s*top:\s*0;\s*\}\s*',
+              '\n',
+              text,
+          )
 
-          for old, new in replacements:
-              if old not in text:
-                  raise RuntimeError(f'Expected section fragment not found: {old[:100]!r}')
-              text = text.replace(old, new)
+          text = text.replace('    border-top: 1px solid var(--color-border);\n', '')
+          text = text.replace('    border-bottom: 1px solid var(--color-border);\n', '')
+          text = text.replace('    border-right: 1px solid var(--color-border);\n', '')
+
+          text = re.sub(
+              r'(\{ "type": "range", "id": "padding_y"[^\n]+"default": 10 \}),\n\s*\{ "type": "checkbox", "id": "sticky_header"[^\n]+\}',
+              r'\1',
+              text,
+          )
+
+          if 'section.settings.sticky_header' in text or '"id": "sticky_header"' in text:
+              raise RuntimeError('Sticky Header code or schema setting still remains')
 
           section_path.write_text(text, encoding='utf-8')
 
