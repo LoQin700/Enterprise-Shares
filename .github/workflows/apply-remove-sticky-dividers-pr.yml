@@ -1,0 +1,77 @@
+name: Apply Enterprise Header Cleanup
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/apply-remove-sticky-dividers-pr.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-theme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Remove sticky option and header divider lines
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          section_path = Path('sections/enterprise-shares-header.liquid')
+          text = section_path.read_text(encoding='utf-8')
+
+          replacements = [
+              ('class="esh color-{{ section.settings.color_scheme }}{% if section.settings.sticky_header %} esh--sticky{% endif %}"', 'class="esh color-{{ section.settings.color_scheme }}"'),
+              ("\n  .esh--sticky {\n    position: sticky;\n    top: 0;\n  }\n", "\n"),
+              ("    border-top: 1px solid var(--color-border);\n    border-bottom: 1px solid var(--color-border);\n", ""),
+              ("    border-bottom: 1px solid var(--color-border);\n", ""),
+              ("    padding-right: 44px;\n    border-right: 1px solid var(--color-border);\n", "    padding-right: 44px;\n"),
+              ('    { "type": "range", "id": "padding_y", "label": "顶部栏上下内间距", "min": 6, "max": 24, "step": 2, "unit": "px", "default": 10 },\n    { "type": "checkbox", "id": "sticky_header", "label": "启用 Sticky Header", "default": true }', '    { "type": "range", "id": "padding_y", "label": "顶部栏上下内间距", "min": 6, "max": 24, "step": 2, "unit": "px", "default": 10 }'),
+          ]
+
+          for old, new in replacements:
+              if old not in text:
+                  raise RuntimeError(f'Expected section fragment not found: {old[:100]!r}')
+              text = text.replace(old, new)
+
+          section_path.write_text(text, encoding='utf-8')
+
+          group_path = Path('sections/header-group.json')
+          group = json.loads(group_path.read_text(encoding='utf-8'))
+          for section in group.get('sections', {}).values():
+              if section.get('type') == 'enterprise-shares-header':
+                  section.get('settings', {}).pop('sticky_header', None)
+          group_path.write_text(json.dumps(group, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Validate JSON
+        run: python -m json.tool sections/header-group.json >/dev/null
+
+      - name: Shopify CLI Theme Check
+        run: npx --yes @shopify/cli@latest theme check --path . --fail-level error
+
+      - name: Remove temporary workflows
+        run: |
+          rm -f .github/workflows/apply-remove-sticky-dividers-pr.yml
+          rm -f .github/workflows/remove-enterprise-header-sticky-dividers.yml
+
+      - name: Commit changes to PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: remove Enterprise Shares sticky header and dividers [skip ci]"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
