@@ -433,9 +433,35 @@
           "blocks": {
             "text_team": {
               "type": "text",
-              "name": "Our Team",
+              "name": "标题",
               "settings": {
-                "text": "<h2>Our Team</h2><p>We are a passionate and professional team from different regions. This includes an investment director, research director, human resources, administration, finance, board secretary, industry researchers, macro researchers, credit researchers, engineers, traders, and other related staff.</p>",
+                "text": "<h3>Our Team</h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_7GTHCE": {
+              "type": "text",
+              "name": "Content",
+              "settings": {
+                "text": "<p>We are a passionate and professional team from different regions. This includes an investment director, research director, human resources, administration, finance, board secretary, industry researchers, macro researchers, credit researchers, engineers, traders, and other related staff.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -459,12 +485,13 @@
             }
           },
           "block_order": [
-            "text_team"
+            "text_team",
+            "text_7GTHCE"
           ]
         },
         "image_4": {
           "type": "image",
-          "name": "Image 4 — Our Team",
+          "name": "Image",
           "settings": {
             "image": "shopify://shop_images/4.jpg",
             "link": "",
