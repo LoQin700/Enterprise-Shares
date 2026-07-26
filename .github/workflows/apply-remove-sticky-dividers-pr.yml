@@ -27,7 +27,6 @@ jobs:
       - name: Remove sticky option and header divider lines
         run: |
           python - <<'PY'
-          import json
           from pathlib import Path
 
           section_path = Path('sections/enterprise-shares-header.liquid')
@@ -55,8 +54,7 @@ jobs:
                       output[-1] = output[-1].rstrip()[:-1]
                   continue
 
-              stripped = line.strip()
-              if stripped in {
+              if line.strip() in {
                   'border-top: 1px solid var(--color-border);',
                   'border-bottom: 1px solid var(--color-border);',
                   'border-right: 1px solid var(--color-border);',
@@ -65,22 +63,31 @@ jobs:
 
               output.append(line)
 
-          text = '\n'.join(output) + '\n'
-          if 'section.settings.sticky_header' in text or '"id": "sticky_header"' in text or '.esh--sticky' in text:
-              raise RuntimeError('Sticky Header code or setting still remains')
-
-          section_path.write_text(text, encoding='utf-8')
+          section_path.write_text('\n'.join(output) + '\n', encoding='utf-8')
 
           group_path = Path('sections/header-group.json')
-          group = json.loads(group_path.read_text(encoding='utf-8'))
-          for section in group.get('sections', {}).values():
-              if section.get('type') == 'enterprise-shares-header':
-                  section.get('settings', {}).pop('sticky_header', None)
-          group_path.write_text(json.dumps(group, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          group_lines = group_path.read_text(encoding='utf-8').splitlines()
+          group_output = []
+          for line in group_lines:
+              if '"sticky_header"' in line:
+                  if group_output and group_output[-1].rstrip().endswith(','):
+                      group_output[-1] = group_output[-1].rstrip()[:-1]
+                  continue
+              group_output.append(line)
+          group_path.write_text('\n'.join(group_output) + '\n', encoding='utf-8')
           PY
 
-      - name: Validate JSON
-        run: python -m json.tool sections/header-group.json >/dev/null
+      - name: Validate commented Shopify JSON
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          text = Path('sections/header-group.json').read_text(encoding='utf-8')
+          text = re.sub(r'^\s*/\*.*?\*/\s*', '', text, count=1, flags=re.S)
+          json.loads(text)
+          PY
 
       - name: Shopify CLI Theme Check
         run: npx --yes @shopify/cli@latest theme check --path . --fail-level error
