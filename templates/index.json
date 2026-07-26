@@ -458,11 +458,86 @@
         "mobile_layout": "carousel",
         "column_gap": 40
       }
+    },
+    "es_editorial_card_carousel_wfPb8U": {
+      "type": "es-editorial-card-carousel",
+      "blocks": {
+        "card_iCkxgB": {
+          "type": "card",
+          "settings": {
+            "heading": "Card title",
+            "text": "<p>Add a short introduction for this card.</p>",
+            "link_label": "Discover more",
+            "link": "",
+            "color_scheme": "",
+            "show_line": true,
+            "line_color": "#008060"
+          }
+        },
+        "card_chUgzM": {
+          "type": "card",
+          "settings": {
+            "heading": "Card title",
+            "text": "<p>Add a short introduction for this card.</p>",
+            "link_label": "Discover more",
+            "link": "",
+            "color_scheme": "",
+            "show_line": true,
+            "line_color": "#008060"
+          }
+        }
+      },
+      "block_order": [
+        "card_iCkxgB",
+        "card_chUgzM"
+      ],
+      "name": "图文卡片轮播",
+      "settings": {
+        "heading": "",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "desktop_columns": 2,
+        "mobile_columns": "1",
+        "image_ratio": "16 / 9",
+        "image_radius": 0,
+        "gap": 36,
+        "mobile_gap": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
+    "es_product_recommendation_carousel_YLFDqV": {
+      "type": "es-product-recommendation-carousel",
+      "name": "产品推荐轮播",
+      "settings": {
+        "heading": "Recommended for you",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "source": "collection",
+        "collection": "demo-kickstarter-projects",
+        "products": [],
+        "product_limit": 12,
+        "desktop_columns": 3,
+        "mobile_layout": "carousel",
+        "show_view_all": true,
+        "view_all_label": "Discover more",
+        "view_all_link": "",
+        "gap": 24,
+        "mobile_gap": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
     }
   },
   "order": [
     "slideshow_mHbg6m",
     "product_list_fa6P9H",
-    "es_featured_recommended_products_ffcqyF"
+    "es_featured_recommended_products_ffcqyF",
+    "es_editorial_card_carousel_wfPb8U",
+    "es_product_recommendation_carousel_YLFDqV"
   ]
 }
