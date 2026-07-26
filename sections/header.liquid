@@ -99,7 +99,11 @@
     endif
   endif
   capture search
-    render 'search', style: search_style, class: search_class, display_style: section.settings.actions_display_style
+    if section.settings.es_full_search
+      render 'es-header-search', placeholder: section.settings.es_search_placeholder
+    else
+      render 'search', style: search_style, class: search_class, display_style: section.settings.actions_display_style
+    endif
   endcapture
 
   # Skip drawer search under specific conditions:
@@ -300,6 +304,7 @@
   id="header-component"
   class="{{ class }}"
   data-theme-color="rgb({{ section.settings.color_scheme_top.settings.background.rgb }})"
+  data-es-kickstarter-layout="{{ section.settings.es_kickstarter_layout }}"
   {% if transparent %}
     transparent="{{ transparent }}"
   {% endif %}
@@ -317,6 +322,8 @@
   style="
     --color-scheme-top-row: rgba({{ section.settings.color_scheme_top.settings.background.rgba }});
     --color-scheme-bottom-row: rgba({{ section.settings.color_scheme_bottom.settings.background.rgba }});
+    --es-header-search-max-width: {{ section.settings.es_search_max_width | default: 840 }}px;
+    --es-mobile-menu-font-size: {{ section.settings.es_mobile_menu_font_size | default: 16 }}px;
     {% if section.settings.actions_display_style == 'text' %}
       --header-actions-font-size: {{ section.settings.actions_font_size | default: '1rem' }};
       --header-actions-font-family: var(--font-{{ section.settings.actions_font | default: 'heading' }}--family);
@@ -401,6 +408,9 @@
     </div>
   {% endif %}
 </header-component>
+
+{{ 'es-header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'es-header.js' | asset_url }}" defer="defer"></script>
 
 <script
   src="{{ 'header.js' | asset_url }}"
@@ -1195,6 +1205,16 @@
       "default": "top"
     },
     {
+      "type": "range",
+      "id": "es_mobile_menu_font_size",
+      "label": "手机端菜单字号",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
       "type": "header",
       "content": "t:content.customer_account"
     },
@@ -1219,6 +1239,34 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "es_kickstarter_layout",
+      "label": "启用双层分类导航",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "es_full_search",
+      "label": "桌面端显示完整搜索框",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "es_search_placeholder",
+      "label": "搜索框预设文案",
+      "default": "Search projects, creators, and categories"
+    },
+    {
+      "type": "range",
+      "id": "es_search_max_width",
+      "label": "搜索框最大宽度",
+      "min": 360,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 840
+    },
+    {
       "type": "select",
       "id": "search_position",
       "label": "t:settings.search_position",
@@ -1226,6 +1274,10 @@
         {
           "value": "left",
           "label": "t:options.left"
+        },
+        {
+          "value": "center",
+          "label": "居中"
         },
         {
           "value": "right",

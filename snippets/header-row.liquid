@@ -30,10 +30,30 @@
     assign item_row = settings[row_key] | default: 'top'
     assign item_column = settings[column_key] | default: 'left'
 
-    case item
-      when 'actions'
-        assign item_column = 'right'
-    endcase
+    if settings.es_kickstarter_layout
+      case item
+        when 'logo'
+          assign item_row = 'top'
+          assign item_column = 'left'
+        when 'search'
+          assign item_row = 'top'
+          assign item_column = 'center'
+        when 'menu'
+          assign item_row = 'bottom'
+          assign item_column = 'center'
+        when 'actions'
+          assign item_row = 'top'
+          assign item_column = 'right'
+        when 'localization'
+          assign item_row = 'top'
+          assign item_column = 'right'
+      endcase
+    else
+      case item
+        when 'actions'
+          assign item_column = 'right'
+      endcase
+    endif
 
     if item_row == row
       case item_column

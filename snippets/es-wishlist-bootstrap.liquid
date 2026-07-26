@@ -13,6 +13,7 @@
   :root {
     --es-card-title-size: {{ settings.es_card_title_size | default: 16 }}px;
     --es-card-description-size: {{ settings.es_card_description_size | default: 14 }}px;
+    --es-media-accent-height: {% if settings.es_media_accent_enable == false %}0px{% else %}{{ settings.es_media_accent_height | default: 6 }}px{% endif %};
   }
 </style>
 <script>

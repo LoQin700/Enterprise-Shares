@@ -9,6 +9,7 @@
 {% liquid
   assign block_settings = block.settings
 %}
+{% capture es_mega_configs %}{% content_for 'blocks' %}{% endcapture %}
 
 {% case variant %}
   {% when 'mobile' %}
@@ -177,6 +178,7 @@
           %}
         </nav>
       </div>
+      <div class="es-mega-configs" hidden>{{ es_mega_configs }}</div>
 
       <script
         src="{{ 'header-menu.js' | asset_url }}"
@@ -798,88 +800,6 @@
     },
     {
       "type": "header",
-      "content": "t:content.submenu_feature"
-    },
-    {
-      "type": "select",
-      "id": "menu_style",
-      "label": "t:settings.media_type",
-      "info": "t:info.media_type_info",
-      "options": [
-        {
-          "value": "text",
-          "label": "t:options.none"
-        },
-        {
-          "value": "collection_images",
-          "label": "t:options.collection_images"
-        },
-        {
-          "value": "featured_products",
-          "label": "t:options.featured_products"
-        },
-        {
-          "value": "featured_collections",
-          "label": "t:options.featured_collections"
-        }
-      ],
-      "default": "collection_images"
-    },
-    {
-      "type": "select",
-      "id": "featured_products_aspect_ratio",
-      "label": "t:settings.image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:options.auto"
-        },
-        {
-          "value": "4 / 5",
-          "label": "t:options.portrait"
-        },
-        {
-          "value": "1 / 1",
-          "label": "t:options.square"
-        }
-      ],
-      "default": "4 / 5",
-      "visible_if": "{{ block.settings.menu_style == 'featured_products' }}"
-    },
-    {
-      "type": "select",
-      "id": "featured_collections_aspect_ratio",
-      "label": "t:settings.image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:options.auto"
-        },
-        {
-          "value": "16 / 9",
-          "label": "t:options.landscape"
-        },
-        {
-          "value": "1 / 1",
-          "label": "t:options.square"
-        }
-      ],
-      "default": "16 / 9",
-      "visible_if": "{{ block.settings.menu_style == 'featured_collections' }}"
-    },
-    {
-      "type": "range",
-      "id": "image_border_radius",
-      "label": "t:settings.image_border_radius",
-      "min": 0,
-      "max": 32,
-      "step": 1,
-      "unit": "px",
-      "default": 0,
-      "visible_if": "{{ block.settings.menu_style != 'text' }}"
-    },
-    {
-      "type": "header",
       "content": "t:content.mobile_layout"
     },
     {
@@ -912,6 +832,11 @@
       "id": "drawer_dividers",
       "label": "t:settings.dividers",
       "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_es-header-mega-item"
     }
   ]
 }
