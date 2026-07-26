@@ -14,9 +14,7 @@
       "settings": {
         "section_width": "page-width",
         "color_scheme": "scheme-1",
-        "avatar_size": 160,
-        "avatar_radius": 50,
-        "title_size": 42,
+        "title_size": 30,
         "bio_size": 17,
         "show_joined": true,
         "show_project_count": true,
