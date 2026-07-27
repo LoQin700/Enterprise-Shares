@@ -119,7 +119,7 @@
         "featured_product_p8gBXN",
         "recommended_products_wc6F69"
       ],
-      "name": "重点商品与推荐轮播",
+      "name": "商品焦点与推荐",
       "settings": {
         "section_width": "page-width",
         "color_scheme": "",
@@ -127,7 +127,6 @@
         "show_view_all": true,
         "view_all_label": "Discover more",
         "view_all_link": "shopify://products/es-demo-20260726-stations-heart-card-deck",
-        "mobile_layout": "carousel",
         "column_gap": 40
       }
     },
@@ -170,8 +169,9 @@
         "heading": "",
         "section_width": "page-width",
         "color_scheme": "",
+        "card_title_size_desktop": 28,
+        "card_title_size_mobile": 22,
         "desktop_columns": 2,
-        "mobile_columns": "1",
         "image_ratio": "16 / 9",
         "image_radius": 5,
         "gap": 36,
