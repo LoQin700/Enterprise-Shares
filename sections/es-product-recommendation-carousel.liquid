@@ -21,11 +21,11 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <section
   class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} es-section-carousel es-product-carousel"
-  style="--es-section-padding-top: {{ section.settings.padding_top }}px; --es-section-padding-bottom: {{ section.settings.padding_bottom }}px; --es-section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --es-section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px; --es-desktop-columns: {{ section.settings.desktop_columns }}; --es-mobile-columns: 2; --es-card-gap: {{ section.settings.gap }}px; --es-card-gap-mobile: {{ section.settings.mobile_gap }}px;"
+  style="--es-section-padding-top: {{ section.settings.padding_top }}px; --es-section-padding-bottom: {{ section.settings.padding_bottom }}px; --es-section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --es-section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px; --es-desktop-columns: {{ section.settings.desktop_columns }}; --es-mobile-columns: 1; --es-card-gap: {{ section.settings.gap }}px; --es-card-gap-mobile: {{ section.settings.mobile_gap }}px;"
   data-es-responsive-carousel
   data-desktop-columns="{{ section.settings.desktop_columns }}"
-  data-mobile-columns="2"
-  data-mobile-layout="{{ section.settings.mobile_layout }}"
+  data-mobile-columns="1"
+  data-mobile-layout="carousel"
 >
   {{ 'es-carousel-sections.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'es-section-carousel.js' | asset_url }}" defer="defer"></script>
@@ -117,16 +117,6 @@
       "max": 4,
       "step": 1,
       "default": 3
-    },
-    {
-      "type": "select",
-      "id": "mobile_layout",
-      "label": "手机端布局",
-      "default": "carousel",
-      "options": [
-        { "value": "carousel", "label": "轮播" },
-        { "value": "grid", "label": "网格" }
-      ]
     },
     { "type": "checkbox", "id": "show_view_all", "label": "显示 View all", "default": true },
     { "type": "text", "id": "view_all_label", "label": "View all 文案", "default": "Discover more" },
