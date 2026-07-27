@@ -1,12 +1,75 @@
 .section-enterprise-shares-header .esh__top {
   min-height: 80px;
   max-height: 104px;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.section-enterprise-shares-header .esh__container.esh__container--page-width {
+  width: min(
+    calc(100% - (var(--page-margin, 20px) * 2)),
+    var(--page-content-width, 1440px)
+  );
+  max-width: none;
+}
+
+.section-enterprise-shares-header .esh__container.esh__container--full-width {
+  width: calc(100% - (var(--page-margin, 20px) * 2));
+  max-width: none;
 }
 
 .section-enterprise-shares-header .esh__nav-list,
 .section-enterprise-shares-header .esh__nav-link {
   min-height: 50px;
+}
+
+.section-enterprise-shares-header .esh__actions,
+.section-enterprise-shares-header .esh__actions header-actions,
+.section-enterprise-shares-header .esh__actions .header-actions__action,
+.section-enterprise-shares-header .esh__actions .account-button,
+.section-enterprise-shares-header .esh__actions cart-icon,
+.section-enterprise-shares-header .esh__actions .svg-wrapper {
+  overflow: visible;
+}
+
+.section-enterprise-shares-header .esh__actions {
+  min-width: 92px;
+}
+
+.section-enterprise-shares-header .esh__actions header-actions {
+  display: flex;
+  min-width: max-content;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.section-enterprise-shares-header .esh__actions .header-actions__action,
+.section-enterprise-shares-header .esh__actions .account-button {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-enterprise-shares-header .esh__actions cart-icon,
+.section-enterprise-shares-header .esh__actions .svg-wrapper {
+  position: relative;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-enterprise-shares-header .esh__actions cart-icon svg,
+.section-enterprise-shares-header .esh__actions .svg-wrapper svg {
+  width: 20px;
+  height: 20px;
+  max-width: none;
+  overflow: visible;
 }
 
 body.page-width-wide {
@@ -35,5 +98,20 @@ body.page-width-content {
     min-height: 64px;
     max-height: none;
     overflow: visible;
+  }
+
+  .section-enterprise-shares-header .esh__actions {
+    min-width: auto;
+  }
+
+  .section-enterprise-shares-header .esh__actions header-actions {
+    gap: 4px;
+  }
+
+  .section-enterprise-shares-header .esh__actions .header-actions__action,
+  .section-enterprise-shares-header .esh__actions .account-button {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
   }
 }
