@@ -141,7 +141,7 @@
             "text": "<p>To help you findyour life's interests and goals.</p>",
             "link_label": "Learn More",
             "link": "shopify://pages/about-us",
-            "color_scheme": "scheme-2",
+            "color_scheme": "scheme-1",
             "show_line": true,
             "line_color": "#008060"
           }
@@ -154,7 +154,7 @@
             "text": "<p>Share your idea, your team, and the change you want to create. </p>",
             "link_label": "Discover more",
             "link": "shopify://pages/crowdfunding-project-application",
-            "color_scheme": "scheme-2",
+            "color_scheme": "scheme-1",
             "show_line": true,
             "line_color": "#008060"
           }
@@ -168,7 +168,7 @@
       "settings": {
         "heading": "",
         "section_width": "page-width",
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "card_title_size_desktop": 28,
         "card_title_size_mobile": 22,
         "desktop_columns": 2,
