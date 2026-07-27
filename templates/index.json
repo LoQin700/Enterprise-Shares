@@ -214,7 +214,7 @@
           "name": "t:names.title",
           "static": true,
           "settings": {
-            "text": "<p><strong>{{ closest.blog.title }}</strong></p>",
+            "text": "",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
